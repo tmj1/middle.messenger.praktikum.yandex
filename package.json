@@ -5,7 +5,7 @@
   "scripts": {
     "build": "parcel build ./src/pages/index.hbs --no-cache --public-url ./",
     "dev": "parcel ./src/pages/index.hbs --no-cache && parcel watch ./*",
-    "start": "node ./server.js"
+    "start": "build && node ./server.js"
   },
   "repository": {
     "type": "git",
