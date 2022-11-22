@@ -14,18 +14,13 @@ Pages:
 6. 404 Page
 7. 5** Page
 
-There are no libraries except for preprocessors.
-
-[Design](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1) is mostly made by Yandex Praktikum team.
-
-[Hosting on Netlify](https://636bbea120572971d561331b--voluble-phoenix-fa3d79.netlify.app/)
-
 ## Using technologies
 
 - Parcel
 - Express
 - Postcss-nested
 - Handlebars
+- Typescript
 
 ## Using commands
 

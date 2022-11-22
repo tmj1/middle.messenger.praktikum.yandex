@@ -1,18 +1,19 @@
 ---
 title: Вход
 css:
-- ../vendor/normalize.css
-- ../styles/styles.css
-- ../vendor/fonts.css
-- ../partials/signin/signin.css
-- ../partials/signup/signup.css
-- ../partials/input/input.css
-- ../partials/button/button.css
+  - ../vendor/normalize.css
+  - ../vendor/fonts.css
+  - ../variables/variables.css
+  - ../styles/styles.css
+  - ../partials/button/button.css
+  - ../partials/signin/signin.css
+  - ../partials/input/input.css
+
 ---
 {{!< index}}
 
 <div class="page">
-    <main class="page__form">
-        {{> signin/signin}}
-    </main>
+  <main class="page__form">
+  {{> signin/signin}}
+  </main>
 </div>

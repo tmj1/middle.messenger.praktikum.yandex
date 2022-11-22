@@ -1,18 +1,25 @@
 ---
-title: Мессенджер
+title: Чат
 css:
-- ../vendor/normalize.css
-- ../vendor/fonts.css
-- ../styles/styles.css
-- ../partials/search/search.css
-- ../partials/input/input.css
-- ../partials/chat/chat.css
-- ../partials/button/button.css
-- ../partials/message/message.css
-- ../partials/writeMessage/writeMessage.css
+  - ../vendor/normalize.css
+  - ../vendor/fonts.css
+  - ../variables/variables.css
+  - ../styles/styles.css
+  - ../partials/avatar/avatar.css
+  - ../partials/input/input.css
+  - ../partials/button/button.css
+  - ../partials/message/message.css
+  - ../partials/searchMessage/searchMessage.css
+  - ../partials/chat/chat.css
+  - ../partials/chatMessage/chatMessage.css
+  - ../partials/listMessage/listMessage.css
+  - ../partials/menu/menu.css
+  - ../partials/mobileMenu/mobileMenu.css
+  - ../partials/popup/popup.css
+
 ---
-{{!< base}}
+{{!< chat}}
 
 <div class="page">
-    {{> chat/chat}}
+  {{> chat/chat}}
 </div>

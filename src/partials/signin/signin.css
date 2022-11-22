@@ -5,41 +5,49 @@
     width: 100%;
     padding: 50px 30px 30px;
     flex-direction: column;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 0px 6px 0px var(--shadow);
     border-radius: 12px;
 }
 
+@media screen and (max-width: 425px) {
+    .signin {
+        max-width: none;
+        margin: 0 16px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .signin {
+        margin: 0 10px;
+    }
+}
+
 .signin__title {
-     margin: 0;
-     font-size: 20px;
-     color: #1e1e1e;
-     font-weight: 500;
-     line-height: 20px;
-     letter-spacing: 0em;
-     text-align: center;
-     margin-bottom: 50px;
- }
+    margin: 0;
+    font-size: 20px;
+    color: var(--primary-color);
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+@media screen and (max-width: 425px) {
+    .signin__title {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+}
 
-.signin__group {
-     margin: 0;
-     padding: 0;
-     border: none;
-     position: relative;
-     margin-bottom: 26px;
- }
-
-.signin__group:last-of-type {
-     margin-bottom: 169px;
- }
 
 .signin__input {
      outline: none;
      border: none;
      width: 100%;
-     border-bottom: 1px solid #3369f3;
+     border-bottom: 1px solid var(--secondary-color);
      padding-bottom: 7px;
      font-size: 13px;
-     color: #1e1e1e;
+     color: var(--primary-color);
      font-weight: 500;
      line-height: 13px;
  }
@@ -49,17 +57,17 @@
      top: 6px;
      left: 0;
      font-size: 13px;
-     color: #999;
+     color: var(--gray-color);
      font-weight: 500;
      line-height: 13px;
      transition: 0.3s font-size, top 0.3s;
  }
 
-.signin__input:valid + .signin__label {
+.signin__input:valid + .signin__input__label {
      top: -8px;
  }
 
-.signin__input:focus +.signin__label {
+.signin__input:focus + .signin__input__label {
      top: -12px;
      font-size: 9px;
      line-height: 9px;
@@ -70,7 +78,7 @@
      display: block;
      text-align: center;
      font-size: 11px;
-     color: #3369f3;
+     color: var(--secondary-color);
      font-weight: 500;
      line-height: 11px;
      transition: 0.3s opacity;
@@ -79,3 +87,4 @@
 .signin__link:hover {
      opacity: 0.8;
  }
+
