@@ -1,4 +1,4 @@
-import { ButtonType } from 'types';
+import { ButtonType } from '../../utils/types/types';
 
 export interface ButtonProperties {
     onClick: () => void;

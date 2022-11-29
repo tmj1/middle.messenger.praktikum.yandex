@@ -1,5 +1,5 @@
 import './mobileMenu.css';
-import Block from 'core/Block';
+import Block from '../../core/Block';
 import { mobileMenuProperties } from './types';
 
 export class mobileMenu extends Block {

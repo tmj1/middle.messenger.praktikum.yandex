@@ -24,7 +24,7 @@ export abstract class View {
     protected _popupDeleteUserSelector!: string;
     protected _popupChangeAvatarSelector!: string;
     protected _isOpenPopupSelector!: string;
-    protected _isActiveBurgerMenuSelector!: string;
+    protected _isActivemobileMenuSelector!: string;
     protected _popoverSelector!: string;
     protected _btnAttachSelector!: string;
     protected _isShowPopoverSelector!: string;

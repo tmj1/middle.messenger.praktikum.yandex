@@ -1,11 +1,11 @@
 {
   "payload": {
-    "email": "ivanpetrov@yandex.ru",
-    "login": "ivanpetrov",
-    "name": "Иван",
+    "email": "maximpetrov@mail.ru",
+    "login": "maximpetrov",
+    "name": "Максим",
     "lastName": "Петров",
-    "chatName": "Иван",
+    "chatName": "Максим",
     "phone": "+359 (888) 54 32 11",
-    "password": "password"
+    "password": "password1234"
   }
 }

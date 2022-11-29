@@ -34,6 +34,8 @@
 .chat__column-dialog {
     margin: 10px 20px;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
 
 .chat__column-dialog::-webkit-scrollbar {
@@ -113,5 +115,6 @@
 
 .chat__messages {
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
   }
