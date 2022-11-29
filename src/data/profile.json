@@ -5,6 +5,7 @@
     "name": "Иван",
     "lastName": "Петров",
     "chatName": "Иван",
-    "phone": "+359 (888) 54 32 11"
+    "phone": "+359 (888) 54 32 11",
+    "password": "password"
   }
 }

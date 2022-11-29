@@ -4,20 +4,24 @@
   border: none;
   position: relative;
   margin-bottom: 26px;
+}
 
   @media screen and (max-width: 425px) {
-    margin-bottom: 22px;
+    .input {
+      margin-bottom: 22px;
+    }
   }
 
-  &_is-auth {
-    margin-bottom: 136px;
-
+.input_is-auth {
+  margin-bottom: 136px;
+}
     @media screen and (max-width: 320px) {
+      .input_is-auth{
       margin-bottom: 120px;
     }
   }
 
-  &__text-field {
+.input_is-auth__text-field {
     outline: none;
     border: none;
     background-color: transparent;
@@ -31,41 +35,42 @@
     margin-bottom: 7px;
   }
 
-  &__label {
+.input_is-auth__label {
     cursor: text;
   }
 
-  &__text {
-    position: absolute;
-    top: 6px;
-    left: 0;
-    width: 100%;
-    font-size: 13px;
-    color: var(--gray-color);
-    font-weight: 500;
-    line-height: 13px;
-    transition: 0.3s font-size, top 0.3s;
-
+.input_is-auth__text {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 100%;
+  font-size: 13px;
+  color: var(--gray-color);
+  font-weight: 500;
+  line-height: 13px;
+  transition: 0.3s font-size, top 0.3s;
+}
     @media screen and (max-width: 425px) {
+      .input_is-auth {
       font-size: 12px;
     }
   }
 
-  &__text_error {
+.input_is-auth__text_error {
     color: var(--warning-color);
   }
 
-  &__text-field:valid + &__text {
+.input_is-auth__text-field:valid + .input_is-auth__text {
     top: -8px;
   }
 
-  &__text-field:focus + &__text {
+.input_is-auth__text-field:focus + .input_is-auth__text {
     top: -12px;
     font-size: 9px;
     line-height: 9px;
   }
 
-  &__helper-text {
+.input_is-auth__helper-text {
     margin: 0;
     min-height: 8px;
     font-size: 8px;
@@ -75,13 +80,12 @@
     opacity: 0;
   }
 
-  &__helper-text_show {
+.input_is-auth__helper-text_show {
     opacity: 1;
   }
 
-  &__text_isValue {
+.input_is-auth__text_isValue {
     top: -12px !important;
     font-size: 9px;
     line-height: 9px;
   }
-}

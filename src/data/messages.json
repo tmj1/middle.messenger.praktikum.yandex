@@ -19,19 +19,19 @@
       "text": "Круто!",
       "time": "18:10",
       "owner": false,
-      "isRead": true
+      "isRead": false
     },
     {
       "text": ":)",
       "time": "18:25",
       "owner": false,
-      "isRead": false
+      "isRead": true
     },
     {
       "srcImg": "https://avatars.mds.yandex.net/get-mpic/4880383/img_id6147495084047347908.jpeg/orig",
       "time": "19:00",
       "owner": false,
-      "isRead": false
+      "isRead": true
     }
   ]
 }

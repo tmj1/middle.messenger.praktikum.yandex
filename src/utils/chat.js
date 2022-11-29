@@ -15,7 +15,7 @@ deleteUserFormValidator.enableValidation()
 
 const menuUser = new Popup(
   "menu__list_element_user",
-  "burger-menu",
+  "mobile-menu",
   "menu_is-show",
   chatConfig
 )

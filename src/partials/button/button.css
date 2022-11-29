@@ -27,7 +27,7 @@
     opacity: 0.8;
   }
 
-.button_page_edit-profile {
+.button_page_change-profile {
     max-width: 280px;
     margin: 60px auto 0;
   }
@@ -41,3 +41,6 @@
     opacity: 0.8;
     cursor: default;
   }
+.button_is-auth {
+     margin-bottom: 14px;
+ }
