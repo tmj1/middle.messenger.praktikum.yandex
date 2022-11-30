@@ -1,74 +1,60 @@
 const config = {
-  inputSelector: "input__text-field",
+  inputSelector: 'input__text-field',
   inputPasswordSelector: "input[type='password']",
-  inputErrorSelector: "input__text_error",
-  inputHelperTextSelector: "input__helper-text",
-  isShowHelperTextSelector: "input__helper-text_show",
-  btnSubmitFormSelector: "button",
-  isDisableBtnSubmitSelector: "button_disable",
-  labelTextSelector: "input__text",
-  isValuelabelTextSelector: "input__text_isValue",
-  messagesSelector: "list-item",
-  contentDefaultSelector: "chat__column-default",
-  contentDialogSelector: "chat__column-dialog",
-  popupAddUserSelector: "popup_add-user",
-  popupDeleteUserSelector: "popup_delete-user",
-  popupChangeAvatarSelector: "popup_change-avatar",
-  isActiveChatSelector: "chat_is-active",
-  hiddenChatSelector: "chat__column_is-hidden",
-  isActivemobileMenuSelector: "mobile-menu_active",
-  isOpenPopupSelector: "popup_opened",
-  popoverSelector: "popover",
-  btnAttachSelector: "chat-footer__btn-attach",
-  isShowPopoverSelector: "popover_is-show",
-  menuItemSelector: "menu__item",
-  popupContainerSelector: "popup__container",
-  editAvatarSelector: "edit-avatar",
-  editAvatarTextSelector: "edit-avatar__span",
-  menuListElementUserSelector: "menu__list_element_user",
-  menuClassSelector: "menu",
-  isShowMenuSelector: "menu_is-show",
-  menuBtnSelector: "menu__btn",
-  searchInputByChatsSelector: "search-chat__input",
-  imgFromSearchInputByChatsSelector: "search-chat__img",
+  inputErrorSelector: 'input__text_error',
+  inputHelperTextSelector: 'input__helper-text',
+  isShowHelperTextSelector: 'input__helper-text_show',
+  btnSubmitFormSelector: 'button',
+  isDisableBtnSubmitSelector: 'button_disable',
+  labelTextSelector: 'input__text',
+  isValueLabelTextSelector: 'input__text_isValue',
+  messagesSelector: 'list-item',
+  contentDefaultSelector: 'chat__column-default',
+  contentDialogSelector: 'chat__column-dialog',
+  popupAddUserSelector: 'popup_add-user',
+  popupDeleteUserSelector: 'popup_delete-user',
+  popupChangeAvatarSelector: 'popup_change-avatar',
+  isActiveChatSelector: 'chat_is-active',
+  hiddenChatSelector: 'chat__column_is-hidden',
+  settingsMenuSelector: 'settings-menu',
+  isActiveSettingsMenuSelector: 'settings-menu_active',
+  isOpenPopupSelector: 'popup_opened',
+  popoverSelector: 'popover',
+  btnAttachSelector: 'chat-message__btn-attach',
+  isShowPopoverSelector: 'popover_is-show',
+  menuItemSelector: 'menu__item',
+  popupContainerSelector: 'popup__container',
+  editAvatarSelector: 'edit-avatar',
+  editAvatarTextSelector: 'edit-avatar__span',
+  menuListElementUserSelector: 'menu__list_element_user',
+  menuListElementFileSelector: 'menu__list_element_file',
+  menuClassSelector: 'menu',
+  isShowMenuSelector: 'menu_is-show',
+  menuBtnSelector: 'menu-button',
+  searchInputByChatsSelector: 'input-chat',
+  imgFromSearchInputByChatsSelector: 'search-chat__img',
+  inputProfileSelector: 'input-profile',
+  menuBtnAddUserSelector: 'menu__btn_add-user',
+  menuBtnDeleteUserSelector: 'menu__btn_delete-user',
+  inputProfileHelperTextSelector: 'input-profile-wrapper__error',
+  isShowInputProfileHelperTextSelector: 'input-profile-wrapper__error_is-show',
 };
+
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^[\d|+]\d{9,15}/;
-const REGEXP_REPLACE_PATHNAME = /\/\d+/;
-const REGEXP_REPLACE_ID = /[a-z/]+/i;
-const BASE_URL = 'https://ya-praktikum.tech/api/v2';
-const BASE_HEADERS = { 'Content-Type': 'application/json' };
+
 const ADD_USER_FORM = 'popup__form_add-user';
 const DELETE_USER_FORM = 'popup__form_delete-user';
 const SIGNIN_FORM = 'signin';
 const SIGNUP_FORM = 'signup';
-const EDIT_PASSWORD_FORM = 'profile__form_el_edit-password-form';
+const EDIT_PASSWORD_FORM = 'profile__form_el_change-password-form';
 const EDIT_PROFILE_FORM = 'profile__form_el_edit-form';
 const AUTH_FORM = 'auth';
-const USER_NAME_FIELD = 'first_name';
-const LAST_NAME_USER_FIELD = 'second_name';
+const USER_NAME_FIELD = 'name';
+const LAST_NAME_USER_FIELD = 'lastName';
 const PHONE_USER_FIELD = 'phone';
 const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
-    'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
+  'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
 const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
-export {
-  config,
-  ADD_USER_FORM,
-  DELETE_USER_FORM,
-  SIGNIN_FORM,
-  SIGNUP_FORM,
-  EDIT_PASSWORD_FORM,
-  EDIT_PROFILE_FORM,
-  AUTH_FORM,
-  BASE_URL,
-  BASE_HEADERS,
-  USER_NAME_FIELD,
-  LAST_NAME_USER_FIELD,
-  PHONE_USER_FIELD,
-  CUSTOM_ERROR_FOR_NAME_AND_LASTNAME,
-  CUSTOM_ERROR_FOR_PHONE_FILED,
-  REGEXP_FOR_NAME_AND_LASTNAME,
-  REGEXP_FOR_PHONE,
-  REGEXP_REPLACE_PATHNAME,
-  REGEXP_REPLACE_ID,
-};
+
+export { config, ADD_USER_FORM, DELETE_USER_FORM, SIGNIN_FORM, SIGNUP_FORM, EDIT_PASSWORD_FORM, EDIT_PROFILE_FORM, AUTH_FORM, USER_NAME_FIELD, LAST_NAME_USER_FIELD, PHONE_USER_FIELD, CUSTOM_ERROR_FOR_NAME_AND_LASTNAME, CUSTOM_ERROR_FOR_PHONE_FILED, REGEXP_FOR_NAME_AND_LASTNAME, REGEXP_FOR_PHONE, };

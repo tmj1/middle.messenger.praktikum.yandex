@@ -1,1 +1,1 @@
-export { EditProfilePage as default } from './change-profile';
+export { ChangeProfilePage as default } from './change-profile';

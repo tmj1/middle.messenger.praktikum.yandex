@@ -1,5 +1,5 @@
 # Study project from [Yandex.Practicum](https://practicum.com/)
-
+Sprint 2
 Simple messenger for exchanging messages using web-sockets.
 
 Project with imitation own framework based on proxy-objects.

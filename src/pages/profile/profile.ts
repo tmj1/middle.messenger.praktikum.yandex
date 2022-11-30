@@ -1,38 +1,38 @@
-import Block from '../../core/Block';
-import 'src/styles/profile.css';
-import dataProfile from '../../data/profile.json';
-import { Popup } from '../../utils/classes';
-import { config } from '../utils/constants';
+import Block from 'core/Block';
+import 'styles/profile.css';
+import dataProfile from 'data/profile.json';
+import { Popup } from 'utils/classes/Popup';
+import { config } from 'utils/constants';
 
 const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
 
 export class ProfilePage extends Block {
-    protected getStateFromProps() {
-        this.state = {
-            handleEditAvatar: () => {
-                new Popup(
-                    config.popupChangeAvatarSelector,
-                    config.editAvatarSelector,
-                    config.isOpenPopupSelecot,
-                    config
-                ).handleOpenPopup();
-            },
-        };
-    }
-    render() {
-        // language=hbs
-        return `
+  protected getStateFromProps() {
+    this.state = {
+      handleEditAvatar: () => {
+        new Popup(
+          config.popupChangeAvatarSelector,
+          config.editAvatarSelector,
+          config.isOpenPopupSelector,
+          config
+        ).handleOpenPopup();
+      },
+    };
+  }
+  render() {
+    // language=hbs
+    return `
       <div class="profile">
         <ul class="profile__wrapper">
           {{{BtnBackProfile href="/chat"}}}
           <li class="profile__column">
             <form class="profile__form">
               {{{EditAvatar onClick=handleEditAvatar}}}
-              <p class="profile__user-name">Максим</p>
+              <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
                   type="email"
-                  helperText="Email"
+                  helperText="Почта"
                   value="${email}"
                 }}}
                 {{{InputProfileWrapper
@@ -52,7 +52,7 @@ export class ProfilePage extends Block {
                 }}}
                 {{{InputProfileWrapper
                   type="text"
-                  helperText="Имя в приложении"
+                  helperText="Имя в чате"
                   value="${chatName}"
                 }}}
                 {{{InputProfileWrapper
@@ -82,12 +82,13 @@ export class ProfilePage extends Block {
           </li>
         </ul>
         {{{Popup
-          title="Загрузить файл"
-          textBtn="Изменить"
+          title="Загрузите файл"
+          textBtn="Поменять"
           classesPopup="popup_change-avatar"
           isDefault=false
         }}}
       </div>
     `;
-    }
+  }
 }
+

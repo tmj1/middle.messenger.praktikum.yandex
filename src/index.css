@@ -1,10 +1,10 @@
-@import 'vendor/normalize.css';
-@import 'vendor/fonts.css';
-@import 'variables/variables.css';
-body
-::-webkit-scrollbar {
-  width: 6px;
-}
+@import url("vendor/normalize.css");
+@import url("vendor/fonts.css");
+@import url("variables/variables.css");
+
+body::-webkit-scrollbar {
+    width: 6px;
+  }
 
 body::-webkit-scrollbar-track {
     background: var(--light-gray-color);
@@ -21,11 +21,8 @@ body::-webkit-scrollbar-thumb {
   font-family: var(--ff);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   height: 100vh;
-    text-size-adjust: 100%
 }
 .page__form {
     min-height: 100%;
@@ -39,6 +36,6 @@ body::-webkit-scrollbar-thumb {
   }
 
 .page__link-profile {
-    display: block;
     margin: 21px 10px 23px 0;
   }
+

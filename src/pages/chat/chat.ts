@@ -1,100 +1,101 @@
-import Block from '../../core/Block';
+import Block from 'core/Block';
 import 'styles/chat.css';
-import right_arrow from '../../image/right-arrow.svg';
-import chats from '../../data/chats.json';
-import messages from '../../data/messages.json';
-import { ChatType, MessageProps } from '../../utils/types/types';
-import { Chat } from '../../utils/classes';
-import { Popup } from '../../utils/classes';
-import { FormValidator } from '../../utils/classes';
-import { config, ADD_USER_FORM, DELETE_USER_FORM } from '../../utils/constants';
-import { handleSubmitForm, checkOnValueInput } from '../../utils';
+import right_arrow from 'img/right-arrow.svg';
+import chats from 'data/chats.json';
+import messages from 'data/messages.json';
+import { ChatType, MessageProps } from 'types';
+import { Chat } from 'utils/classes/Chat';
+import { Popup } from 'utils/classes/Popup';
+import { FormValidator } from 'utils/classes/FormValidator';
+import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
+import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
 
 const addUserFormValidator = new FormValidator(
-    config,
-    ADD_USER_FORM,
-    config.inputSelector,
-    config.btnSubmitFormSelector,
-    config.inputHelperTextSelector,
-    config.isShowHelperTextSelector
+  config,
+  ADD_USER_FORM,
+  config.inputSelector,
+  config.btnSubmitFormSelector,
+  config.inputHelperTextSelector,
+  config.isShowHelperTextSelector
 );
 
 const deleteUserFormValidator = new FormValidator(
-    config,
-    DELETE_USER_FORM,
-    config.inputSelector,
-    config.btnSubmitFormSelector,
-    config.inputHelperTextSelector,
-    config.isShowHelperTextSelector
+  config,
+  DELETE_USER_FORM,
+  config.inputSelector,
+  config.btnSubmitFormSelector,
+  config.inputHelperTextSelector,
+  config.isShowHelperTextSelector
 );
 
 export class ChatPage extends Block {
-    protected getStateFromProps() {
-        this.state = {
-            addClassForActiveElement: (evt: Event) => {
-                new Chat(config).addActiveClassName(evt);
-            },
-            handleSearchByChats: () => {
-                new Chat(config).toggleStateImg();
-            },
-            handleOpenUserMenu: () => {
-                new Popup(
-                    config.menuListElementUserSelector,
-                    config.mobileMenuSelector,
-                    config.isShowMenuSelector,
-                    config
-                ).handleOpenPopup();
-            },
-            handleOpenFileMenu: () => {
-                new Popup(
-                    config.menuListElementFileSelector,
-                    config.btnAttachSelector,
-                    config.isShowMenuSelecor,
-                    config
-                ).handleOpenPopup();
-            },
+  protected getStateFromProps() {
+    this.state = {
+      addClassForActiveElement: (evt: Event) => {
+        new Chat(config).addActiveClassName(evt);
+      },
+      handleSearchByChats: () => {
+        new Chat(config).toggleStateImg();
+      },
+      handleOpenUserMenu: () => {
+        new Popup(
+          config.menuListElementUserSelector,
+          config.settingsMenuSelector,
+          config.isShowMenuSelector,
+          config
+        ).handleOpenPopup();
+      },
+      handleOpenFileMenu: () => {
+        new Popup(
+          config.menuListElementFileSelector,
+          config.btnAttachSelector,
+          config.isShowMenuSelector,
+          config
+        ).handleOpenPopup();
+      },
 
-            handleChangeAddUserInput: (evt: Event) => {
-                checkOnValueInput(evt);
-                addUserFormValidator.clearError();
-                addUserFormValidator.toggleBtnState();
-            }, handleSubmitAddUserForm: (evt: Event) => {
-                evt.preventDefault();
-                handleSubmitForm({
-                    stateForm: addUserFormValidator.checkStateForm(),
-                    inputSelector: config.inputSelector,
-                    formSelector: ADD_USER_FORM,
-                    disableBtn: addUserFormValidator.disableBtn,
-                    addErrors: addUserFormValidator.addErrorsForInput,
-                });
-            },
-            handleValidateAddUserInput: (evt: Event) => {
-                addUserFormValidator.handleFieldValidation(evt);
-            },
+      handleChangeAddUserInput: (evt: Event) => {
+        checkOnValueInput(evt);
+        addUserFormValidator.clearError();
+        addUserFormValidator.toggleBtnState();
+      },
+      handleSubmitAddUserForm: (evt: Event) => {
+        evt.preventDefault();
+        handleSubmitForm({
+          stateForm: addUserFormValidator.checkStateForm(),
+          inputSelector: config.inputSelector,
+          formSelector: ADD_USER_FORM,
+          disableBtn: addUserFormValidator.disableBtn,
+          addErrors: addUserFormValidator.addErrorsForInput,
+        });
+      },
+      handleValidateAddUserInput: (evt: Event) => {
+        addUserFormValidator.handleFieldValidation(evt);
+      },
 
-            handleChangeDeleteUserInput: (evt: Event) => {
-                checkOnValueInput(evt);
-                deleteUserFormValidator.clearError();
-                deleteUserFormValidator.toggleBtnState();
-            },
-            hendleSubmitDeleteUserForm: (evt: Event) => {
-                evt.preventDefault();
-                handleSubmitForm({
-                    stateForm: deleteUserFormValidator.checkStateForm(),
-                    inputSelector: config.inputSelector,
-                    formSelector: DELETE_USER_FORM,
-                    disableBtn: deleteUserFormValidator.disableBtn,
-                    addErrors: deleteUserFormValidator.addErrorsForInput,
-                });
-            },
-            handleValidateDeleteUserInput: (evt: Event) => {
-                deleteUserFormValidator.handleFieldValidation(evt);
-            },
-        };
-    }
-    render() {
-        // language=hbs
-        return `
+      handleChangeDeleteUserInput: (evt: Event) => {
+        checkOnValueInput(evt);
+        deleteUserFormValidator.clearError();
+        deleteUserFormValidator.toggleBtnState();
+      },
+      handleSubmitDeleteUserForm: (evt: Event) => {
+        evt.preventDefault();
+        handleSubmitForm({
+          stateForm: deleteUserFormValidator.checkStateForm(),
+          inputSelector: config.inputSelector,
+          formSelector: DELETE_USER_FORM,
+          disableBtn: deleteUserFormValidator.disableBtn,
+          addErrors: deleteUserFormValidator.addErrorsForInput,
+        });
+      },
+      handleValidateDeleteUserInput: (evt: Event) => {
+        deleteUserFormValidator.handleFieldValidation(evt);
+      },
+    };
+  }
+  render() {
+    // language=hbs
+    return `
       <div class="page">
         <ul class="chat">
           <li class="chat__column chat__column_left">
@@ -105,8 +106,8 @@ export class ChatPage extends Block {
             {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
               ${chats.payload
-            .map(
-                (chat: ChatType) =>
+                .map(
+                  (chat: ChatType) =>
                     `{{{ListItem
                       userName="${chat.userName}"
                       lastMessage="${chat.lastMessage}"
@@ -115,8 +116,8 @@ export class ChatPage extends Block {
                       srcAvatar="${chat.srcAvatar}"
                       onClick=addClassForActiveElement
                     }}}`
-            )
-            .join('')}
+                )
+                .join('')}
             </ul>
           </li>
           <li class="chat__column chat__column-default">
@@ -131,13 +132,13 @@ export class ChatPage extends Block {
                 }}}
                 <p class="chat__user-name">Вадим</p>
               </div>
-              {{{mobileMenu onClick=handleOpenUserMenu}}}
+              {{{SettingsMenu onClick=handleOpenUserMenu}}}
             </div>
             <p class="chat__text-date">19 июня</p>
             <ul class="chat__messages">
               ${messages.payload
-            .map(
-                (message: MessageProps) =>
+                .map(
+                  (message: MessageProps) =>
                     `{{{Message
                       owner=${message.owner}
                       text="${message.text ? message.text : ''}"
@@ -145,10 +146,10 @@ export class ChatPage extends Block {
                       srcImg="${message.srcImg ? message.srcImg : ''}"
                       isRead=${message.isRead ? true : false}
                     }}}`
-            )
-            .join('')}
+                )
+                .join('')}
             </ul>
-            {{{ChatFooter onClick=handleOpenFileMenu}}}
+            {{{ChatMessage onClick=handleOpenFileMenu}}}
           </li>
         </ul>
         {{{Menu isUser=true}}}
@@ -167,7 +168,7 @@ export class ChatPage extends Block {
           name="popup__form_add-user"
         }}}
         {{{Popup
-          onClick=hendleSubmitDeleteUserForm
+          onClick=handleSubmitDeleteUserForm
           onInput=handleChangeDeleteUserInput
           onFocus=handleValidateDeleteUserInput
           onBlur=handleValidateDeleteUserInput
@@ -181,5 +182,5 @@ export class ChatPage extends Block {
         }}}
       </div>
     `;
-    }
+  }
 }

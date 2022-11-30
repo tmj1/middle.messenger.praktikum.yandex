@@ -1,1 +1,0 @@
-export { UploadFile as default } from './uploadFile';

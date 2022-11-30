@@ -1,46 +1,46 @@
-.register {
+.auth {
   font-family: inherit;
   box-sizing: border-box;
   max-width: 340px;
   width: 100%;
   padding: 50px 30px 30px;
   flex-direction: column;
-  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 6px 0 var(--shadow);
   border-radius: 12px;
 }
 
   @media screen and (max-width: 425px) {
-    .register {
+    .auth {
       max-width: none;
       margin: 0 16px;
     }
   }
 
   @media screen and (max-width: 320px) {
-    .register {
+    .auth {
       margin: 0 10px;
     }
   }
 
-.register__title {
+.auth__title {
   margin: 0;
   font-size: 20px;
   color: var(--primary-color);
   font-weight: 500;
   line-height: 20px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
   text-align: center;
   margin-bottom: 50px;
 }
 
     @media screen and (max-width: 425px) {
-      .register__title {
-        font-size: 18px;
-        margin-bottom: 40px;
-      }
+      .auth__title {
+      font-size: 18px;
+      margin-bottom: 40px;
     }
+  }
 
-.register__group {
+.auth__group {
     margin: 0;
     padding: 0;
     border: none;
@@ -48,11 +48,11 @@
     margin-bottom: 26px;
   }
 
-.register__group:last-of-type {
+.auth__group:last-of-type {
     margin-bottom: 169px;
   }
 
-.register__input {
+.auth__input {
     outline: none;
     border: none;
     width: 100%;
@@ -64,7 +64,7 @@
     line-height: 13px;
   }
 
-.register__label {
+.auth__label {
     position: absolute;
     top: 6px;
     left: 0;
@@ -75,17 +75,17 @@
     transition: 0.3s font-size, top 0.3s;
   }
 
-.register__input:valid + .register__label {
+.auth__input:valid + .auth__label {
     top: -8px;
   }
 
-.register__input:focus + .register__label {
+.auth__input:focus + .auth__label {
     top: -12px;
     font-size: 9px;
     line-height: 9px;
   }
 
-.register__link {
+.auth__link {
     text-decoration: none;
     display: block;
     text-align: center;
@@ -96,6 +96,6 @@
     transition: 0.3s opacity;
   }
 
-.register__link:hover {
+.auth__link:hover {
     opacity: 0.8;
   }
