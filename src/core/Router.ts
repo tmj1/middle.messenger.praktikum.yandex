@@ -1,7 +1,7 @@
 import { BlockClass, props } from '../utils/types/types';
-import { Route } from './Route';
+import { Route } from './Routes';
 
-export default class Router {
+class Router {
     static __instance: Router;
     private routers: Array<Route> = [];
     private history: History = window.history;
@@ -63,3 +63,4 @@ export default class Router {
         return router || this.routers.find((route) => route.match('*'));
     }
 }
+export default new Router();

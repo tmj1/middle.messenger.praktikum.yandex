@@ -36,7 +36,8 @@ const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^[\d|+]\d{9,15}/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
 const REGEXP_REPLACE_ID = /[a-z/]+/i;
-
+const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+const BASE_HEADERS = { 'Content-Type': 'application/json' };
 const ADD_USER_FORM = 'popup__form_add-user';
 const DELETE_USER_FORM = 'popup__form_delete-user';
 const SIGNIN_FORM = 'signin';
@@ -44,8 +45,8 @@ const SIGNUP_FORM = 'signup';
 const EDIT_PASSWORD_FORM = 'profile__form_el_edit-password-form';
 const EDIT_PROFILE_FORM = 'profile__form_el_edit-form';
 const AUTH_FORM = 'auth';
-const USER_NAME_FIELD = 'name';
-const LAST_NAME_USER_FIELD = 'lastName';
+const USER_NAME_FIELD = 'first_name';
+const LAST_NAME_USER_FIELD = 'second_name';
 const PHONE_USER_FIELD = 'phone';
 const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
     'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
@@ -59,6 +60,8 @@ export {
   EDIT_PASSWORD_FORM,
   EDIT_PROFILE_FORM,
   AUTH_FORM,
+  BASE_URL,
+  BASE_HEADERS,
   USER_NAME_FIELD,
   LAST_NAME_USER_FIELD,
   PHONE_USER_FIELD,

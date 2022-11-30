@@ -1,1 +1,1 @@
-export { InputType, ButtonType, ChatType, MessageProps, BlockClass, props } from '../types/types';
+export { InputType, ButtonType, ChatType, MessageProps, BlockClass, props, RegisterType, } from '../types/types';

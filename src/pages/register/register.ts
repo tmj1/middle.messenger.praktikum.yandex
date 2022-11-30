@@ -1,4 +1,6 @@
 import Block from '../../core/Block';
+import { AuthService } from '../../utils/AuthService';
+import { RegisterType } from '../../utils/types/types';
 import 'styles/auth.css';
 import { FormValidator } from '../../utils/classes';
 import { config, AUTH_FORM } from '../utils/constants';
@@ -21,17 +23,18 @@ export class registerPage extends Block {
                 registerFormValidator.clearError();
                 registerFormValidator.toggleBtnState();
             },
-            hendleSubmitForm: (evt: Event) => {
+            handleSubmitForm: (evt: Event) => {
                 evt.preventDefault();
                 const isValidField = registerFormValidator.isValidFieldWithCustomRules();
-                handleSubmitForm({
+                const dataForm = handleSubmitForm({
                     stateForm: registerFormValidator.checkStateForm(),
                     inputSelector: config.inputSelector,
                     formSelector: AUTH_FORM,
                     disableBtn: registerFormValidator.disableBtn,
                     addErrors: registerFormValidator.addErrorsForInput,
-                    isValidField,
+                    isValidField: registerFormValidator.isValidFieldWithCustomRules(),
                 });
+                dataForm && authService.signup(dataForm as RegisterType);
             },
             handleValidateInput: (evt: Event) => {
                 registerFormValidator.handleFieldValidation(evt);
@@ -71,7 +74,7 @@ export class registerPage extends Block {
               helperText="Имя"
               minlength="1"
               maxlength="50"
-              name="name"
+              name="first_name"
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
@@ -81,7 +84,7 @@ export class registerPage extends Block {
               helperText="Фамилия"
               minlength="1"
               maxlength="50"
-              name="lastName"
+              name="second_name"
             }}}
             {{{InputWrapper
               onInput=handleChangeInput

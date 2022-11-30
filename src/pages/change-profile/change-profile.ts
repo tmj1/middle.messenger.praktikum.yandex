@@ -24,7 +24,7 @@ export class EditProfilePage extends Block {
                 new Popup(
                     config.popupChangeAvatarSelector,
                     config.editAvatarSelector,
-                    config.isOpenPopupSelecot,
+                    config.isOpenPopupSelector,
                     config
                 ).handleOpenPopup();
             },
@@ -41,7 +41,7 @@ export class EditProfilePage extends Block {
                     formSelector: EDIT_PROFILE_FORM,
                     disableBtn: changeProfileFormValidator.disableBtn,
                     addErrors: changeProfileFormValidator.addErrorsForInput,
-                    isValidField,
+                    isValidField: changeProfileFormValidator.isValidFieldWithCustomRules(),
                 });
             },
             handleValidateInput: (evt: Event) =>

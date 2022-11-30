@@ -30,6 +30,15 @@ type ChatType = {
     srcAvatar: string;
 };
 
+interface RegisterType {
+    email: string;
+    login: string;
+    first_name: string;
+    second_name: string;
+    phone: string;
+    password: string;
+}
+
 interface MessageProps {
     owner: boolean;
     text?: string;
@@ -43,4 +52,4 @@ interface BlockClass<P> extends Function {
     componentName?: string;
 }
 
-export { InputType, ButtonType, ChatType, MessageProps, BlockClass, ViewsScreens };
+export { InputType, ButtonType, ChatType, MessageProps, BlockClass, ViewsScreens, RegisterType, props };

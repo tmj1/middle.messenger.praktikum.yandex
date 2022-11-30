@@ -41,7 +41,7 @@ export class ChatPage extends Block {
                 new Popup(
                     config.menuListElementUserSelector,
                     config.mobileMenuSelector,
-                    config.isShowMenuSelecor,
+                    config.isShowMenuSelector,
                     config
                 ).handleOpenPopup();
             },
