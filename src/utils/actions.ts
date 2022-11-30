@@ -1,6 +1,4 @@
-import { Input } from '../utils/classes/Input';
-import { Popup } from '../utils/classes/Popup';
-import { config } from '../utils//constants';
+import { config } from '../utils/constants';
 
 interface SubmitFormProperties {
     disableBtn: () => void;
@@ -11,7 +9,7 @@ interface SubmitFormProperties {
     isValidField?: boolean | undefined;
 }
 
-export const handleSubmitForm = ({
+const handleSubmitForm = ({
                                      stateForm,
                                      inputSelector,
                                      formSelector,
@@ -37,6 +35,12 @@ export const handleSubmitForm = ({
     }
 };
 
-export const checkOnValueInput = (evt: Event) => {
+const checkOnValueInput = (evt: Event) => {
     evt.target && new Input(config, evt.target).checkOnValueInput();
 };
+
+function isEqual(lhs: string, rhs: string): boolean {
+    return lhs === rhs;
+}
+
+export { handleSubmitForm, checkOnValueInput, isEqual };

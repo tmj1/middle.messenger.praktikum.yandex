@@ -1,12 +1,12 @@
 import Block from '../../core/Block';
 import 'styles/profile.css';
-import { Popup } from '../../utils/classes/Popup';
-import { FormValidator } from '../../utils/classes/FormValidator';
+import { Popup } from '../../utils/classes';
+import { FormValidator } from '../../utils/classes';
 import { config, EDIT_PROFILE_FORM } from '../../utils/constants';
-import { handleSubmitForm } from '../../utils/actions';
+import { handleSubmitForm } from '../../utils';
 import dataProfile from '../../data/profile.json';
 
-const editProfileformValidator = new FormValidator(
+const changeProfileFormValidator = new FormValidator(
     config,
     EDIT_PROFILE_FORM,
     config.inputProfileSelector,
@@ -29,23 +29,23 @@ export class EditProfilePage extends Block {
                 ).handleOpenPopup();
             },
             handleChangeInput: () => {
-                editProfileformValidator.clearError();
-                editProfileformValidator.toggleBtnState();
+                changeProfileFormValidator.clearError();
+                changeProfileFormValidator.toggleBtnState();
             },
             handleSubmitForm: (evt: Event) => {
                 evt.preventDefault();
-                const isValidField = editProfileformValidator.isValidFieldWithCustomRules();
+                const isValidField = changeProfileFormValidator.isValidFieldWithCustomRules();
                 handleSubmitForm({
-                    stateForm: editProfileformValidator.checkStateForm(),
+                    stateForm: changeProfileFormValidator.checkStateForm(),
                     inputSelector: config.inputProfileSelector,
                     formSelector: EDIT_PROFILE_FORM,
-                    disableBtn: editProfileformValidator.disableBtn,
-                    addErrors: editProfileformValidator.addErrorsForInput,
+                    disableBtn: changeProfileFormValidator.disableBtn,
+                    addErrors: changeProfileFormValidator.addErrorsForInput,
                     isValidField,
                 });
             },
             handleValidateInput: (evt: Event) =>
-                editProfileformValidator.handleFieldValidation(evt),
+                changeProfileFormValidator.handleFieldValidation(evt),
         };
     }
     render() {

@@ -1,8 +1,8 @@
 import Block from '../../core/Block';
 import 'styles/auth.css';
-import { FormValidator } from '../../utils/classes/FormValidator';
+import { FormValidator } from '../../utils/classes';
 import { config, AUTH_FORM } from '../utils/constants';
-import { handleSubmitForm, checkOnValueInput } from '../../utils/actions';
+import { handleSubmitForm, checkOnValueInput } from '../../utils';
 
 const registerFormValidator = new FormValidator(
     config,
@@ -39,6 +39,7 @@ export class registerPage extends Block {
         };
     }
     render() {
+        // language=hbs
         return `
       <div class="page">
         <main class="page__form">

@@ -1,8 +1,8 @@
 import Block from '../../core/Block';
 import 'styles/auth.css';
-import { FormValidator } from '../../utils/classes/FormValidator';
+import { FormValidator } from '../../utils/classes';
 import { config, AUTH_FORM } from '../../utils/constants';
-import { handleSubmitForm, checkOnValueInput } from '../../utils/actions';
+import { handleSubmitForm, checkOnValueInput } from '../../utils';
 
 const signinFormValidator = new FormValidator(
     config,
@@ -21,7 +21,7 @@ export class SigninPage extends Block {
                 signinFormValidator.clearError();
                 signinFormValidator.toggleBtnState();
             },
-            hendleSubmitForm: (evt: Event) => {
+            handleSubmitForm: (evt: Event) => {
                 evt.preventDefault();
                 handleSubmitForm({
                     stateForm: signinFormValidator.checkStateForm(),

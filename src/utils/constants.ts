@@ -1,4 +1,4 @@
-const inputValidateConfig = {
+const config = {
   inputSelector: "input__text-field",
   inputPasswordSelector: "input[type='password']",
   inputErrorSelector: "input__text_error",
@@ -8,9 +8,6 @@ const inputValidateConfig = {
   isDisableBtnSubmitSelector: "button_disable",
   labelTextSelector: "input__text",
   isValuelabelTextSelector: "input__text_isValue",
-}
-
-const chatConfig = {
   messagesSelector: "list-item",
   contentDefaultSelector: "chat__column-default",
   contentDialogSelector: "chat__column-dialog",
@@ -34,4 +31,41 @@ const chatConfig = {
   menuBtnSelector: "menu__btn",
   searchInputByChatsSelector: "search-chat__input",
   imgFromSearchInputByChatsSelector: "search-chat__img",
-}
+};
+const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
+const REGEXP_FOR_PHONE = /^[\d|+]\d{9,15}/;
+const REGEXP_REPLACE_PATHNAME = /\/\d+/;
+const REGEXP_REPLACE_ID = /[a-z/]+/i;
+
+const ADD_USER_FORM = 'popup__form_add-user';
+const DELETE_USER_FORM = 'popup__form_delete-user';
+const SIGNIN_FORM = 'signin';
+const SIGNUP_FORM = 'signup';
+const EDIT_PASSWORD_FORM = 'profile__form_el_edit-password-form';
+const EDIT_PROFILE_FORM = 'profile__form_el_edit-form';
+const AUTH_FORM = 'auth';
+const USER_NAME_FIELD = 'name';
+const LAST_NAME_USER_FIELD = 'lastName';
+const PHONE_USER_FIELD = 'phone';
+const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
+    'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
+const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
+export {
+  config,
+  ADD_USER_FORM,
+  DELETE_USER_FORM,
+  SIGNIN_FORM,
+  SIGNUP_FORM,
+  EDIT_PASSWORD_FORM,
+  EDIT_PROFILE_FORM,
+  AUTH_FORM,
+  USER_NAME_FIELD,
+  LAST_NAME_USER_FIELD,
+  PHONE_USER_FIELD,
+  CUSTOM_ERROR_FOR_NAME_AND_LASTNAME,
+  CUSTOM_ERROR_FOR_PHONE_FILED,
+  REGEXP_FOR_NAME_AND_LASTNAME,
+  REGEXP_FOR_PHONE,
+  REGEXP_REPLACE_PATHNAME,
+  REGEXP_REPLACE_ID,
+};
