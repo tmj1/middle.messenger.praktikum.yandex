@@ -1,0 +1,1 @@
+export { EnterMessage as default } from './enterMessage';

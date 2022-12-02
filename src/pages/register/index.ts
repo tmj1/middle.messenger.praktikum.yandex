@@ -1,0 +1,1 @@
+export { registerPage as default } from './register';
