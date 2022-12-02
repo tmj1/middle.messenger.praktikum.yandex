@@ -2,6 +2,8 @@
 Sprint 2
 Simple messenger for exchanging messages using web-sockets.
 
+[Netlify Project Deploy](https://sprint-2--brilliant-fairy-083e74.netlify.app/)
+
 Project with imitation own framework based on proxy-objects.
 The main goal is to understand the bases of working react without its usage.
 
@@ -12,7 +14,7 @@ Pages:
 4. Profile
 5. Editing profile
 6. 404 Page
-7. 5** Page
+7. 503 Page
 
 ## Using technologies
 
