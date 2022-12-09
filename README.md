@@ -1,8 +1,8 @@
 # Study project from [Yandex.Practicum](https://practicum.com/)
-Sprint 2
+Sprint 3
 Simple messenger for exchanging messages using web-sockets.
+[Ссылка на Swagger](https://ya-praktikum.tech/api/v2/swagger/#/)
 
-[Netlify Project Deploy](https://sprint-2--brilliant-fairy-083e74.netlify.app/)
 
 Project with imitation own framework based on proxy-objects.
 The main goal is to understand the bases of working react without its usage.

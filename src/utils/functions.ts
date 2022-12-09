@@ -11,11 +11,11 @@ interface SubmitFormProps {
   isValidField?: boolean | undefined;
 }
 
-export const checkOnValueInput = (evt: Event) => {
+const checkOnValueInput = (evt: Event) => {
   evt.target && new Input(config, evt.target).checkOnValueInput();
 };
 
-export const handleSubmitForm = ({
+const handleSubmitForm = ({
   stateForm,
   inputSelector,
   formSelector,
@@ -42,3 +42,4 @@ export const handleSubmitForm = ({
     addErrors();
   }
 };
+export { handleSubmitForm, checkOnValueInput };
