@@ -34,14 +34,13 @@ export class ChangeProfilePage extends Block {
       },
       handleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        const isValidField = changeProfileformValidator.isValidFieldWithCustomRules();
         handleSubmitForm({
           stateForm: changeProfileformValidator.checkStateForm(),
           inputSelector: config.inputProfileSelector,
           formSelector: EDIT_PROFILE_FORM,
           disableBtn: changeProfileformValidator.disableBtn,
           addErrors: changeProfileformValidator.addErrorsForInput,
-          isValidField,
+          isValidField: changeProfileformValidator.isValidFieldWithCustomRules(),
         });
       },
       handleValidateInput: (evt: Event) =>

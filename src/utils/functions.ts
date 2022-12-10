@@ -33,7 +33,7 @@ const handleSubmitForm = ({
         const inputElement = input as HTMLInputElement;
         dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
       });
-      console.log(dataForm);
+      return dataForm;
 
       Popup.handleClosePopup(config.isOpenPopupSelector);
     }
@@ -46,4 +46,8 @@ function isEqual(lhs: string, rhs: string): boolean {
   return lhs === rhs;
 }
 
-export { handleSubmitForm, checkOnValueInput, isEqual };
+function getMessageFromResponse(errText: string) {
+  return Object.values(JSON.parse(errText))[0];
+}
+
+export { handleSubmitForm, checkOnValueInput, isEqual, getMessageFromResponse };

@@ -1,4 +1,9 @@
-export { handleSubmitForm, checkOnValueInput, isEqual } from './functions';
+export {
+  handleSubmitForm,
+  checkOnValueInput,
+  isEqual,
+  getMessageFromResponse,
+} from './functions';
 export { Screens, getScreenComponent } from './screenList';
 export { Chat } from './classes/Chat';
 export { FormValidator } from './classes/FormValidator';
@@ -6,6 +11,7 @@ export { HTTPTransport } from './classes/HTTPTransport';
 export { Input } from './classes/Input';
 export { Popup } from './classes/Popup';
 export { View } from './classes/View';
+export { showTooltip } from './tooltip';
 export {
   config,
   ADD_USER_FORM,

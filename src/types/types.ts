@@ -45,4 +45,4 @@ interface MessageProps {
 
 type props = Record<string, any>;
 
-export { BlockClass, InputType, ButtonType, Screens, ChatType, MessageProps, props };
+export { BlockClass, InputType, ButtonType, Screens, ChatType, MessageProps, props, };

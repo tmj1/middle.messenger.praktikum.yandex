@@ -1,5 +1,5 @@
 {
-  "name": "Messenger Sprint 2",
+  "name": "Messenger Sprint 3",
   "version": "1.0.0",
   "description": "---",
   "scripts": {
@@ -21,7 +21,8 @@
     "variables": "./src/variables",
     "utils": "./src/utils",
     "styles": "./src/styles",
-    "api": "./src/api"
+    "api": "./src/api",
+    "services": "./src/services"
   },
   "repository": {
     "type": "git",

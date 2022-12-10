@@ -3,6 +3,9 @@ import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
 import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
+import { authService } from 'services';
+import { SignupType } from 'types';
+import { signupStore, STORE_EVENTS } from 'core';
 
 const signupFormValidator = new FormValidator(
   config,
@@ -14,6 +17,14 @@ const signupFormValidator = new FormValidator(
 );
 
 export class SignupPage extends Block {
+  constructor() {
+    super();
+
+    signupStore.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(signupStore.getState());
+    });
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
@@ -23,15 +34,16 @@ export class SignupPage extends Block {
       },
       handleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        const isValidField = signupFormValidator.isValidFieldWithCustomRules();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: signupFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
           formSelector: AUTH_FORM,
           disableBtn: signupFormValidator.disableBtn,
           addErrors: signupFormValidator.addErrorsForInput,
-          isValidField,
+          isValidField: signupFormValidator.isValidFieldWithCustomRules(),
         });
+
+        dataForm && authService.signup(dataForm as SignupType);
       },
       handleValidateInput: (evt: Event) => {
         signupFormValidator.handleFieldValidation(evt);
@@ -71,7 +83,7 @@ export class SignupPage extends Block {
               helperText="Имя"
               minlength="1"
               maxlength="50"
-              name="name"
+              name="first_name"
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
@@ -81,7 +93,7 @@ export class SignupPage extends Block {
               helperText="Фамилия"
               minlength="1"
               maxlength="50"
-              name="lastName"
+              name="second_name"
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
