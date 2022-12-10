@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
-import { FormValidator } from 'utils/classes/FormValidator';
+import { FormValidator } from 'utils/classes';
 import { config, AUTH_FORM } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+import { handleSubmitForm, checkOnValueInput } from 'utils';
 
 const signinFormValidator = new FormValidator(
   config,
@@ -68,7 +68,7 @@ export class SigninPage extends Block {
               type="submit"
               classes="button_is-auth"
             }}}
-            <a class="auth__link" href="/signup">Создать профиль</a>
+            <a class="auth__link" href="/sign-up">Создать профиль</a>
             <a class="auth__link" href="/chat">Чат</a>
             <a class="auth__link" href="/profile">Профиль</a>
             <a class="auth__link" href="/not-found">404</a>

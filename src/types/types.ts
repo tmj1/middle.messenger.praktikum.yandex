@@ -1,9 +1,25 @@
+import { Block } from 'core';
+
+interface BlockClass<P> extends Function {
+  new (props: P): Block<P>;
+  componentName?: string;
+}
+
 enum InputType {
   'text',
   'email',
   'password',
   'tel',
   'number',
+}
+
+enum Screens {
+  Signin = 'signin',
+  Signup = 'signup',
+  Messenger = 'messenger',
+  Profile = 'settings',
+  ChangeProfle = 'change-settings',
+  ChangePassword = 'change-password',
 }
 
 enum ButtonType {
@@ -27,4 +43,6 @@ interface MessageProps {
   isRead?: boolean;
 }
 
-export { InputType, ButtonType, ChatType, MessageProps };
+type props = Record<string, any>;
+
+export { BlockClass, InputType, ButtonType, Screens, ChatType, MessageProps, props };

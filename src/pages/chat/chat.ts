@@ -4,11 +4,11 @@ import right_arrow from 'img/right-arrow.svg';
 import chats from 'data/chats.json';
 import messages from 'data/messages.json';
 import { ChatType, MessageProps } from 'types';
-import { Chat } from 'utils/classes/Chat';
-import { Popup } from 'utils/classes/Popup';
-import { FormValidator } from 'utils/classes/FormValidator';
+import { Chat } from 'utils/classes';
+import { Popup } from 'utils/classes';
+import { FormValidator } from 'utils/classes';
 import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+import { handleSubmitForm, checkOnValueInput } from 'utils';
 
 const addUserFormValidator = new FormValidator(
   config,
@@ -99,7 +99,7 @@ export class ChatPage extends Block {
       <div class="page">
         <ul class="chat">
           <li class="chat__column chat__column_left">
-            <a class="chat__link-profile page__link-profile" href="/profile">
+            <a class="chat__link-profile page__link-profile" href="/settings">
               <span class="chat__link-text">Профиль</span>
               <img class="chat__link-img" src="${right_arrow}" alt="Перейти к профилю пользователя">
             </a>

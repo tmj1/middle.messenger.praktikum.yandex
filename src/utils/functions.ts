@@ -42,4 +42,8 @@ const handleSubmitForm = ({
     addErrors();
   }
 };
-export { handleSubmitForm, checkOnValueInput };
+function isEqual(lhs: string, rhs: string): boolean {
+  return lhs === rhs;
+}
+
+export { handleSubmitForm, checkOnValueInput, isEqual };
