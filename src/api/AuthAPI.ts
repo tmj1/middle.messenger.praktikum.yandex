@@ -6,7 +6,7 @@ class AuthAPI extends BaseAPI {
     super({ path: '/auth' });
   }
   public signup({ email, login, first_name, second_name, phone, password }: SignupType) {
-    return this.post('/signup', {
+    return this.post('signup', {
       email,
       login,
       first_name,
@@ -16,10 +16,13 @@ class AuthAPI extends BaseAPI {
     });
   }
   public signin({ login, password }: SigninType) {
-    return this.post('/signin', {
+    return this.post('signin', {
       login,
       password,
     });
+  }
+  public signout() {
+    return this.post('logout', {});
   }
 }
 export default new AuthAPI();

@@ -13,6 +13,7 @@ export abstract class View {
   protected _contentDefault!: Nullable<HTMLElement>;
   protected _searchInputByChats!: Nullable<HTMLInputElement>;
   protected _imgFromSearchInputByChats!: Nullable<HTMLElement>;
+  protected _popupAddChatSelector!: string;
   // Input
   protected _labelTextSelector!: string;
   protected _isValueLabelTextSelector!: string;
@@ -47,6 +48,7 @@ export abstract class View {
   protected _btnAttach!: Nullable<HTMLElement>;
   protected _menuItems!: NodeList;
   protected _editAvatarTextSelector!: string;
+  protected _addChatBtnSelector!: string;
   //FormValidator
   protected _formSelector!: string;
   protected _btnSelector!: string;

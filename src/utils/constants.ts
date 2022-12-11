@@ -20,6 +20,7 @@ const config = {
   isActiveSettingsMenuSelector: 'settings-menu_active',
   isOpenPopupSelector: 'popup_opened',
   popoverSelector: 'popover',
+  popupAddChatSelector: 'popup_add-chat',
   btnAttachSelector: 'chat-message__btn-attach',
   isShowPopoverSelector: 'popover_is-show',
   menuItemSelector: 'menu__item',
@@ -38,6 +39,7 @@ const config = {
   menuBtnDeleteUserSelector: 'menu__btn_delete-user',
   inputProfileHelperTextSelector: 'input-profile-wrapper__error',
   isShowInputProfileHelperTextSelector: 'input-profile-wrapper__error_is-show',
+  addChatBtnSelector: 'search-chat__btn',
 };
 
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
@@ -48,6 +50,7 @@ const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 const BASE_HEADERS = { 'Content-Type': 'application/json' };
 const ADD_USER_FORM = 'popup__form_add-user';
 const DELETE_USER_FORM = 'popup__form_delete-user';
+const ADD_CHAT_FORM = 'popup__form_add-chat';
 const SIGNIN_FORM = 'signin';
 const SIGNUP_FORM = 'signup';
 const EDIT_PASSWORD_FORM = 'profile__form_el_change-password-form';
@@ -58,9 +61,10 @@ const LAST_NAME_USER_FIELD = 'second_name';
 const PHONE_USER_FIELD = 'phone';
 const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
   'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
-const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
-const SUCCESS_SIGNUP_MESSAGE = 'Вы успешно зарегистрировались!';
-const SUCCESS_SIGNIN_MESSAGE = 'Вы успешно вошли в приложение!';
+const CUSTOM_ERROR_FOR_PHONE_FILED = 'Некорректный формат';
+const SUCCESS_SIGNUP_MESSAGE = 'Успешная регистрация';
+const SUCCESS_SIGNIN_MESSAGE = 'Успешный вход в приложение';
+const SUCCESS_CREATE_MESSAGE = 'Чат создан';
 
-export { config, ADD_USER_FORM, DELETE_USER_FORM, SIGNIN_FORM, SIGNUP_FORM, EDIT_PASSWORD_FORM, EDIT_PROFILE_FORM, AUTH_FORM, USER_NAME_FIELD, LAST_NAME_USER_FIELD, PHONE_USER_FIELD, CUSTOM_ERROR_FOR_NAME_AND_LASTNAME, CUSTOM_ERROR_FOR_PHONE_FILED, REGEXP_FOR_NAME_AND_LASTNAME, REGEXP_FOR_PHONE, REGEXP_REPLACE_PATHNAME,
-  REGEXP_REPLACE_ID, BASE_URL, BASE_HEADERS, SUCCESS_SIGNUP_MESSAGE, SUCCESS_SIGNIN_MESSAGE,};
+export { config, ADD_USER_FORM, ADD_CHAT_FORM, DELETE_USER_FORM, SIGNIN_FORM, SIGNUP_FORM, EDIT_PASSWORD_FORM, EDIT_PROFILE_FORM, AUTH_FORM, USER_NAME_FIELD, LAST_NAME_USER_FIELD, PHONE_USER_FIELD, CUSTOM_ERROR_FOR_NAME_AND_LASTNAME, CUSTOM_ERROR_FOR_PHONE_FILED, REGEXP_FOR_NAME_AND_LASTNAME, REGEXP_FOR_PHONE, REGEXP_REPLACE_PATHNAME,
+  REGEXP_REPLACE_ID, BASE_URL, BASE_HEADERS, SUCCESS_SIGNUP_MESSAGE, SUCCESS_SIGNIN_MESSAGE, SUCCESS_CREATE_MESSAGE,};

@@ -1,4 +1,3 @@
-import { SignupType, SigninType } from 'types';
 import EventBus from './EventBus';
 
 export enum STORE_EVENTS {
@@ -17,12 +16,9 @@ class Store<T> extends EventBus {
     return this.state;
   }
   setState(newData: any) {
-    if (typeof newData.response === 'object') {
-      this.state = { ...this.state, ...JSON.parse(newData.response) };
-    }
+    this.state = { ...this.state, ...newData };
     this.emit(STORE_EVENTS.UPDATE);
   }
 }
 
-export const signupStore: Store<SignupType> = new Store();
-export const signinStore: Store<SigninType> = new Store();
+export default new Store();

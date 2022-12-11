@@ -1,5 +1,6 @@
 import Block from 'core/Block';
 import 'styles/profile.css';
+import { authService } from 'services';
 import dataProfile from 'data/profile.json';
 import { Popup } from 'utils/classes';
 import { config } from 'utils/constants';
@@ -16,6 +17,10 @@ export class ProfilePage extends Block {
           config.isOpenPopupSelector,
           config
         ).handleOpenPopup();
+      },
+      handleSignOut: (evt: Event) => {
+        evt.preventDefault();
+        authService.signout();
       },
     };
   }
@@ -66,16 +71,19 @@ export class ProfilePage extends Block {
                   href="/change-settings"
                   text="Изменить данные"
                   classes="btn-profile__link_color_red"
+                  type="link"
                 }}}
                 {{{BtnProfile
                   href="/change-password"
                   text="Изменить пароль"
                   classes="btn-profile__link_color_red"
+                  type="link"
                 }}}
                 {{{BtnProfile
-                  href="/"
+                  onClick=handleSignOut
                   text="Выйти"
                   classes="btn-profile__link_color_blue"
+                  type="button"
                 }}}
               </ul>
             </form>
