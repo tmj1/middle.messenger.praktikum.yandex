@@ -30,7 +30,7 @@ export class Popup extends Block {
       onInput,
       onFocus,
       onBlur,
-      onClick,
+      onSubmit,
     });
   }
 
@@ -44,7 +44,7 @@ export class Popup extends Block {
       isDefault: props.isDefault,
       helperText: props.helperText,
       textBtn: props.textBtn,
-      onClick: props.onClick,
+      onSubmit: props.onSubmit,
       onInput: props.onInput,
       onFocus: onfocus,
       onBlur: onblur,
@@ -60,6 +60,7 @@ export class Popup extends Block {
       title,
       isDefault,
       helperText,
+      onSubmit,
       textBtn,
     } = this.state;
     // language=hbs
@@ -67,37 +68,15 @@ export class Popup extends Block {
       <div class="popup ${classesPopup ? classesPopup : ''}">
         <div class="popup__container">
           <h2 class="popup__title">${title}</h2>
-          <form class="popup__form ${
-            classesForm ? classesForm : ''
-          }" name="${name}" novalidate>
-            ${
-              isDefault
-                ? `
-                  {{{InputWrapper
-                    onInput=onInput
-                    onFocus=onFocus
-                    onBlur=onBlur
-                    type="text"
+            {{{FormPopup
+                    onSubmit=onSubmit
+                    classesForm="${classesForm}"
+                    name="${name}"
+                    fieldName="${fieldName}"
+                    isDefault=${isDefault}
                     helperText="${helperText}"
-                    minlength="5"
-                    maxlength="20"
-                    name="${fieldName}"
-                  }}}
-                  {{{Button
-                    onClick=onClick
                     textBtn="${textBtn}"
-                    type="submit"
-                  }}}
-                  `
-                : `
-                  {{{InputFile}}}
-                  {{{Button
-                    textBtn="${textBtn}"
-                    type="submit"
-                  }}}
-                  `
-            }
-          </form>
+            }}}
         </div>
       </div>
     `;

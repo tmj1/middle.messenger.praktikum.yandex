@@ -1,13 +1,24 @@
 import Block from 'core/Block';
+import store, { STORE_EVENTS } from 'core/Store';
 import 'styles/profile.css';
 import { authService } from 'services';
-import dataProfile from 'data/profile.json';
+//import dataProfile from 'data/profile.json';
 import { Popup } from 'utils/classes';
-import { config } from 'utils/constants';
+import { config, REGEXP_IS_NOT_INPUT_AVATAR } from 'utils/constants';
 
-const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
+//const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
 
 export class ProfilePage extends Block {
+  constructor(args: any) {
+    super(args);
+
+    authService.getInfo();
+
+    store.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(store.getState());
+    });
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleEditAvatar: () => {
@@ -18,6 +29,17 @@ export class ProfilePage extends Block {
           config
         ).handleOpenPopup();
       },
+      handleSubmitEditAvatarForm: (evt: Event) => {
+        const target = evt.target as HTMLInputElement;
+        if (
+          !Array.from(target.classList).some((element) =>
+            REGEXP_IS_NOT_INPUT_AVATAR.test(element)
+          )
+        ) {
+          evt.preventDefault();
+        }
+
+      },
       handleSignOut: (evt: Event) => {
         evt.preventDefault();
         authService.signout();
@@ -25,6 +47,9 @@ export class ProfilePage extends Block {
     };
   }
   render() {
+    const { userInfo = [] } = this.props;
+    const { avatar, display_name, email, first_name, id, login, phone, second_name } =
+      userInfo;
     // language=hbs
     return `
       <div class="profile">
@@ -32,7 +57,7 @@ export class ProfilePage extends Block {
           {{{BtnBackProfile href="/chat"}}}
           <li class="profile__column">
             <form class="profile__form">
-              {{{EditAvatar onClick=handleEditAvatar}}}
+                {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
@@ -48,17 +73,17 @@ export class ProfilePage extends Block {
                 {{{InputProfileWrapper
                   type="text"
                   helperText="Имя"
-                  value="${name}"
+                  value="${first_name}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
                   helperText="Фамилия"
-                  value="${lastName}"
+                  value="${second_name}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
                   helperText="Имя в чате"
-                  value="${chatName}"
+                  value="${display_name ? display_name : ''}"
                 }}}
                 {{{InputProfileWrapper
                   type="tel"
@@ -90,10 +115,12 @@ export class ProfilePage extends Block {
           </li>
         </ul>
         {{{Popup
+          onSubmit=handleSubmitEditAvatarForm
           title="Загрузите файл"
           textBtn="Поменять"
           classesPopup="popup_change-avatar"
           isDefault=false
+          name="EditAvatar"
         }}}
       </div>
     `;

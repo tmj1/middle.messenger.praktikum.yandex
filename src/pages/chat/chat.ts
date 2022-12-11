@@ -41,7 +41,7 @@ const deleteUserFormValidator = new FormValidator(
 
 export class ChatPage extends Block {
   constructor(...args: any) {
-    super(args);
+    super(...args);
 
     chatService.getChats();
 
@@ -49,14 +49,19 @@ export class ChatPage extends Block {
       this.setProps(store.getState());
     });
   }
-  protected getStateFromProps(props: ChatsDTO) {
+  protected getStateFromProps() {
     this.state = {
-      chats: props,
+
       addClassForActiveElement: (evt: Event) => {
+        const element = evt.currentTarget as HTMLElement;
+        const currentListItemId = element.getAttribute('data-item-id');
+        console.log(currentListItemId);
         new Chat(config).addActiveClassName(evt);
       },
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
+
+
       },
       handleOpenUserMenu: () => {
         new Popup(
@@ -144,7 +149,7 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { chats } = this.state;
+    const { chats = [] } = this.props;
     // language=hbs
     return `
       <div class="page">
@@ -154,12 +159,14 @@ export class ChatPage extends Block {
               <span class="chat__link-text">Профиль</span>
               <img class="chat__link-img" src="${right_arrow}" alt="Перейти к профилю пользователя">
             </a>
-            {{{SearchChat onSearchByChats=handleSearchByChats }}}
+              {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
-                ${chats
-                        .map(
-                                (chat: ChatsType) =>
-                                        `{{{ListItem
+                ${
+                        chats &&
+                        Object.values(chats)
+                                ?.map(
+                                        (chat: any) =>
+                                                `{{{ListItem
                       id="${chat.id}"
                       userName="${chat.title}"
                       lastMessage="${chat.last_message}"
@@ -169,7 +176,8 @@ export class ChatPage extends Block {
                       onClick=addClassForActiveElement
                     }}}`
                 )
-                .join('')}
+                .join('')
+            }
             </ul>
           </li>
           <li class="chat__column chat__column-default">
@@ -221,7 +229,7 @@ export class ChatPage extends Block {
                   fieldName="title"
           }}}
         {{{Popup
-          onClick=handleSubmitAddUserForm
+          onSubmit=handleSubmitAddUserForm
           onInput=handleChangeAddUserInput
           onFocus=handleValidateAddUserInput
           onBlur=handleValidateAddUserInput
