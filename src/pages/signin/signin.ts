@@ -1,11 +1,10 @@
-import Block from 'core/Block';
+import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
-import { config, AUTH_FORM } from 'utils/constants';
+import { config, AUTH_FORM, SIGNUP_PATH } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SigninType } from 'types';
-import store, { STORE_EVENTS } from 'core/Store';
 
 const signinFormValidator = new FormValidator(
   config,
@@ -17,13 +16,7 @@ const signinFormValidator = new FormValidator(
 );
 
 export class SigninPage extends Block {
-  constructor() {
-    super();
 
-    store.on(STORE_EVENTS.UPDATE, () => {
-      this.setProps(store.getState());
-    });
-  }
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
@@ -43,7 +36,8 @@ export class SigninPage extends Block {
 
         dataForm && authService.signin(dataForm as SigninType);
       },
-      //handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
+      handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
+      handleLinkBtn: () => router.go(SIGNUP_PATH),
     };
   }
   render() {
@@ -80,7 +74,10 @@ export class SigninPage extends Block {
               type="submit"
               classes="button_is-auth"
             }}}
-            <a class="auth__link" href="/sign-up">Создать профиль</a>
+              {{{AuthLink
+                      onClick=handleLinkBtn
+                      text="Создать профиль"
+              }}}
             <a class="auth__link" href="/chat">Чат</a>
             <a class="auth__link" href="/profile">Профиль</a>
             <a class="auth__link" href="/not-found">404</a>

@@ -66,7 +66,11 @@ export class HTTPTransport {
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
 
-      method === METHODS.GET || !data ? xhr.send() : xhr.send(JSON.stringify(data));
+      if (data?.constructor.name === 'FormData') {
+        xhr.send(data);
+      } else {
+        method === METHODS.GET || !data ? xhr.send() : xhr.send(JSON.stringify(data));
+      }
     });
   };
 }

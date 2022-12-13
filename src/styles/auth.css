@@ -84,17 +84,3 @@
     line-height: 9px;
   }
 
-.auth__link {
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    font-size: 11px;
-    color: var(--secondary-color);
-    font-weight: 500;
-    line-height: 11px;
-    transition: 0.3s opacity;
-  }
-
-.auth__link:hover {
-    opacity: 0.8;
-  }

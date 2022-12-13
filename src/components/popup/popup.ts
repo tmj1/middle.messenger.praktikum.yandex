@@ -60,7 +60,6 @@ export class Popup extends Block {
       title,
       isDefault,
       helperText,
-      onSubmit,
       textBtn,
     } = this.state;
     // language=hbs
@@ -70,6 +69,9 @@ export class Popup extends Block {
           <h2 class="popup__title">${title}</h2>
             {{{FormPopup
                     onSubmit=onSubmit
+                    onInput=onInput
+                    onFocus=onFocus
+                    onBlur=onBlur
                     classesForm="${classesForm}"
                     name="${name}"
                     fieldName="${fieldName}"

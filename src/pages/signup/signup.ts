@@ -1,11 +1,10 @@
-import Block from 'core/Block';
+import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
-import { config, AUTH_FORM } from 'utils/constants';
+import { config, AUTH_FORM, SIGNIN_PATH } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SignupType } from 'types';
-import store, { STORE_EVENTS } from 'core/Store';
 
 const signupFormValidator = new FormValidator(
   config,
@@ -17,13 +16,6 @@ const signupFormValidator = new FormValidator(
 );
 
 export class SignupPage extends Block {
-  constructor() {
-    super();
-
-    store.on(STORE_EVENTS.UPDATE, () => {
-      this.setProps(store.getState());
-    });
-  }
 
   protected getStateFromProps() {
     this.state = {
@@ -48,6 +40,7 @@ export class SignupPage extends Block {
       handleValidateInput: (evt: Event) => {
         signupFormValidator.handleFieldValidation(evt);
       },
+      handleLinkBtn: () => router.go(SIGNIN_PATH),
     };
   }
   render() {
@@ -132,7 +125,10 @@ export class SignupPage extends Block {
               type="submit"
               classes="button_is-auth"
             }}}
-            <a class="auth__link" href="/">Войти</a>
+              {{{AuthLink
+                      onClick=handleLinkBtn
+                      text="Вход"
+              }}}
           </form>
         </main>
       </div>

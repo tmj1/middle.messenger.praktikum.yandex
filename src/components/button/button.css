@@ -43,3 +43,7 @@
     cursor: default;
   }
 
+.button__el_remove-item {
+   padding: 8px 0;
+   margin-top: 10px;
+ }

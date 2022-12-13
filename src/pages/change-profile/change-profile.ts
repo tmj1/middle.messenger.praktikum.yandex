@@ -1,10 +1,10 @@
-import Block from 'core/Block';
+import { Block, STORE_EVENTS, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
-import { Popup } from 'utils/classes';
-import { FormValidator } from 'utils/classes';
+import { Popup, FormValidator } from 'utils/classes';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils';
-import dataProfile from 'data/profile.json';
+import { authService, profileService } from 'services';
+import { UserInfoDTO, UserInfoType } from 'types';
 
 const changeProfileformValidator = new FormValidator(
   config,
@@ -15,9 +15,16 @@ const changeProfileformValidator = new FormValidator(
   config.isShowInputProfileHelperTextSelector
 );
 
-const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
-
 export class ChangeProfilePage extends Block {
+  constructor(...args: any) {
+    super(...args);
+
+    authService.getInfo();
+
+    store.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(store.getState());
+    });
+  }
   protected getStateFromProps() {
     this.state = {
       handleEditAvatar: () => {
@@ -34,7 +41,7 @@ export class ChangeProfilePage extends Block {
       },
       handleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: changeProfileformValidator.checkStateForm(),
           inputSelector: config.inputProfileSelector,
           formSelector: EDIT_PROFILE_FORM,
@@ -42,21 +49,39 @@ export class ChangeProfilePage extends Block {
           addErrors: changeProfileformValidator.addErrorsForInput,
           isValidField: changeProfileformValidator.isValidFieldWithCustomRules(),
         });
+        if (dataForm) {
+          const { chatName, email, lastName, login, name, phone } =
+            dataForm as UserInfoType;
+
+          dataForm &&
+          profileService.changeUserInfo({
+            first_name: name,
+            second_name: lastName,
+            display_name: chatName,
+            login,
+            email,
+            phone,
+          } as UserInfoDTO);
+        }
       },
       handleValidateInput: (evt: Event) =>
         changeProfileformValidator.handleFieldValidation(evt),
+      handleBackBtn: () => router.back(),
     };
   }
   render() {
+    const { userInfo = [] } = this.props;
+    const { avatar, display_name, email, first_name, id, login, phone, second_name } =
+      userInfo;
     // language=hbs
     return `
       <div class="profile">
         <ul class="profile__wrapper">
-          {{{BtnBackProfile href="/profile"}}}
+          {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
             <form class="profile__form profile__form_el_edit-form" novalidate>
-              {{{EditAvatar onClick=handleEditAvatar}}}
-              <p class="profile__user-name">Иван</p>
+                {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
+                <p class="profile__user-name">${display_name ? display_name : ''}</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -64,7 +89,7 @@ export class ChangeProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="email"
                   helperText="Почта"
-                  value="${email}"
+                  value="${email ? email : ''}"
                   name="email"
                   formName="profile__form_el_edit-form"
                 }}}
@@ -74,7 +99,7 @@ export class ChangeProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Логин"
-                  value="${login}"
+                  value="${login ? login : ''}"
                   minlength="3"
                   maxlength="20"
                   name="login"
@@ -86,7 +111,7 @@ export class ChangeProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Имя"
-                  value="${name}"
+                  value="${first_name ? first_name : ''}"
                   minlength="1"
                   maxlength="50"
                   name="name"
@@ -98,7 +123,7 @@ export class ChangeProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Фамилия"
-                  value="${lastName}"
+                  value="${second_name ? second_name : ''}"
                   minlength="1"
                   maxlength="50"
                   name="lastName"
@@ -110,7 +135,7 @@ export class ChangeProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="tel"
                   helperText="Телефон"
-                  value="${phone}"
+                  value="${phone ? phone : ''}"
                   minlength="10"
                   maxlength="15"
                   name="phone"
@@ -122,7 +147,7 @@ export class ChangeProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Имя в чате"
-                  value="${chatName}"
+                  value="${display_name ? display_name : ''}"
                   minlength="1"
                   maxlength="50"
                   name="chatName"
@@ -139,8 +164,8 @@ export class ChangeProfilePage extends Block {
           </li>
         </ul>
         {{{Popup
-           title="Загрузите файл"
-           textBtn="Поменять"
+           title="Загрузить файл"
+           textBtn="Изменить"
            classesPopup="popup_change-avatar"
            isDefault=false
           }}}

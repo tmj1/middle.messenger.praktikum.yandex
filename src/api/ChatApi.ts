@@ -1,17 +1,25 @@
 import { BaseAPI } from './BaseAPI';
-import { CreateChatType } from 'types';
+import { CreateChatType, RemoveChatType, SearchUserByLoginType } from 'types';
 
 class ChatApi extends BaseAPI {
   constructor() {
-    super({ path: '/chats' });
+    super({ path: '' });
   }
 
   public createChat({ title }: CreateChatType) {
-    return this.post('', { title });
+    return this.post('chats', { title });
   }
 
   public getChats() {
-    return this.get('');
+    return this.get('chats');
+  }
+
+  public removeChatById({ chatId }: RemoveChatType) {
+    return this.delete('chats', { chatId });
+  }
+
+  public searchUserByLogin({ login }: SearchUserByLoginType) {
+    return this.post('user/search', { login });
   }
 }
 

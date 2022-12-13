@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 45px;
+  cursor: pointer;
 }
 
 .input-file__input {
@@ -20,8 +21,7 @@
     text-align: center;
   }
 
-.input-file__span:hover {
+.input-file:hover {
     opacity: 0.8;
   }
-
 

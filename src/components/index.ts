@@ -16,6 +16,8 @@ import Message from './message';
 import InputChat from './inputChat';
 import Menu from './menu';
 import MenuButton from './menuButton';
+import AuthLink from './authLink';
+import ChatLink from './chatLink';
 import Popup from './popup';
 import InputFile from './inputFile';
 import InputProfile from './inputProfile';
@@ -43,4 +45,6 @@ export const components: BlockConstructable<any>[] = [
   FormPopup,
   InputFile,
   InputProfile,
+  AuthLink,
+  ChatLink,
 ];

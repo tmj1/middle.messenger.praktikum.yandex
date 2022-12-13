@@ -28,10 +28,17 @@
   }
 
 .profile__list {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 60px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__list button {
+    align-self: center;
   }
+
 .profile__list:last-of-type {
     margin-bottom: 0;
   }

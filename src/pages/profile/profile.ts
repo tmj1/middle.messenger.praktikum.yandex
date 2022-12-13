@@ -1,12 +1,7 @@
-import Block from 'core/Block';
-import store, { STORE_EVENTS } from 'core/Store';
+import { Block, STORE_EVENTS, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
-import { authService } from 'services';
-//import dataProfile from 'data/profile.json';
 import { Popup } from 'utils/classes';
-import { config, REGEXP_IS_NOT_INPUT_AVATAR } from 'utils/constants';
-
-//const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
+import { config, EDIT_SETTINGS_PATH, EDIT_PASSWORD_PATH } from 'utils/constants';
 
 export class ProfilePage extends Block {
   constructor(args: any) {
@@ -30,20 +25,20 @@ export class ProfilePage extends Block {
         ).handleOpenPopup();
       },
       handleSubmitEditAvatarForm: (evt: Event) => {
-        const target = evt.target as HTMLInputElement;
-        if (
-          !Array.from(target.classList).some((element) =>
-            REGEXP_IS_NOT_INPUT_AVATAR.test(element)
-          )
-        ) {
-          evt.preventDefault();
-        }
+        evt.preventDefault();
+
+        const editForm = document.forms[1];
+        const formData = new FormData(editForm);
+        profileService.changeAvatar(formData);
 
       },
       handleSignOut: (evt: Event) => {
         evt.preventDefault();
         authService.signout();
       },
+      handleBackBtn: () => router.back(),
+      handleLinkToChangeProfile: () => router.go(EDIT_SETTINGS_PATH),
+      handleLinkToChangePassword: () => router.go(EDIT_PASSWORD_PATH),
     };
   }
   render() {
@@ -54,31 +49,31 @@ export class ProfilePage extends Block {
     return `
       <div class="profile">
         <ul class="profile__wrapper">
-          {{{BtnBackProfile href="/chat"}}}
+          {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
-            <form class="profile__form">
+              <form class="profile__form" novalidate>
                 {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
-              <p class="profile__user-name">Иван</p>
+                  <p class="profile__user-name">${display_name ? display_name : ''}</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
                   type="email"
                   helperText="Почта"
-                  value="${email}"
+                  value="${email ? email : ''}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
                   helperText="Логин"
-                  value="${login}"
+                  value="${login ? login : ''}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
                   helperText="Имя"
-                  value="${first_name}"
+                  value="${first_name ? first_name : ''}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
                   helperText="Фамилия"
-                  value="${second_name}"
+                  value="${second_name ? second_name : ''}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
@@ -88,18 +83,18 @@ export class ProfilePage extends Block {
                 {{{InputProfileWrapper
                   type="tel"
                   helperText="Телефон"
-                  value="${phone}"
+                  value="${phone ? phone : ''}"
                 }}}
               </ul>
               <ul class="profile__list">
                 {{{BtnProfile
-                  href="/change-settings"
+                  onClick=handleLinkToChangeProfile
                   text="Изменить данные"
                   classes="btn-profile__link_color_red"
                   type="link"
                 }}}
                 {{{BtnProfile
-                  href="/change-password"
+                   onClick=handleLinkToChangePassword
                   text="Изменить пароль"
                   classes="btn-profile__link_color_red"
                   type="link"
@@ -120,7 +115,7 @@ export class ProfilePage extends Block {
           textBtn="Поменять"
           classesPopup="popup_change-avatar"
           isDefault=false
-          name="EditAvatar"
+          name="editAvatar"
         }}}
       </div>
     `;

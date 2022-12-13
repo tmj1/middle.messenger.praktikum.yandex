@@ -1,16 +1,11 @@
-import Block from 'core/Block';
+import { Block, BrowseRouter as router, STORE_EVENTS, store } from 'core';
 import 'styles/chat.css';
-import right_arrow from 'img/right-arrow.svg';
-//import chats from 'data/chats.json';
 import messages from 'data/messages.json';
-import { ChatType, MessageProps, CreateChatType, ChatsType, ChatsDTO } from 'types';
-import store, { STORE_EVENTS } from 'core/Store';
-import { chatService } from 'services';
-import { Chat } from 'utils/classes';
-import { Popup } from 'utils/classes';
-import { FormValidator } from 'utils/classes';
-import { config, ADD_CHAT_FORM, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
+import { MessageProps, CreateChatType, SearchUserByLoginType } from 'types';
+import { Chat, Popup, FormValidator } from 'utils/classes';
+import { config, ADD_CHAT_FORM, ADD_USER_FORM, DELETE_USER_FORM, DATA_ATTRIBUTE_CHAT_ID, SETTINGS_PATH, } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
+import { chatService } from 'services';
 
 const addUserFormValidator = new FormValidator(
   config,
@@ -54,8 +49,8 @@ export class ChatPage extends Block {
 
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
-        const currentListItemId = element.getAttribute('data-item-id');
-        console.log(currentListItemId);
+        const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
+        this.setProps({ chatItemId });
         new Chat(config).addActiveClassName(evt);
       },
       handleSearchByChats: () => {
@@ -119,7 +114,7 @@ export class ChatPage extends Block {
           disableBtn: addUserFormValidator.disableBtn,
           addErrors: addUserFormValidator.addErrorsForInput,
         });
-        console.log(dataForm);
+        dataForm && chatService.searchUserByLogin(dataForm as SearchUserByLoginType);
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);
@@ -146,19 +141,18 @@ export class ChatPage extends Block {
       handleValidateDeleteUserInput: (evt: Event) => {
         deleteUserFormValidator.handleFieldValidation(evt);
       },
+      handleLinkBtn: () => router.go(SETTINGS_PATH),
     };
   }
   render() {
-    const { chats = [] } = this.props;
+    const { chats = [], chatItemId } = this.props;
+
     // language=hbs
     return `
       <div class="page">
         <ul class="chat">
           <li class="chat__column chat__column_left">
-            <a class="chat__link-profile page__link-profile" href="/settings">
-              <span class="chat__link-text">Профиль</span>
-              <img class="chat__link-img" src="${right_arrow}" alt="Перейти к профилю пользователя">
-            </a>
+              {{{ChatLink onClick=handleLinkBtn}}}
               {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
                 ${
@@ -167,14 +161,14 @@ export class ChatPage extends Block {
                                 ?.map(
                                         (chat: any) =>
                                                 `{{{ListItem
-                      id="${chat.id}"
-                      userName="${chat.title}"
-                      lastMessage="${chat.last_message}"
-                      time="${chat.created_by}"
-                      countNotReadMessage="${chat.unread_count}"
-                      srcAvatar="${chat.avatar}"
-                      onClick=addClassForActiveElement
-                    }}}`
+                                             id="${chat.id}"
+                        userName="${chat.title}"
+                        lastMessage="${chat.last_message}"
+                        time="${chat.created_by}"
+                        countNotReadMessage="${chat.unread_count}"
+                        srcAvatar="${chat.avatar}"
+                        onClick=addClassForActiveElement
+                      }}}`
                 )
                 .join('')
             }
@@ -212,10 +206,10 @@ export class ChatPage extends Block {
             {{{ChatMessage onClick=handleOpenFileMenu}}}
           </li>
         </ul>
-        {{{Menu isUser=true}}}
+        {{{Menu isUser=true chatItemId="${chatItemId}"}}}
         {{{Menu isUser=false}}}
           {{{Popup
-                  onClick=handleSubmitAddChatForm
+                  onSubmit=hendleSubmitAddUserForm
                   onInput=handleChangeAddChatInput
                   onFocus=handleValidateAddChatInput
                   onBlur=handleValidateAddChatInput
@@ -243,7 +237,7 @@ export class ChatPage extends Block {
           fieldName="login"
         }}}
         {{{Popup
-          onClick=handleSubmitDeleteUserForm
+          onSubmit=hendleSubmitDeleteUserForm
           onInput=handleChangeDeleteUserInput
           onFocus=handleValidateDeleteUserInput
           onBlur=handleValidateDeleteUserInput

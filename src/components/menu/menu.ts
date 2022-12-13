@@ -7,15 +7,17 @@ import plus from 'img/plus.svg';
 import close from 'img/close.svg';
 import photo from 'img/photo.svg';
 import file from 'img/file.svg';
+import { chatService } from 'services';
 
 export class Menu extends Block {
   static componentName = 'Menu';
-  constructor({ isUser }: MenuProps) {
-    super({ isUser });
+  constructor({ isUser, chatItemId }: MenuProps) {
+    super({ isUser, chatItemId });
   }
   protected getStateFromProps(props: MenuProps): void {
     this.state = {
       isUser: props.isUser,
+      chatItemId: props.chatItemId,
 
       handleAddUserPopup: () => {
         new Popup(
@@ -32,6 +34,10 @@ export class Menu extends Block {
           config.isOpenPopupSelector,
           config
         ).handleOpenPopup();
+      },
+      handleRemoveChat: () => {
+        chatService.removeChatById({ chatId: this.state.chatItemId });
+        Popup.handleClosePopup(config.isShowMenuSelector);
       },
     };
   }
@@ -62,6 +68,14 @@ export class Menu extends Block {
                 onClick=handleDeleteUserPopup
               }}}
             </li>
+              <li class="menu__item">
+                  {{{Button
+                          onClick=handleRemoveChat
+                          textBtn="Удалить чат"
+                          type="button"
+                          classes="button_el_remove-item"
+                  }}}
+              </li>
           </ul>
         </nav>
       {{else}}
