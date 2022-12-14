@@ -40,6 +40,16 @@ const config = {
   inputProfileHelperTextSelector: 'input-profile-wrapper__error',
   isShowInputProfileHelperTextSelector: 'input-profile-wrapper__error_is-show',
   addChatBtnSelector: 'search-chat__btn',
+  popupListSelector: 'popup__list',
+  popupItemSelector: 'popup__item',
+  popupWrapperSelector: 'popup__wrapper',
+  popupAvatarSelector: 'popup__avatar',
+  popupTextLoginSelector: 'popup__text-login',
+  popupTextEmailSelector: 'popup__text-email',
+  popupBtnSelector: 'popup__btn',
+  tooltipSelector: 'tooltip',
+  tooltipIsSuccessSelector: 'tooltip_is-success',
+  tooltipIsErrorSelector: 'tooltip_is-error',
 };
 
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
@@ -75,7 +85,18 @@ const SUCCESS_CREATE_MESSAGE = 'Чат создан';
 const SUCCESS_CHANGE_AVATAR_MESSAGE = 'Аватар изменен';
 const SUCCESS_CHANGE_USER_INFO_MESSAGE = 'Информация пользователя изменена';
 const SUCCESS_REMOVE_CHAT_MESSAGE = 'Чат удален';
+const TAG_NAME_UL = 'ul';
+const TAG_NAME_LI = 'li';
+const TAG_NAME_DIV = 'div';
+const TAG_NAME_IMG = 'img';
+const TAG_NAME_P = 'p';
+const TAG_NAME_BUTTON = 'button';
 
 export { config, ADD_USER_FORM, ADD_CHAT_FORM, DELETE_USER_FORM, SIGNIN_PATH, SIGNUP_PATH, DATA_ATTRIBUTE_CHAT_ID,
   SETTINGS_PATH, EDIT_SETTINGS_PATH, EDIT_PASSWORD_PATH, SIGNIN_FORM, SIGNUP_FORM, EDIT_PASSWORD_FORM, EDIT_PROFILE_FORM, AUTH_FORM, USER_NAME_FIELD, LAST_NAME_USER_FIELD, PHONE_USER_FIELD, CUSTOM_ERROR_FOR_NAME_AND_LASTNAME, CUSTOM_ERROR_FOR_PHONE_FILED, REGEXP_FOR_NAME_AND_LASTNAME, REGEXP_FOR_PHONE, REGEXP_REPLACE_PATHNAME, SUCCESS_REMOVE_CHAT_MESSAGE,
-  REGEXP_REPLACE_ID, BASE_URL, BASE_HEADERS, SUCCESS_SIGNUP_MESSAGE, SUCCESS_SIGNIN_MESSAGE, SUCCESS_CREATE_MESSAGE, SUCCESS_CHANGE_AVATAR_MESSAGE, BASE_URL_RESOURCES, SUCCESS_CHANGE_USER_INFO_MESSAGE,};
+  REGEXP_REPLACE_ID, BASE_URL, BASE_HEADERS, SUCCESS_SIGNUP_MESSAGE, SUCCESS_SIGNIN_MESSAGE, SUCCESS_CREATE_MESSAGE, SUCCESS_CHANGE_AVATAR_MESSAGE, BASE_URL_RESOURCES, SUCCESS_CHANGE_USER_INFO_MESSAGE,   TAG_NAME_UL,
+  TAG_NAME_LI,
+  TAG_NAME_DIV,
+  TAG_NAME_IMG,
+  TAG_NAME_P,
+  TAG_NAME_BUTTON,};

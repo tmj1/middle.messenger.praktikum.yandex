@@ -46,11 +46,11 @@ export class ChatPage extends Block {
   }
   protected getStateFromProps() {
     this.state = {
-
+      chatItemId: 0,
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
         const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
-        this.setProps({ chatItemId });
+        this.setState({ chatItemId });
         new Chat(config).addActiveClassName(evt);
       },
       handleSearchByChats: () => {
@@ -113,8 +113,16 @@ export class ChatPage extends Block {
           formSelector: ADD_USER_FORM,
           disableBtn: addUserFormValidator.disableBtn,
           addErrors: addUserFormValidator.addErrorsForInput,
+          isNotCloseBySbmit: false,
         });
-        dataForm && chatService.searchUserByLogin(dataForm as SearchUserByLoginType);
+        const target = evt.target as HTMLInputElement;
+        const form = target.closest(`.${ADD_USER_FORM}`);
+
+        if (form && dataForm) {
+          chatService.searchUserByLogin({ login: dataForm, form, } as SearchUserByLoginType);
+        }
+
+        // console.log(this.state.chatItemId);
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);
@@ -145,7 +153,8 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { chats = [], chatItemId } = this.props;
+    const { chats = [] } = this.props;
+    const { chatItemId } = this.state;
 
     // language=hbs
     return `
@@ -229,7 +238,7 @@ export class ChatPage extends Block {
           onBlur=handleValidateAddUserInput
           title="Добавить пользователя"
           helperText="Логин"
-          textBtn="Добавить"
+          textBtn="Найти"
           classesPopup="popup_add-user"
           classesForm="popup__form_add-user"
           isDefault=true

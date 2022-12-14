@@ -1,61 +1,58 @@
-import { config } from 'utils/constants';
 import { Input } from 'utils/classes/Input';
 import { Popup } from './classes/Popup';
+import { config } from 'utils/constants';
 import { showTooltip } from 'utils';
-
 interface SubmitFormProps {
   disableBtn: () => void;
-  addErrors: () => void;
+  addErors: () => void;
   stateForm: boolean;
   inputSelector: string;
   formSelector: string;
   isValidField?: boolean | undefined;
+  isNotCloseBySbmit?: boolean;
 }
 
-const checkOnValueInput = (evt: Event) => {
-  evt.target && new Input(config, evt.target).checkOnValueInput();
-};
-
 const handleSubmitForm = ({
-  stateForm,
-  inputSelector,
-  formSelector,
-  disableBtn,
-  addErrors,
-  isValidField = undefined,
-}: SubmitFormProps) => {
+                            stateForm,
+                            inputSelector,
+                            formSelector,
+                            disableBtn,
+                            addErors,
+                            isValidField = undefined,
+                            isNotCloseBySbmit,
+                          }: SubmitFormProps) => {
   if (stateForm && isValidField === undefined) {
     const form = document.querySelector(`.${formSelector}`);
     if (form) {
       const inputs = form.querySelectorAll(`.${inputSelector}`);
       let dataForm = {};
-
       inputs?.forEach((input) => {
         const inputElement = input as HTMLInputElement;
         dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
       });
-      return dataForm;
 
-      Popup.handleClosePopup(config.isOpenPopupSelector);
+      isNotCloseBySbmit && Popup.handleClosePopup(config.isOpenPopupSelector);
+
+      return dataForm;
     }
   } else {
     disableBtn();
-    addErrors();
+    addErors();
   }
+};
+const checkOnValueInput = (evt: Event) => {
+  evt.target && new Input(config, evt.target).checkOnValueInput();
 };
 function isEqual(lhs: string, rhs: string): boolean {
   return lhs === rhs;
 }
-
 function getMessageFromResponse(errText: string) {
   return Object.values(JSON.parse(errText))[0];
 }
-
-function showError(err: string) {
+function showError(err: any) {
   showTooltip({
-    text: getMessageFromResponse(err) as string,
+    text: getMessageFromResponse(err.responseText) as string,
     type: 'error',
   });
 }
-
 export { handleSubmitForm, checkOnValueInput, isEqual, showError };

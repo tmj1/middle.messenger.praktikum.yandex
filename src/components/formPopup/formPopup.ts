@@ -1,6 +1,5 @@
 import Block from 'core/Block';
 import './formPopup.css';
-
 export class FormPopup extends Block {
   static componentName = 'FormPopup';
   constructor({
@@ -10,6 +9,7 @@ export class FormPopup extends Block {
                 helperText,
                 fieldName,
                 textBtn,
+                users,
                 onSubmit,
                 onInput,
                 onFocus,
@@ -22,6 +22,7 @@ export class FormPopup extends Block {
       helperText,
       fieldName,
       textBtn,
+      users,
       onInput,
       onFocus,
       onBlur,
@@ -36,18 +37,19 @@ export class FormPopup extends Block {
       helperText: props.helperText,
       fieldName: props.fieldName,
       textBtn: props.textBtn,
+      users: props.users,
       onInput: props.onInput,
       onFocus: props.onFocus,
       onBlur: props.onblur,
     };
   }
-
   protected render(): string {
-    const { classesForm, name, isDefault, helperText, fieldName, textBtn } = this.state;
+    const { classesForm, name, isDefault, helperText, fieldName, textBtn, users } =
+      this.state;
     // language=hbs
     return `
           <form class="formPopup ${
-         classesForm !== 'undefined' ? classesForm : ''
+      !classesForm ? classesForm : ''
     }" name="${name}" novalidate>
             ${
       isDefault
@@ -76,6 +78,7 @@ export class FormPopup extends Block {
                   }}}
                   `
     }
+            ${!users ? `{{{Users users='${users}'}}}` : ''}
           </form>
     `;
   }
