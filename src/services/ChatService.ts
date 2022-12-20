@@ -1,4 +1,4 @@
-import { chatApi } from '../Api/ChatApi';
+import { chatApi } from '../api/ChatApi';
 import {
   CreateChatType,
   RemoveChatType,
