@@ -1,4 +1,4 @@
-import { profileApi } from '../api/ProfileApi';
+import { ProfileApi } from 'api';
 import {
   showTooltip,
   showError,
@@ -16,7 +16,7 @@ import {
 
 class ProfileService {
   public changeAvatar(avatar: FormData) {
-    profileApi
+    ProfileApi
       .changeAvatar(avatar)
       .then(({ response }: any) => {
         store.setState({ userInfo: JSON.parse(response) });
@@ -28,7 +28,7 @@ class ProfileService {
       .catch(showError);
   }
   public changeUserInfo(userInfo: UserInfoDTO) {
-    profileApi
+    ProfileApi
       .changeUserInfo(userInfo)
       .then(({ response }: any) => {
         store.setState({ userInfo: JSON.parse(response) });
@@ -40,7 +40,7 @@ class ProfileService {
       .catch(showError);
   }
   public changeUserPassword(userPassword: UserPasswordType) {
-    profileApi
+    ProfileApi
       .changeUserPassword(userPassword)
       .then(() =>
         showTooltip({
@@ -52,7 +52,7 @@ class ProfileService {
   }
 
   public searchUserByLogin({ login }: SearchUserByLoginType) {
-    return profileApi
+    return ProfileApi
       .searchUserByLogin({ login })
       .then(({ response }: any) =>
         store.setState({ users: response }, STORE_EVENTS.ADD_USERS)

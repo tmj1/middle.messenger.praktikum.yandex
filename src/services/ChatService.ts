@@ -1,4 +1,4 @@
-import { chatApi } from '../api/ChatApi';
+import { ChatApi } from 'api';
 import {
   CreateChatType,
   RemoveChatType,
@@ -20,10 +20,9 @@ import {
 } from 'utils';
 import { store } from 'core';
 
-
 class ChatService {
   public createChat({ title }: CreateChatType) {
-    chatApi
+    ChatApi
       .createChat({ title })
       .then(({ response }: any) => {
         const state = store.getState() as InitialStateType;
@@ -48,13 +47,13 @@ class ChatService {
       .catch(showError);
   }
   public getChats() {
-    chatApi
+    ChatApi
       .getChats()
       .then(({ response }: any) => store.setState({ chats: JSON.parse(response) }))
       .catch(showError);
   }
   public removeChatById({ chatId }: RemoveChatType) {
-    chatApi
+    ChatApi
       .removeChatById({ chatId })
       .then(() => {
         const state = store.getState() as InitialStateType;
@@ -71,7 +70,7 @@ class ChatService {
       .catch(showError);
   }
   public addUserToChat({ users, chatId }: AddUserToChatType) {
-    chatApi
+    ChatApi
       .addUserToChat({ users, chatId })
       .then(() => {
         const state = store.getState() as InitialStateType;
@@ -104,14 +103,14 @@ class ChatService {
   }
 
   public getChatToken({ chatId }: GetChatTokenType) {
-    return chatApi
+    return ChatApi
       .getChatToken({ chatId })
       .then(({ response }: any) => JSON.parse(response))
       .catch(showError);
   }
 
   public getUserForChat({ chatId }: GetUserForChatType) {
-    chatApi
+    ChatApi
       .getUserForChat({ chatId })
       .then(({ response }: any) => {
         store.setState({ usersFromChats: response });
@@ -120,7 +119,7 @@ class ChatService {
   }
 
   public removeUserFromChat({ users, chatId }: RemoveUserFromChat) {
-    chatApi
+    ChatApi
       .removeUserFromChat({ users, chatId })
       .then(() => {
         const state = store.getState() as InitialStateType;
