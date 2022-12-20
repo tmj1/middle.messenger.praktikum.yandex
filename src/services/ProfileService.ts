@@ -1,4 +1,4 @@
-import { profileApi } from '../api/ProfileAp';
+import { profileApi } from '../api/ProfileApi';
 import {
   showTooltip,
   showError,
