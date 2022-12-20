@@ -20,7 +20,7 @@
     "variables": "./src/variables",
     "utils": "./src/utils",
     "styles": "./src/styles",
-    "api": "./src/Api",
+    "api": "./src/api",
     "services": "./src/services"
   },
   "repository": {
