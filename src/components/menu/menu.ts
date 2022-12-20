@@ -1,13 +1,14 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './menu.css';
 import { MenuProps } from './types';
-import { Popup } from 'utils/classes/Popup';
-import { config } from 'utils/constants';
+import { config, Popup } from 'utils';
 import plus from 'img/plus.svg';
 import close from 'img/close.svg';
 import photo from 'img/photo.svg';
 import file from 'img/file.svg';
+import location from 'img/location.svg';
 import { chatService } from 'services';
+
 
 export class Menu extends Block {
   static componentName = 'Menu';
@@ -41,7 +42,6 @@ export class Menu extends Block {
       },
     };
   }
-
   protected render(): string {
     // language=hbs
     return `
@@ -52,7 +52,7 @@ export class Menu extends Block {
               {{{MenuButton
                 text="Добавить пользователя"
                 icon="${plus}"
-                alt="Иконка добавить"
+                alt="Иконка плюса"
                 classes="menu-button_add-user"
                 type="button"
                 onClick=handleAddUserPopup
@@ -62,20 +62,20 @@ export class Menu extends Block {
               {{{MenuButton
                 text="Удалить пользователя"
                 icon="${close}"
-                alt="Иконка закрыть"
+                alt="Иконка крестика"
                 classes="menu-button_delete-user"
                 type="button"
                 onClick=handleDeleteUserPopup
               }}}
             </li>
-              <li class="menu__item">
-                  {{{Button
-                          onClick=handleRemoveChat
-                          textBtn="Удалить чат"
-                          type="button"
-                          classes="button_el_remove-item"
-                  }}}
-              </li>
+            <li class="menu__item">
+            {{{Button
+              onClick=handleRemoveChat
+              textBtn="Удалить чат"
+              type="button"
+              classes="button_el_remove-item"
+            }}}
+            </li>
           </ul>
         </nav>
       {{else}}
@@ -83,22 +83,29 @@ export class Menu extends Block {
           <ul class="menu__list">
             <li class="menu__item">
               {{{MenuButton
-                text="Добавить фото или видео"
+                text="Фото или Видео"
                 icon="${photo}"
-                alt="Иконка добавить"
+                alt="Иконка плюса"
                 classes="menu-button_add-photo"
                 type="button"
-                onClick=handleDeleteUserPopup
               }}}
             </li>
             <li class="menu__item">
               {{{MenuButton
-                text="Добавить файл"
+                text="Файл"
                 icon="${file}"
-                alt="Иконка закрыть"
+                alt="Иконка крестика"
                 classes="menu-button_add-file"
                 type="button"
-                onClick=handleDeleteUserPopup
+              }}}
+            </li>
+            <li class="menu__item">
+              {{{MenuButton
+                text="Локация"
+                icon="${location}"
+                alt="Иконка локации"
+                classes="menu-button_add-location"
+                type="button"
               }}}
             </li>
           </ul>

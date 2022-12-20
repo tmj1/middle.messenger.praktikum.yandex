@@ -20,40 +20,39 @@
     transform: translateY(-50%);
   }
 
-
 .search-chat__btn {
-   position: relative;
-   cursor: pointer;
-   background-color: transparent;
-   border: none;
-   border-radius: 50%;
-   min-width: 28px;
-   height: 28px;
-   background-color: var(--color-secondary);
-   transition: 0.3s opacity;
-
-.search-chat:hover {
-   opacity: 0.7;
- }
-
-.search-chat::before {
-   content: '';
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   width: 50%;
-   height: 2px;
-   background-color: var(--color-third);
- }
-
-.search-chat::after {
-   content: '';
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   width: 2px;
-   height: 50%;
-   background-color: var(--color-third);
+  position: relative;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  min-width: 28px;
+  height: 28px;
+  background-color: var(--secondary-color);
+  transition: 0.3s opacity;
 }
+
+.search-chat__btn:hover {
+      opacity: 0.7;
+    }
+
+.search-chat__btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      height: 2px;
+      background-color: var(--third-color);
+    }
+
+.search-chat__btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px;
+      height: 50%;
+      background-color: var(--third-color);
+    }

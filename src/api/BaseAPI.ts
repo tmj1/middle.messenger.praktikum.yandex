@@ -1,6 +1,7 @@
 import { HTTPTransport } from 'utils/classes';
 import { BASE_URL, BASE_HEADERS } from 'utils/constants';
 
+
 export abstract class BaseAPI {
   _http: HTTPTransport;
   _baseUrl: string;
@@ -19,7 +20,7 @@ export abstract class BaseAPI {
     return this._http.get(`${this._baseUrl}/${url}`, { headers: this._headers });
   }
 
-  put(url: string, data: unknown, headers?: any) {
+  put(url: string, data: unknown, headers?: unknown) {
     return this._http.put(`${this._baseUrl}/${url}`, {
       headers: headers ? headers : this._headers,
       data,

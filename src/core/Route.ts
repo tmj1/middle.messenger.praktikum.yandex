@@ -2,7 +2,8 @@ import { BlockClass, props } from 'types';
 import renderDOM from './renderDOM';
 import Block from 'core/Block';
 import { isEqual } from 'utils';
-import { REGEXP_REPLACE_PATHNAME, REGEXP_REPLACE_ID } from 'utils/constants';
+import { REGEXP_REPLACE_PATHNAME } from 'utils/constants';
+
 
 export class Route<P = any> {
   private pathname: string;
@@ -33,19 +34,14 @@ export class Route<P = any> {
     }
     return isEqual(pathname, this.pathname);
   }
-  private prefixHandler() {
-    const id = Number(window.location.pathname.replace(REGEXP_REPLACE_ID, ''));
-    return { id };
-  }
+
   render() {
-    const { id } = this.prefixHandler();
     if (!this.block) {
-      this.block = new this.blockClass({ ...this.props, idPath: id });
+      this.block = new this.blockClass({ ...this.props });
       renderDOM(this.block);
       return;
     }
 
-    this.block.setProps({ idPath: id });
     this.block.show();
   }
 }

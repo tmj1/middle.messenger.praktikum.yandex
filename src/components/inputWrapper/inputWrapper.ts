@@ -1,6 +1,7 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './inputWrapper.css';
 import { InputWrapperProps } from './types';
+
 
 export class InputWrapper extends Block {
   static componentName = 'InputWrapper';
@@ -27,7 +28,6 @@ export class InputWrapper extends Block {
       events: { input: onInput },
     });
   }
-
   protected getStateFromProps(props: InputWrapperProps): void {
     this.state = {
       name: props.name,
@@ -40,7 +40,6 @@ export class InputWrapper extends Block {
       onBlur: props.onBlur,
     };
   }
-
   protected render(): string {
     const { name, classes, type, minlength, maxlength, helperText } = this.state;
     // language=hbs

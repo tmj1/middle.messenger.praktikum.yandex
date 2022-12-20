@@ -1,4 +1,11 @@
-enum METHODS { GET = 'GET', POST = 'POST', PUT = 'PUT', PATCH = 'PATCH', DELETE = 'DELETE', }
+enum METHODS {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  PATCH = 'PATCH',
+  DELETE = 'DELETE',
+}
+
 
 type RequestData = Record<string, string | number>;
 
@@ -53,6 +60,7 @@ export class HTTPTransport {
       const xhr = new XMLHttpRequest();
 
       xhr.open(method, `${url}${query}`);
+
       if (withCredentials) {
         xhr.withCredentials = true;
       }

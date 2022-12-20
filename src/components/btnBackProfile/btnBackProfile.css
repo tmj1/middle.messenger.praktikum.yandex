@@ -3,10 +3,9 @@
   background-color: var(--bg-list-color);
   border-right: 1px solid var(--line-color);
 }
-
 .profile-btn__link {
     box-sizing: border-box;
-    text-decoration: none;
+    cursor: pointer;
     border: none;
     padding: 0;
     width: 100%;
@@ -15,7 +14,6 @@
     justify-content: center;
     align-items: center;
     transition: 0.3s opacity;
-    cursor: pointer;
   }
 
 .profile-btn__link:hover {
@@ -31,4 +29,3 @@
     width: 28px;
     height: 28px;
   }
-

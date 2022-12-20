@@ -1,11 +1,11 @@
-import { ButtonType } from 'types';
+import { ButtonEnum } from 'types';
+
 
 export interface MenuButtonProps {
   text: string;
   icon: string;
   alt: string;
   classes?: string;
-  type: ButtonType;
+  type: ButtonEnum;
   onClick: () => void;
 }
-

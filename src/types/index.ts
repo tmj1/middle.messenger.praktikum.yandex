@@ -1,22 +1,26 @@
 export {
+  SignupType,
+  SigninType,
   BlockClass,
-  InputType,
-  ButtonType,
+  InputEnum,
+  ButtonEnum,
   Screens,
   ChatType,
   MessageProps,
   props,
-} from './types';
-export { SignupType, SigninType } from './authTypes';
-export {
   CreateChatType,
   RemoveChatType,
   SearchUserByLoginType,
-  AddUserToChat,
-} from './chatTypes';
-export {
+  AddUserToChatType,
+  GetChatTokenType,
+  GetUserForChatType,
   UserInfoDTO,
   UserInfoType,
-  UserPasswordDTO,
   UserPasswordType,
-} from './profileTypes';
+  STORE_EVENTS,
+  MessageDTO,
+  RemoveUserFromChat,
+  InitialStateType,
+  UserType,
+} from './types';
+

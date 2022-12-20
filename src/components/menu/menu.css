@@ -5,7 +5,9 @@
   border-radius: 12px;
   box-shadow: 0 0 6px var(--shadow);
   color: var(--third-color);
+  background-color: var(--third-color);
 }
+
 .menu_is-show {
     display: block;
   }

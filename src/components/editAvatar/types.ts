@@ -1,5 +1,5 @@
 export interface EditAvatarProps {
-  onClick: () => void;
   avatar: string;
+  onClick: () => void;
 }
 

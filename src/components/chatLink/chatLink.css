@@ -6,17 +6,15 @@
   display: inline-block;
   transition: 0.3s opacity;
 }
+
 .link-profile:hover {
-   opacity: 0.7;
- }
+    opacity: 0.7;
+  }
 
 .link-profile__text {
-   font-size: 12px;
-   color: var(--gray-color);
-   font-weight: 500;
-   line-height: 12px;
-   margin-right: 8px;
- }
-
-.link-profile__img {
- }
+    font-size: 12px;
+    color: var(--gray-color);
+    font-weight: 500;
+    line-height: 12px;
+    margin-right: 8px;
+  }

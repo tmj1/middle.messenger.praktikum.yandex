@@ -1,5 +1,6 @@
 import { BaseAPI } from './BaseAPI';
-import { UserInfoDTO, UserPasswordDTO } from 'types';
+import { UserInfoDTO, UserPasswordType, SearchUserByLoginType } from 'types';
+
 
 class ProfileApi extends BaseAPI {
   constructor() {
@@ -9,14 +10,18 @@ class ProfileApi extends BaseAPI {
   public changeAvatar(avatar: FormData) {
     return this.put('/profile/avatar', avatar, {});
   }
-}
 
-public changeUserInfo(userInfo: UserInfoDTO) {
-  return this.put('/profile', userInfo);
-}
+  public changeUserInfo(userInfo: UserInfoDTO) {
+    return this.put('/profile', userInfo);
+  }
 
-public changeUserPassword(userPassword: UserPasswordDTO) {
-  return this.put('/password', userPassword);
+  public changeUserPassword(userPassword: UserPasswordType) {
+    return this.put('/password', userPassword);
+  }
+
+  public searchUserByLogin({ login }: SearchUserByLoginType) {
+    return this.post('/search', login);
+  }
 }
 
 export default new ProfileApi();

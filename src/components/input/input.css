@@ -15,8 +15,7 @@
 .input_is-auth {
   margin-bottom: 136px;
 }
-
-@media screen and (max-width: 320px) {
+    @media screen and (max-width: 320px) {
       .input_is-auth {
         margin-bottom: 120px;
       }

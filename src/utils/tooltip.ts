@@ -1,11 +1,10 @@
-import { config, TAG_NAME_DIV } from 'utils/constants';
+import { config } from 'utils/constants';
 
 type TooltipProp = {
   text: string;
   type: 'error' | 'success';
 };
-
-const tooltip = document.createElement(TAG_NAME_DIV);
+const tooltip = document.createElement('div');
 tooltip.classList.add(config.tooltipSelector);
 
 function showTooltip({ text, type }: TooltipProp) {
@@ -22,7 +21,9 @@ function showTooltip({ text, type }: TooltipProp) {
     document.body.contains(tooltip) && document.body.removeChild(tooltip);
   }, 3000);
 }
+
 function handleCloseTooltip() {
   document.body.removeChild(tooltip);
 }
+
 export { showTooltip };

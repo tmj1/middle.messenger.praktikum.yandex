@@ -1,8 +1,7 @@
 import EventBus from './EventBus';
+import { STORE_EVENTS } from 'types';
+import { initialState } from '../initialState';
 
-export enum STORE_EVENTS {
-  UPDATE = 'update', // change
-}
 
 class Store<T> extends EventBus {
   state: T | null;
@@ -15,10 +14,11 @@ class Store<T> extends EventBus {
   getState() {
     return this.state;
   }
-  setState(newData: any) {
+
+  setState(newData: any, action?: string) {
     this.state = { ...this.state, ...newData };
-    this.emit(STORE_EVENTS.UPDATE);
+    this.emit(action ? action : STORE_EVENTS.UPDATE);
   }
 }
 
-export default new Store();
+export default new Store(initialState);

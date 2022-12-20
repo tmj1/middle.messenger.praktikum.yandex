@@ -1,11 +1,15 @@
-import { Block, STORE_EVENTS, store, BrowseRouter as router } from 'core';
+import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup } from 'utils/classes';
-import { config, EDIT_SETTINGS_PATH, EDIT_PASSWORD_PATH } from 'utils/constants';
+import { config, PATHNAMES } from 'utils/constants';
+import { authService, profileService } from 'services';
+import { STORE_EVENTS } from 'types';
+import { checkIsLoginIn } from 'utils';
+
 
 export class ProfilePage extends Block {
-  constructor(args: any) {
-    super(args);
+  constructor(...args: any) {
+    super(...args);
 
     authService.getInfo();
 
@@ -29,31 +33,34 @@ export class ProfilePage extends Block {
 
         const editForm = document.forms[1];
         const formData = new FormData(editForm);
-        profileService.changeAvatar(formData);
 
+        profileService.changeAvatar(formData);
       },
       handleSignOut: (evt: Event) => {
         evt.preventDefault();
         authService.signout();
       },
       handleBackBtn: () => router.back(),
-      handleLinkToChangeProfile: () => router.go(EDIT_SETTINGS_PATH),
-      handleLinkToChangePassword: () => router.go(EDIT_PASSWORD_PATH),
+      handleLinkToChangeProfile: () => router.go(PATHNAMES['EDIT_SETTINGS_PATH']),
+      handleLinkToChangePassword: () => router.go(PATHNAMES['EDIT_PASSWORD_PATH']),
     };
   }
   render() {
+    checkIsLoginIn();
+
     const { userInfo = [] } = this.props;
-    const { avatar, display_name, email, first_name, id, login, phone, second_name } =
+    const { avatar, display_name, email, first_name, login, phone, second_name } =
       userInfo;
+
     // language=hbs
     return `
       <div class="profile">
         <ul class="profile__wrapper">
           {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
-              <form class="profile__form" novalidate>
-                {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
-                  <p class="profile__user-name">${display_name ? display_name : ''}</p>
+            <form class="profile__form" novalidate>
+              {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
+              <p class="profile__user-name">${display_name ? display_name : ''}</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
                   type="email"
@@ -94,7 +101,7 @@ export class ProfilePage extends Block {
                   type="link"
                 }}}
                 {{{BtnProfile
-                   onClick=handleLinkToChangePassword
+                  onClick=handleLinkToChangePassword
                   text="Изменить пароль"
                   classes="btn-profile__link_color_red"
                   type="link"
@@ -121,4 +128,3 @@ export class ProfilePage extends Block {
     `;
   }
 }
-

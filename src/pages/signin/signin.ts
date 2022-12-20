@@ -1,10 +1,11 @@
 import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
-import { config, AUTH_FORM, SIGNUP_PATH } from 'utils/constants';
+import { config, AUTH_FORM, PATHNAMES } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SigninType } from 'types';
+
 
 const signinFormValidator = new FormValidator(
   config,
@@ -16,7 +17,6 @@ const signinFormValidator = new FormValidator(
 );
 
 export class SigninPage extends Block {
-
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
@@ -37,7 +37,7 @@ export class SigninPage extends Block {
         dataForm && authService.signin(dataForm as SigninType);
       },
       handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
-      handleLinkBtn: () => router.go(SIGNUP_PATH),
+      handleLinkBtn: () => router.go(PATHNAMES['SIGNUP_PATH']),
     };
   }
   render() {
@@ -74,18 +74,13 @@ export class SigninPage extends Block {
               type="submit"
               classes="button_is-auth"
             }}}
-              {{{AuthLink
-                      onClick=handleLinkBtn
-                      text="Создать профиль"
-              }}}
-            <a class="auth__link" href="/chat">Чат</a>
-            <a class="auth__link" href="/profile">Профиль</a>
-            <a class="auth__link" href="/not-found">404</a>
-            <a class="auth__link" href="/server-error">5**</a>
+            {{{AuthLink
+              onClick=handleLinkBtn
+              text="Нет аккаунта?"
+            }}}
           </form>
         </main>
       </div>
     `;
   }
 }
-

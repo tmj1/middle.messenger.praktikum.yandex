@@ -33,7 +33,7 @@
     margin: 60px auto 0;
   }
 
-.button_page_change-password {
+.button_page_edit-password {
     max-width: 280px;
     margin: 162px auto 0;
   }
@@ -43,7 +43,7 @@
     cursor: default;
   }
 
-.button__el_remove-item {
-   padding: 8px 0;
-   margin-top: 10px;
- }
+.button_el_remove-item {
+    padding: 8px 0;
+    margin-top: 10px;
+  }

@@ -3,13 +3,15 @@ export interface PopupProps {
   onInput?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
+  onClick?: () => void;
   classesPopup?: string;
   classesForm?: string;
   name: string;
-  fieldName: string;
+  fieldName?: string;
   title: string;
-  isDefault: boolean;
+  isDefault?: boolean;
   helperText?: Text;
-  textBtn: string;
+  textBtn?: string;
+  users?: any;
 }
 

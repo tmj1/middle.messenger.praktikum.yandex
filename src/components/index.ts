@@ -1,4 +1,4 @@
-import {BlockConstructable} from 'core';
+import { BlockConstructable } from 'core';
 import Input from './input';
 import InputWrapper from './inputWrapper';
 import Button from './button';
@@ -10,18 +10,21 @@ import BtnProfile from './btnProfile';
 import SearchChat from './searchChat';
 import ListItem from './listItem';
 import Avatar from './avatar';
-import SettingsMenu from './settingsMenu';
-import ChatMessage from './chatMessage';
+import BurgerMenu from './burgerMenu';
+import ChatFooter from './chatFooter';
 import Message from './message';
 import InputChat from './inputChat';
 import Menu from './menu';
 import MenuButton from './menuButton';
-import AuthLink from './authLink';
-import ChatLink from './chatLink';
 import Popup from './popup';
 import InputFile from './inputFile';
 import InputProfile from './inputProfile';
 import FormPopup from './formPopup';
+import AuthLink from './authLink';
+import ChatLink from './chatLink';
+import Users from './users';
+import userItem from './userItem';
+
 
 export const components: BlockConstructable<any>[] = [
   Input,
@@ -35,16 +38,18 @@ export const components: BlockConstructable<any>[] = [
   SearchChat,
   ListItem,
   Avatar,
-  SettingsMenu,
-  ChatMessage,
+  BurgerMenu,
+  ChatFooter,
   Message,
   InputChat,
   Menu,
   MenuButton,
   Popup,
-  FormPopup,
   InputFile,
   InputProfile,
+  FormPopup,
   AuthLink,
   ChatLink,
+  Users,
+  userItem,
 ];

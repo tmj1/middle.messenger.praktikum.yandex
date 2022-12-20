@@ -2,32 +2,44 @@ import { chatApi } from 'api';
 import {
   CreateChatType,
   RemoveChatType,
-  SearchUserByLoginType,
-  AddUserToChat,
+  AddUserToChatType,
+  GetChatTokenType,
+  GetUserForChatType,
+  RemoveUserFromChat,
+  STORE_EVENTS,
+  InitialStateType,
+  UserType,
 } from 'types';
-import { showTooltip, showError } from 'utils';
 import {
+  showTooltip,
+  showError,
   SUCCESS_CREATE_MESSAGE,
   SUCCESS_REMOVE_CHAT_MESSAGE,
-  BASE_URL_RESOURCES,
-} from 'utils/constants';
+  SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
+  SUCCESS_REMOVE_USER_FROM_CHAT,
+} from 'utils';
 import { store } from 'core';
-import defaultIcon from 'img/avatar.svg';
-import {
-  config,
-  TAG_NAME_UL,
-  TAG_NAME_LI,
-  TAG_NAME_DIV,
-  TAG_NAME_IMG,
-  TAG_NAME_P,
-  TAG_NAME_BUTTON,
-} from 'utils/constants';
+
+
 class ChatService {
   public createChat({ title }: CreateChatType) {
     chatApi
       .createChat({ title })
-      .then((chat) => {
-        store.setState(chat);
+      .then(({ response }: any) => {
+        const state = store.getState() as InitialStateType;
+
+        const newChat = {
+          avatar: null,
+          id: JSON.parse(response).id,
+          title: title,
+          unread_count: 0,
+          created_by: 0,
+        };
+
+        state.chats?.push(newChat);
+
+        store.setState({ chats: state.chats });
+
         showTooltip({
           text: SUCCESS_CREATE_MESSAGE,
           type: 'success',
@@ -38,66 +50,107 @@ class ChatService {
   public getChats() {
     chatApi
       .getChats()
-      .then((chats: any) => store.setState({ chats: JSON.parse(chats.response) }))
+      .then(({ response }: any) => store.setState({ chats: JSON.parse(response) }))
       .catch(showError);
   }
   public removeChatById({ chatId }: RemoveChatType) {
     chatApi
       .removeChatById({ chatId })
-      .then(() =>
+      .then(() => {
+        const state = store.getState() as InitialStateType;
+
         showTooltip({
           text: SUCCESS_REMOVE_CHAT_MESSAGE,
           type: 'success',
-        })
-      )
-      .catch(showError);
-  }
-  public addUserToChat({ users, chatId }: AddUserToChat) {
-    chatApi
-      .addUserToChat({ users, chatId })
-      .then((user: any) => {
-        console.log(user);
-        store.setState({ users: JSON.parse(user.response) });
+        });
+
+        store.setState({
+          chats: state.chats?.filter((chat) => chat.id !== Number(chatId)),
+        });
       })
       .catch(showError);
   }
-  public searchUserByLogin({ login, form }: SearchUserByLoginType) {
+  public addUserToChat({ users, chatId }: AddUserToChatType) {
     chatApi
-      .searchUserByLogin({ login })
-      .then((users: any) => {
-        const fragment = document.createDocumentFragment();
-        const ul = document.createElement(TAG_NAME_UL);
-        ul.classList.add(config.popupListSelector);
-        JSON.parse(users.response).map((user: any) => {
-          const li = document.createElement(TAG_NAME_LI);
-          const wrapper = document.createElement(TAG_NAME_DIV);
-          const avatar = document.createElement(TAG_NAME_IMG);
-          const login = document.createElement(TAG_NAME_P);
-          const email = document.createElement(TAG_NAME_P);
-          const btn = document.createElement(TAG_NAME_BUTTON);
-          li.classList.add(config.popupItemSelector);
-          wrapper.classList.add(config.popupWrapperSelector);
-          avatar.classList.add(config.popupAvatarSelector);
-          login.classList.add(config.popupTextLoginSelector);
-          email.classList.add(config.popupTextEmailSelector);
-          btn.classList.add(config.popupBtnSelector);
-          avatar.src = user.avatar ? `${BASE_URL_RESOURCES}${user.avatar}` : defaultIcon;
-          login.textContent = user.login;
-          email.textContent = user.email;
-          btn.textContent = '+';
-          btn.type = 'button';
+      .addUserToChat({ users, chatId })
+      .then(() => {
+        const state = store.getState() as InitialStateType;
 
-          li.appendChild(avatar);
-          wrapper.appendChild(login);
-          wrapper.appendChild(email);
-          li.appendChild(wrapper);
-          li.appendChild(btn);
-          fragment.appendChild(li);
-        });
-        ul.appendChild(fragment);
-        form?.appendChild(ul);
+        if (state.usersFromChats && state.users) {
+          const usersFromChats = JSON.parse(state.usersFromChats);
+          const userItems = JSON.parse(state.users);
+
+          usersFromChats.push(userItems.find((user: UserType) => user.id === users[0]));
+          store.setState(
+            { usersFromChats: JSON.stringify(usersFromChats) },
+            STORE_EVENTS.ADD_USERS
+          );
+
+          const filteredUserItems = userItems.filter(
+            (user: UserType) => user.id !== users[0]
+          );
+          store.setState(
+            { users: JSON.stringify(filteredUserItems) },
+            STORE_EVENTS.ADD_USERS
+          );
+
+          showTooltip({
+            text: SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
+            type: 'success',
+          });
+        }
+      })
+      .catch(showError);
+  }
+
+  public getChatToken({ chatId }: GetChatTokenType) {
+    return chatApi
+      .getChatToken({ chatId })
+      .then(({ response }: any) => JSON.parse(response))
+      .catch(showError);
+  }
+
+  public getUserForChat({ chatId }: GetUserForChatType) {
+    chatApi
+      .getUserForChat({ chatId })
+      .then(({ response }: any) => {
+        store.setState({ usersFromChats: response });
+      })
+      .catch(showError);
+  }
+
+  public removeUserFromChat({ users, chatId }: RemoveUserFromChat) {
+    chatApi
+      .removeUserFromChat({ users, chatId })
+      .then(() => {
+        const state = store.getState() as InitialStateType;
+
+        if (state.usersFromChats) {
+          const usersFromChats = JSON.parse(state.usersFromChats);
+
+          showTooltip({
+            text: SUCCESS_REMOVE_USER_FROM_CHAT,
+            type: 'success',
+          });
+
+          store.setState(
+            {
+              usersFromChats: JSON.stringify(
+                usersFromChats.filter((user: UserType) => user.id !== users[0])
+              ),
+            },
+            STORE_EVENTS.DELETE_USERS
+          );
+
+          usersFromChats.length === 1 &&
+            store.setState(
+              { chats: state.chats?.filter((chat) => chat.id !== chatId) },
+              STORE_EVENTS.DELETE_USERS
+            );
+        }
       })
       .catch(showError);
   }
 }
+
 export default new ChatService();

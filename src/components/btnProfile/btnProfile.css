@@ -13,10 +13,10 @@
   }
 
 .btn-profile__link {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
@@ -36,18 +36,17 @@
     color: var(--secondary-color);
   }
 
-
 .btn-profile__btn {
-   cursor: pointer;
-   background-color: transparent;
-   border: none;
-   padding: 0;
-   font-size: 13px;
-   font-weight: 500;
-   line-height: 13px;
-   transition: 0.3s opacity;
- }
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    transition: 0.3s opacity;
+  }
 
 .btn-profile__btn:hover {
-   opacity: 0.7;
- }
+    opacity: 0.7;
+  }

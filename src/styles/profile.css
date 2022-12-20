@@ -36,8 +36,8 @@
 }
 
 .profile__list button {
-    align-self: center;
-  }
+      align-self: center;
+    }
 
 .profile__list:last-of-type {
     margin-bottom: 0;

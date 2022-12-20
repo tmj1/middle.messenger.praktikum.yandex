@@ -4,6 +4,10 @@
   text-align: left;
 }
 
+.list-item_is-active {
+    background-color: var(--light-blue-color);
+  }
+
 .list-item:hover {
     cursor: pointer;
     background-color: var(--light-blue-color);
@@ -26,7 +30,7 @@
     color: var(--primary-color);
     font-weight: 600;
     line-height: 13px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
 .list-item__message {
@@ -69,7 +73,7 @@
     color: var(--third-color);
     font-weight: 500;
     line-height: 12px;
-    padding: 4px 6px;
+    padding: 4px 7px;
     background-color: var(--secondary-color);
     border-radius: 50%;
   }
@@ -78,11 +82,10 @@
     display: block;
   }
 
-
 .list-item__plug-avatar {
-   margin-right: 10px;
-   width: 47px;
-   height: 47px;
-   border-radius: 50%;
-   background-color: var(--light-gray-color);
- }
+    margin-right: 10px;
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    background-color: var(--light-gray-color);
+  }

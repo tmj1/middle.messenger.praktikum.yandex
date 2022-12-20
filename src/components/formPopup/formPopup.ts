@@ -1,20 +1,23 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './formPopup.css';
+
+
 export class FormPopup extends Block {
   static componentName = 'FormPopup';
   constructor({
-                classesForm,
-                name,
-                isDefault,
-                helperText,
-                fieldName,
-                textBtn,
-                users,
-                onSubmit,
-                onInput,
-                onFocus,
-                onBlur,
-              }: any) {
+    classesForm,
+    name,
+    isDefault,
+    helperText,
+    fieldName,
+    textBtn,
+    users,
+    onSubmit,
+    onInput,
+    onFocus,
+    onBlur,
+    onClick,
+  }: any) {
     super({
       classesForm,
       name,
@@ -26,6 +29,7 @@ export class FormPopup extends Block {
       onInput,
       onFocus,
       onBlur,
+      onClick,
       events: { submit: onSubmit },
     });
   }
@@ -40,45 +44,60 @@ export class FormPopup extends Block {
       users: props.users,
       onInput: props.onInput,
       onFocus: props.onFocus,
-      onBlur: props.onblur,
+      onBlur: props.onBlur,
+      onClick: props.onClick,
     };
   }
   protected render(): string {
     const { classesForm, name, isDefault, helperText, fieldName, textBtn, users } =
       this.state;
+
+    const renderFormElement = () => {
+      if (classesForm !== 'popup__form_delete-user') {
+        return isDefault
+          ? `
+            {{{InputWrapper
+              onInput=onInput
+              onFocus=onFocus
+              onBlur=onBlur
+              type="text"
+              helperText="${helperText}"
+              minlength="5"
+              maxlength="20"
+              name="${fieldName}"
+            }}}
+            {{{Button
+              textBtn="${textBtn}"
+              type="submit"
+            }}}
+            `
+          : `
+            {{{InputFile}}}
+            {{{Button
+              textBtn="${textBtn}"
+              type="submit"
+            }}}
+          `;
+      }
+      return '';
+    };
+
     // language=hbs
     return `
           <form class="formPopup ${
-      !classesForm ? classesForm : ''
-    }" name="${name}" novalidate>
+            classesForm !== 'undefined' ? classesForm : ''
+          }" name="${name}" novalidate>
+            ${renderFormElement()}
             ${
-      isDefault
-        ? `
-                  {{{InputWrapper
-                    onInput=onInput
-                    onFocus=onFocus
-                    onBlur=onBlur
-                    type="text"
-                    helperText="${helperText}"
-                    minlength="5"
-                    maxlength="20"
-                    name="${fieldName}"
-                  }}}
-                  {{{Button
-                    onClick=onClick
-                    textBtn="${textBtn}"
-                    type="submit"
-                  }}}
-                  `
-        : `
-                  {{{InputFile}}}
-                  {{{Button
-                    textBtn="${textBtn}"
-                    type="submit"
-                  }}}
-                  `
-    }
-            ${!users ? `{{{Users users='${users}'}}}` : ''}
+              users !== 'undefined'
+                ? `
+                {{{Users
+                  users='${users}'
+                  onClick=onClick
+                  type="${classesForm === 'popup__form_delete-user' ? 'delete' : 'add'}"
+                }}}`
+                : ''
+            }
           </form>
     `;
   }
