@@ -5,7 +5,7 @@
   "scripts": {
     "build": "parcel build ./src/index.html",
     "dev": "parcel src/index.html --no-source-maps",
-    "start": "node server.js",
+    "start": "npm run build && node server.js",
     "lint:ts": "npx eslint .",
     "lint:style": "npx stylelint \"**/*.css\" --fix",
     "test": "./node_modules/.bin/mocha -r tsconfig-paths/register -r jsdom-global/register"
