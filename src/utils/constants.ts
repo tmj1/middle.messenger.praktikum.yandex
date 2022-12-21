@@ -7,7 +7,7 @@ const config = {
   btnSubmitFormSelector: 'button',
   isDisableBtnSubmitSelector: 'button-disable',
   labelTextSelector: 'input-text',
-  isValuelabelTextSelector: 'input-text-isValue',
+  isValuelabelTextSelector: 'input-text-is-value',
   messagesSelector: 'list-item',
   contentDefaultSelector: 'chat-column-default',
   contentDialogSelector: 'chat-column-dialog',
