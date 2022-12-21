@@ -15,30 +15,30 @@
 }
 
 .popup_opened {
-    visibility: visible;
-    opacity: 1;
-  }
+  visibility: visible;
+  opacity: 1;
+}
 
 .popup__container {
-    cursor: default;
-    background-color: var(--third-color);
-    box-sizing: border-box;
-    padding: 40px 30px;
-    max-width: 380px;
-    width: 100%;
-    border-radius: 12px;
-  }
+  cursor: default;
+  background-color: var(--third-color);
+  box-sizing: border-box;
+  padding: 40px 30px;
+  max-width: 380px;
+  width: 100%;
+  border-radius: 12px;
+}
 
 .popup__title {
-    margin: 0;
-    font-size: 15px;
-    color: var(--primary-color);
-    font-weight: 500;
-    line-height: 20px;
-    text-align: center;
-    margin-bottom: 50px;
-  }
+  margin: 0;
+  font-size: 15px;
+  color: var(--primary-color);
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 50px;
+}
 
 .popup__form {
-    font-family: inherit;
-  }
+  font-family: inherit;
+}

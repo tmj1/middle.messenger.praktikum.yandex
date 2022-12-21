@@ -249,10 +249,10 @@ export class ChatPage extends Block {
     return `
       <div class="page">
         <ul class="chat">
-          <li class="chat__column chat__column_left">
+          <li class="chat-column chat-column_left">
             {{{ChatLink onClick=handleLinkBtn}}}
             {{{SearchChat onSearchByChats=handleSearchByChats }}}
-            <ul class="chat__list">
+            <ul class="chat-list">
               ${
                 chats &&
                 Object.values(chats)
@@ -279,12 +279,12 @@ export class ChatPage extends Block {
               }
             </ul>
           </li>
-          <li class="chat__column chat__column-default">
-            <h2 class="chat__title">Выберите чат чтобы отправить сообщение</h2>
+          <li class="chat-column chat-column-default">
+            <h2 class="chat-title">Выберите чат чтобы отправить сообщение</h2>
           </li>
-          <li class="chat__column chat__column-dialog chat__column_is-hidden">
-            <div class="chat__header">
-              <div class="chat__inner">
+          <li class="chat-column chat-column-dialog chat-column_is-hidden">
+            <div class="chat-header">
+              <div class="chat-inner">
               ${
                 currentChat &&
                 currentChat.map((chat: any) => {
@@ -293,14 +293,14 @@ export class ChatPage extends Block {
                       srcAvatar="${chat.avatar}"
                       userName="${chat.title}"
                     }}}
-                    <p class="chat__user-name">${chat.title}</p>
+                    <p class="chat-user-name">${chat.title}</p>
                 `;
                 })
               }
               </div>
               {{{BurgerMenu onClick=handleOpenUserMenu}}}
             </div>
-            <ul class="chat__messages">
+            <ul class="chat-messages">
               ${messages
                 .map((message: MessageDTO) => {
                   const isUniqCurrentMessage = uniqMessages.find(

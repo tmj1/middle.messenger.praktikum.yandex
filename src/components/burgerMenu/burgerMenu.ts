@@ -13,7 +13,7 @@ export class BurgerMenu extends Block {
     return `
       <button class="burger-menu" aria-label="Кнопка меню">
         <svg
-          class="burger-menu__btn-icon"
+          class="burger-menu-_btn-icon"
           width="3"
           height="16"
           viewBox="0 0 3 16"

@@ -7,6 +7,7 @@ import {
   DELETE_USER_FORM,
   DATA_ATTRIBUTE_USER_ID,
 } from 'utils/constants';
+
 import { showTooltip } from 'utils';
 
 interface SubmitFormProps {
@@ -18,6 +19,7 @@ interface SubmitFormProps {
   isValidField?: boolean | undefined;
   isNotCloseBySubmit?: boolean;
 }
+
 const handleSubmitForm = ({
   stateForm,
   inputSelector,

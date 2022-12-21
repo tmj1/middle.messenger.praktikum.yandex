@@ -3,29 +3,29 @@
   background-color: var(--bg-list-color);
   border-right: 1px solid var(--line-color);
 }
-.profile-btn__link {
-    box-sizing: border-box;
-    cursor: pointer;
-    border: none;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s opacity;
-  }
+.profile-btn-link {
+  box-sizing: border-box;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s opacity;
+}
 
-.profile-btn__link:hover {
-    opacity: 0.8;
-  }
+.profile-btn-link:hover {
+  opacity: 0.8;
+}
 
-.profile-btn__wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--secondary-color);
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-  }
+.profile-btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+}

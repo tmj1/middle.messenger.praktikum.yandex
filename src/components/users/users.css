@@ -7,18 +7,18 @@
 }
 
 .users::-webkit-scrollbar {
-    width: 5px;
-  }
+  width: 5px;
+}
 
 .users::-webkit-scrollbar-track {
-    background: var(--light-gray-color);
-  }
+  background: var(--light-gray-color);
+}
 
 .users::-webkit-scrollbar-thumb {
-    background-color: var(--gray-color);
-    border-radius: 20px;
-  }
+  background-color: var(--gray-color);
+  border-radius: 20px;
+}
 
 .users_is-margin {
-    margin-top: 35px;
-  }
+  margin-top: 35px;
+}

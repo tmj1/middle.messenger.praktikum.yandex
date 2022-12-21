@@ -42,7 +42,7 @@ export class Message extends Block {
       <li class="message ${classesForTitle}">
         ${
           isFirstUniqMessage
-            ? `<p class="chat__text-date">${date.day} ${MONTH[date.month]}</p>`
+            ? `<p class="chat-text-date">${date.day} ${MONTH[date.month]}</p>`
             : ''
         }
         <p class="message__text ${classesForText}">

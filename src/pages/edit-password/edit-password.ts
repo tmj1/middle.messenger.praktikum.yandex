@@ -85,16 +85,16 @@ export class EditPasswordPage extends Block {
     // language=hbs
     return `
       <div class="profile">
-        <ul class="profile__wrapper">
+        <ul class="profile-wrapper">
         {{{BtnBackProfile onClick=handleBackBtn}}}
-          <li class="profile__column">
+          <li class="profile-column">
             <form
-              class="profile__form profile__form_el_edit-password-form"
+              class="profile-form profile-form_el_edit-password-form"
               novalidate
             >
               {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
-              <p class="profile__user-name">${display_name ? display_name : ''}</p>
-              <ul class="profile__list">
+              <p class="profile-user-name">${display_name ? display_name : ''}</p>
+              <ul class="profile-list">
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
                   onFocus=handleValidateInput
@@ -105,7 +105,7 @@ export class EditPasswordPage extends Block {
                   minlength="8"
                   maxlength="40"
                   name="oldPassword"
-                  formName="profile__form_el_edit-password-form"
+                  formName="profile-form_el_edit-password-form"
                 }}}
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -117,7 +117,7 @@ export class EditPasswordPage extends Block {
                   minlength="8"
                   maxlength="40"
                   name="newPassword"
-                  formName="profile__form_el_edit-password-form"
+                  formName="profile-form_el_edit-password-form"
                 }}}
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -128,12 +128,12 @@ export class EditPasswordPage extends Block {
                   value="" minlength="8"
                   maxlength="40"
                   name="repeatPassword"
-                  formName="profile__form_el_edit-password-form"
+                  formName="profile-form_el_edit-password-form"
                 }}}
                 {{{Button
                   onClick=handleSubmitForm
                   textBtn="Сохранить"
-                  classes="button_page_edit-password"
+                  classes="button-page-edit-password"
                   type="submit"
                 }}}
               </ul>

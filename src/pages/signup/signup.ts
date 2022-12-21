@@ -49,9 +49,9 @@ export class SignupPage extends Block {
     // language=hbs
     return `
       <div class="page">
-        <main class="page__form">
+        <main class="page-form">
           <form class="auth" name="signup" novalidate>
-            <h1 class="auth__title">Регистрация</h1>
+            <h1 class="auth-title">Регистрация</h1>
             {{{InputWrapper
               onInput=handleChangeInput
               onFocus=handleValidateInput
@@ -125,7 +125,7 @@ export class SignupPage extends Block {
               onClick=handleSubmitForm
               textBtn="Зарегистрироваться"
               type="submit"
-              classes="button_is-auth"
+              classes="button-is-auth"
             }}}
             {{{AuthLink
               onClick=handleLinkBtn

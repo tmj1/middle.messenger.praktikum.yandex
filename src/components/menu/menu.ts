@@ -73,7 +73,7 @@ export class Menu extends Block {
               onClick=handleRemoveChat
               textBtn="Удалить чат"
               type="button"
-              classes="button_el_remove-item"
+              classes="button-el-remove-item"
             }}}
             </li>
           </ul>

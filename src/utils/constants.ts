@@ -5,23 +5,23 @@ const config = {
   inputHelperTextSelector: 'input__helper-text',
   isShowHelperTextSelector: 'input__helper-text_show',
   btnSubmitFormSelector: 'button',
-  isDisableBtnSubmitSelector: 'button_disable',
+  isDisableBtnSubmitSelector: 'button-disable',
   labelTextSelector: 'input__text',
   isValuelabelTextSelector: 'input__text_isValue',
   messagesSelector: 'list-item',
-  contentDefaultSelector: 'chat__column-default',
-  contentDialogSelector: 'chat__column-dialog',
+  contentDefaultSelector: 'chat-column-default',
+  contentDialogSelector: 'chat-column-dialog',
   popupAddUserSelector: 'popup_add-user',
   popupDeleteUserSelector: 'popup_delete-user',
   popupChangeAvatarSelector: 'popup_change-avatar',
   popupAddChatSelector: 'popup_add-chat',
   isActiveChatSelector: 'list-item_is-active',
-  hiddenChatSelector: 'chat__column_is-hidden',
+  hiddenChatSelector: 'chat-column_is-hidden',
   burgerMenuSelector: 'burger-menu',
-  isActiveBurgerMenuSelector: 'burger-menu_active',
+  isActiveBurgerMenuSelector: 'burger-menu-active',
   isOpenPopupSelector: 'popup_opened',
   popoverSelector: 'popover',
-  btnAttachSelector: 'chat-footer__btn-attach',
+  btnAttachSelector: 'chat-footer-btn-attach',
   isShowPopoverSelector: 'popover_is-show',
   menuItemSelector: 'menu__item',
   popupСontainerSelector: 'popup__container',
@@ -33,13 +33,13 @@ const config = {
   isShowMenuSelector: 'menu_is-show',
   menuBtnSelector: 'menu-button',
   searchInputByChatsSelector: 'input-chat',
-  imgFromSearchInputByChatsSelector: 'search-chat__img',
+  imgFromSearchInputByChatsSelector: 'search-chat-img',
   inputProfileSelector: 'input-profile',
   menuBtnAddUserSelector: 'menu__btn_add-user',
   menuBtnDeleteUserSelector: 'menu__btn_delete-user',
   inputProfileHelperTextSelector: 'input-profile-wrapper__error',
   isShowInputProfileHelperTextSelector: 'input-profile-wrapper__error_is-show',
-  addChatBtnSelector: 'search-chat__btn',
+  addChatBtnSelector: 'search-chat-btn',
   usersSelector: 'users',
   userItemSelector: 'user-item',
   userItemWrapperSelector: 'user-item__wrapper',
@@ -48,9 +48,9 @@ const config = {
   userItemTextEmailSelector: 'user-item__text-email',
   userItemBtnSelector: 'user-item__btn',
   tooltipSelector: 'tooltip',
-  tooltipIsSuccessSelector: 'tooltip_is-success',
-  tooltipIsErrorSelector: 'tooltip_is-error',
-  chatFooterInputSelector: 'chat-footer__input',
+  tooltipIsSuccessSelector: 'tooltip-is-success',
+  tooltipIsErrorSelector: 'tooltip-is-error',
+  chatFooterInputSelector: 'chat-footer-input',
 };
 
 const DAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
@@ -93,8 +93,8 @@ const ADD_USER_FORM = 'popup__form_add-user';
 const DELETE_USER_FORM = 'popup__form_delete-user';
 const SIGNIN_FORM = 'signin';
 const SIGNUP_FORM = 'signup';
-const EDIT_PASSWORD_FORM = 'profile__form_el_edit-password-form';
-const EDIT_PROFILE_FORM = 'profile__form_el_edit-form';
+const EDIT_PASSWORD_FORM = 'profile-form_el_edit-password-form';
+const EDIT_PROFILE_FORM = 'profile-form_el_edit-form';
 const AUTH_FORM = 'auth';
 const USER_NAME_FIELD = 'first_name';
 const LAST_NAME_USER_FIELD = 'second_name';

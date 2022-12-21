@@ -14,18 +14,18 @@ export class ChatFooter extends Block {
     // language=hbs
     return `
       <div class="chat-footer">
-        <form class="chat-footer__form">
-          <button class="chat-footer__btn-attach" type="button" aria-label="Прирепить файл">
+        <form class="chat-footer-form">
+          <button class="chat-footer-btn-attach" type="button" aria-label="Прирепить файл">
             <img
-              class="chat-footer__icon-attach"
+              class="chat-footer-icon-attach"
               src="${attachBtn}"
               alt="Иконка прирепить файл"
             />
           </button>
-          <input class="chat-footer__input" type="text" placeholder="Поиск" required />
-          <button class="chat-footer__btn-send" type="submit" aria-label="Отправить сообщение">
+          <input class="chat-footer-input" type="text" placeholder="Поиск" required />
+          <button class="chat-footer-btn-send" type="submit" aria-label="Отправить сообщение">
             <img
-              class="chat-footer__icon-send"
+              class="chat-footer-icon-send"
               src="${sendBtn}"
               alt="Иконка отправить сообщение"
             />
