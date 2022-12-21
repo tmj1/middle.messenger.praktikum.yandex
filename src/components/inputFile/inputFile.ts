@@ -8,8 +8,8 @@ export class InputFile extends Block {
     // language=hbs
     return `
       <label class="input-file">
-        <input class="input-file__input" type="file" name="avatar" accept="image/*" />
-        <span class="input-file__span">Выбрать файл</span>
+        <input class="input-file-input" type="file" name="avatar" accept="image/*" />
+        <span class="input-file-span">Выбрать файл</span>
       </label>
     `;
   }

@@ -12,16 +12,17 @@
   }
 }
 
-.input__is-auth {
+.input-is-auth {
   margin-bottom: 136px;
 }
+
 @media screen and (max-width: 320px) {
-  .input__is-auth {
+  .input-is-auth {
     margin-bottom: 120px;
   }
 }
 
-.input__text-field {
+.input-text-field {
   box-sizing: border-box;
   outline: none;
   border: none;
@@ -36,11 +37,11 @@
   margin-bottom: 7px;
 }
 
-.input__label {
+.input-label {
   cursor: text;
 }
 
-.input__text {
+.input-text {
   position: absolute;
   top: 6px;
   left: 0;
@@ -51,27 +52,28 @@
   line-height: 13px;
   transition: 0.3s font-size, top 0.3s;
 }
+
 @media screen and (max-width: 425px) {
-  .input__text {
+  .input-text {
     font-size: 12px;
   }
 }
 
-.input__text__text_error {
+.input-text-text-error {
   color: var(--warning-color);
 }
 
-.input__text__text-field:valid + .input__text__text {
+.input-text-text-field:valid + .input-text-text {
   top: -8px;
 }
 
-.input__text__text-field:focus + .input__text__text {
+.input-text-text-field:focus + .input-text-text {
   top: -12px;
   font-size: 9px;
   line-height: 9px;
 }
 
-.input__text__helper-text {
+.input-text-helper-text {
   margin: 0;
   min-height: 8px;
   font-size: 8px;
@@ -81,11 +83,11 @@
   opacity: 0;
 }
 
-.input__text__helper-text_show {
+.input-text-helper-text_show {
   opacity: 1;
 }
 
-.input__text__text_isValue {
+.input-text-text-isValue {
   top: -12px !important;
   font-size: 9px;
   line-height: 9px;

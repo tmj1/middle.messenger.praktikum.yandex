@@ -28,11 +28,11 @@
   opacity: 0.7;
 }
 
-.btn-profile-link_color_red {
+.btn-profile-link-color-red {
   color: var(--link-red-color);
 }
 
-.btn-profile-link_color_blue {
+.btn-profile-link-color-blue {
   color: var(--secondary-color);
 }
 

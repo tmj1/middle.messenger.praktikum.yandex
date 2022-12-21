@@ -249,7 +249,7 @@ export class ChatPage extends Block {
     return `
       <div class="page">
         <ul class="chat">
-          <li class="chat-column chat-column_left">
+          <li class="chat-column chat-column-left">
             {{{ChatLink onClick=handleLinkBtn}}}
             {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat-list">
@@ -282,7 +282,7 @@ export class ChatPage extends Block {
           <li class="chat-column chat-column-default">
             <h2 class="chat-title">Выберите чат чтобы отправить сообщение</h2>
           </li>
-          <li class="chat-column chat-column-dialog chat-column_is-hidden">
+          <li class="chat-column chat-column-dialog chat-column-is-hidden">
             <div class="chat-header">
               <div class="chat-inner">
               ${
@@ -331,9 +331,9 @@ export class ChatPage extends Block {
           helperText="Название"
           textBtn="Создать"
           classesPopup="popup_add-chat"
-          classesForm="popup__form_add-chat"
+          classesForm="popup-form_add-chat"
           isDefault=true
-          name="popup__form_add-chat"
+          name="popup-form_add-chat"
           fieldName="title"
         }}}
         {{{Popup
@@ -346,9 +346,9 @@ export class ChatPage extends Block {
           helperText="Логин"
           textBtn="Найти"
           classesPopup="popup_add-user"
-          classesForm="popup__form_add-user"
+          classesForm="popup-form_add-user"
           isDefault=true
-          name="popup__form_add-user"
+          name="popup-form_add-user"
           fieldName="login"
           users='${users}'
         }}}
@@ -356,9 +356,9 @@ export class ChatPage extends Block {
           onClick=handleDeleteUserFromChat
           title="Удалить пользователя"
           classesPopup="popup_delete-user"
-          classesForm="popup__form_delete-user"
+          classesForm="popup-form_delete-user"
           isDefault=true
-          name="popup__form_delete-user"
+          name="popup-form_delete-user"
           fieldName="login"
           users='${usersFromChats}'
         }}}

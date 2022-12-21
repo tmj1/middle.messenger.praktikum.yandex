@@ -4,7 +4,7 @@
   text-align: left;
 }
 
-.list-item_is-active {
+.list-item-is-active {
   background-color: var(--light-blue-color);
 }
 
@@ -13,18 +13,18 @@
   background-color: var(--light-blue-color);
 }
 
-.list-item__container {
+.list-item-container {
   display: flex;
   padding: 12px 0;
   border-top: 1px solid var(--line-color);
   margin: 0 10px;
 }
 
-.list-item__container:last-of-type {
+.list-item-container:last-of-type {
   border-bottom: 1px solid var(--line-color);
 }
 
-.list-item__user-name {
+.list-item-user-name {
   margin: 0;
   font-size: 13px;
   color: var(--primary-color);
@@ -33,7 +33,7 @@
   margin-bottom: 6px;
 }
 
-.list-item__message {
+.list-item-message {
   margin: 0;
   max-width: 193px;
   font-size: 12px;
@@ -42,12 +42,12 @@
   line-height: 15px;
 }
 
-.list-item__message_bold {
+.list-item-message-bold {
   color: var(--primary-color);
   margin-right: 3px;
 }
 
-.list-item__wrap {
+.list-item-wrap {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -55,7 +55,7 @@
   flex-grow: 1;
 }
 
-.list-item__time {
+.list-item-time {
   margin: 0;
   white-space: nowrap;
   align-self: flex-end;
@@ -65,7 +65,7 @@
   line-height: 13px;
 }
 
-.list-item__count-message {
+.list-item-count-message {
   display: none;
   margin: 0;
   align-self: flex-end;
@@ -78,11 +78,11 @@
   border-radius: 50%;
 }
 
-.list-item__count-message_is-show {
+.list-item-count-message-is-show {
   display: block;
 }
 
-.list-item__plug-avatar {
+.list-item-plug-avatar {
   margin-right: 10px;
   width: 47px;
   height: 47px;

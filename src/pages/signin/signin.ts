@@ -65,7 +65,7 @@ export class SigninPage extends Block {
               helperText="Пароль"
               minlength="8"
               maxlength="40"
-              classes="input_is-auth"
+              classes="input-is-auth"
               name="password"
             }}}
             {{{Button

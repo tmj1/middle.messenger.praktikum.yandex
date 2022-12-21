@@ -118,7 +118,7 @@ export class SignupPage extends Block {
               helperText="Пароль (ещё раз)"
               minlength="8"
               maxlength="40"
-              classes="input_is-auth"
+              classes="input-is-auth"
               name="repeatPassword"
             }}}
             {{{Button

@@ -46,9 +46,9 @@ export class Menu extends Block {
     // language=hbs
     return `
       {{#if ${this.state.isUser}}}
-        <nav class="menu menu__list_element_user">
-          <ul class="menu__list">
-            <li class="menu__item">
+        <nav class="menu menu-list-element_user">
+          <ul class="menu-list">
+            <li class="menu-item">
               {{{MenuButton
                 text="Добавить пользователя"
                 icon="${plus}"
@@ -58,7 +58,7 @@ export class Menu extends Block {
                 onClick=handleAddUserPopup
               }}}
             </li>
-            <li class="menu__item">
+            <li class="menu-item">
               {{{MenuButton
                 text="Удалить пользователя"
                 icon="${close}"
@@ -68,7 +68,7 @@ export class Menu extends Block {
                 onClick=handleDeleteUserPopup
               }}}
             </li>
-            <li class="menu__item">
+            <li class="menu-item">
             {{{Button
               onClick=handleRemoveChat
               textBtn="Удалить чат"
@@ -79,9 +79,9 @@ export class Menu extends Block {
           </ul>
         </nav>
       {{else}}
-        <nav class="menu menu__list_element_file">
-          <ul class="menu__list">
-            <li class="menu__item">
+        <nav class="menu menu-list-element_file">
+          <ul class="menu-list">
+            <li class="menu-item">
               {{{MenuButton
                 text="Фото или Видео"
                 icon="${photo}"
@@ -90,7 +90,7 @@ export class Menu extends Block {
                 type="button"
               }}}
             </li>
-            <li class="menu__item">
+            <li class="menu-item">
               {{{MenuButton
                 text="Файл"
                 icon="${file}"
@@ -99,7 +99,7 @@ export class Menu extends Block {
                 type="button"
               }}}
             </li>
-            <li class="menu__item">
+            <li class="menu-item">
               {{{MenuButton
                 text="Локация"
                 icon="${location}"

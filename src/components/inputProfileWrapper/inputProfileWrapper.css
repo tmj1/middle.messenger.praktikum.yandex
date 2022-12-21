@@ -11,11 +11,11 @@
   margin-bottom: 0;
 }
 
-.input-profile-wrapper__label {
+.input-profile-wrapper-label {
   position: relative;
 }
 
-.input-profile-wrapper__span {
+.input-profile-wrapper-span {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -27,7 +27,7 @@
   line-height: 13px;
 }
 
-.input-profile-wrapper__input {
+.input-profile-wrapper-input {
   box-sizing: border-box;
   border: none;
   outline: none;
@@ -40,7 +40,7 @@
   transition: 0.3s color;
 }
 
-.input-profile-wrapper__error {
+.input-profile-wrapper-error {
   display: none;
   font-size: 8px;
   color: var(--link-red-color);
@@ -50,6 +50,6 @@
   overflow: hidden;
 }
 
-.input-profile-wrapper__error_is-show {
+.input-profile-wrapper-error-is-show {
   display: block;
 }

@@ -19,9 +19,9 @@ export class Error extends Block {
     // language=hbs
     return `
       <div class="error">
-        <h1 class="error__title">${title}</h1>
-        <p class="error__subtitle">${subtitle}</p>
-        <button class="error__link" type="button">Назад к чатам</button>
+        <h1 class="error-title">${title}</h1>
+        <p class="error-subtitle">${subtitle}</p>
+        <button class="error-link" type="button">Назад к чатам</button>
       </div>
     `;
   }

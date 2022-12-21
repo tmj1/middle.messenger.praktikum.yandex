@@ -3,6 +3,7 @@
   background-color: var(--bg-list-color);
   border-right: 1px solid var(--line-color);
 }
+
 .profile-btn-link {
   box-sizing: border-box;
   cursor: pointer;

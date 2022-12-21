@@ -53,7 +53,7 @@ export class FormPopup extends Block {
       this.state;
 
     const renderFormElement = () => {
-      if (classesForm !== 'popup__form_delete-user') {
+      if (classesForm !== 'popup-form_delete-user') {
         return isDefault
           ? `
             {{{InputWrapper
@@ -94,7 +94,7 @@ export class FormPopup extends Block {
                 {{{Users
                   users='${users}'
                   onClick=onClick
-                  type="${classesForm === 'popup__form_delete-user' ? 'delete' : 'add'}"
+                  type="${classesForm === 'popup-form_delete-user' ? 'delete' : 'add'}"
                 }}}`
                 : ''
             }

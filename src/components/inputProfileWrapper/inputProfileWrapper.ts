@@ -49,7 +49,7 @@ export class InputProfileWrapper extends Block {
     // language=hbs
     return `
       <li class="input-profile-wrapper">
-        <label class="input-profile-wrapper__label">
+        <label class="input-profile-wrapper-label">
           {{{InputProfile
             onInput=onInput
             onFocus=onFocus
@@ -60,8 +60,8 @@ export class InputProfileWrapper extends Block {
             minlength="${minlength}"
             maxlength="${maxlength}"
           }}}
-          <span class="input-profile-wrapper__span">${helperText}</span>
-          <span class="input-profile-wrapper__error"></span>
+          <span class="input-profile-wrapper-span">${helperText}</span>
+          <span class="input-profile-wrapper-error"></span>
         </label>
       </li>
     `;

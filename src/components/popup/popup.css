@@ -14,12 +14,12 @@
   transition: 0.2s ease-in;
 }
 
-.popup_opened {
+.popup-opened {
   visibility: visible;
   opacity: 1;
 }
 
-.popup__container {
+.popup-container {
   cursor: default;
   background-color: var(--third-color);
   box-sizing: border-box;
@@ -29,7 +29,7 @@
   border-radius: 12px;
 }
 
-.popup__title {
+.popup-title {
   margin: 0;
   font-size: 15px;
   color: var(--primary-color);
@@ -39,6 +39,6 @@
   margin-bottom: 50px;
 }
 
-.popup__form {
+.popup-form {
   font-family: inherit;
 }

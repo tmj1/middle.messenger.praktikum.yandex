@@ -20,12 +20,12 @@ export class EditAvatar extends Block {
     // language=hbs
     return `
       <div class="edit-avatar">
-        <img class="edit-avatar__img" src="${
+        <img class="edit-avatar-img" src="${
           avatar !== 'undefined' && avatar !== 'null'
             ? `${BASE_URL_RESOURCES}${avatar}`
             : defaultIcon
         }" alt="Аватар по умолчанию" />
-        <span class="edit-avatar__span">Поменять аватар</span>
+        <span class="edit-avatar-span">Поменять аватар</span>
       </div>
     `;
   }

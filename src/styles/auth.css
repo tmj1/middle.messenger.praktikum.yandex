@@ -8,17 +8,18 @@
   box-shadow: 0 0 6px 0 var(--shadow);
   border-radius: 12px;
 }
+
 @media screen and (max-width: 425px) {
   .auth {
     max-width: none;
     margin: 0 16px;
-    }
+  }
 }
 
 @media screen and (max-width: 320px) {
   .auth {
     margin: 0 10px;
-    }
+  }
 }
 
 .auth-title {
@@ -31,6 +32,7 @@
   text-align: center;
   margin-bottom: 50px;
 }
+
 @media screen and (max-width: 425px) {
   .auth-title {
     font-size: 18px;

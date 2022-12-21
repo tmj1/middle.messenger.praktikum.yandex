@@ -10,7 +10,7 @@
   position: relative;
   display: block;
   width: 100%;
-  }
+}
 
 .search-chat-img {
   cursor: text;
@@ -36,7 +36,7 @@
 }
 
 .search-chat-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,7 +47,7 @@
 }
 
 .search-chat-btn::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;

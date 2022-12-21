@@ -54,29 +54,29 @@ export class ListItem extends Block {
 
     const lastMessageText =
       isOwnerLastMessage === 'true'
-        ? `<span class="list-item__message list-item__message_bold">Вы:</span>${lastMessage}`
+        ? `<span class="list-item-message list-item-message-bold">Вы:</span>${lastMessage}`
         : lastMessage;
 
     // language=hbs
     return `
       <li class="list-item" ${DATA_ATTRIBUTE_CHAT_ID}="${id}">
-        <div class="list-item__container">
+        <div class="list-item-container">
           ${
             srcAvatar
-              ? '<div class="list-item__plug-avatar"></div>'
+              ? '<div class="list-item-plug-avatar"></div>'
               : `{{{Avatar srcAvatar="${srcAvatar}" userName="${userName}"}}}`
           }
           <div class="list-item__inner">
-            <p class="list-item__user-name">${userName}</p>
-            <p class="list-item__message">
+            <p class="list-item-user-name">${userName}</p>
+            <p class="list-item-message">
               ${lastMessage !== 'null' ? lastMessageText : ''}
             </p>
           </div>
-          <div class="list-item__wrap">
-            <time class="list-item__time">${
+          <div class="list-item-wrap">
+            <time class="list-item-time">${
               time !== 'null' ? DAYS[date.day - 1] : ''
             }</time>
-            <p class="list-item__count-message {{#if ${countNotReadMessage}}}list-item__count-message_is-show{{/if}}">${countNotReadMessage}</p>
+            <p class="list-item-count-message {{#if ${countNotReadMessage}}}list-item-count-message-is-show{{/if}}">${countNotReadMessage}</p>
           </div>
         </div>
       </li>

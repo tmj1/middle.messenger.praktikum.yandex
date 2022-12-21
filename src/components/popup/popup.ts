@@ -72,8 +72,8 @@ export class Popup extends Block {
     // language=hbs
     return `
       <div class="popup ${classesPopup ? classesPopup : ''}">
-        <div class="popup__container">
-          <h2 class="popup__title">${title}</h2>
+        <div class="popup-container">
+          <h2 class="popup-title">${title}</h2>
           {{{FormPopup
             onSubmit=onSubmit
             onInput=onInput

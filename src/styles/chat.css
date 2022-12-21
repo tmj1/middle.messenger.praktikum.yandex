@@ -10,14 +10,14 @@
   list-style: none;
 }
 
-.chat-column_left {
+.chat-column-left {
   background-color: var(--bg-list-color);
   border-right: 1px solid var(--line-color);
   overflow-y: auto;
   text-align: right;
 }
 
-.chat-column_left::-webkit-scrollbar {
+.chat-column-left::-webkit-scrollbar {
   width: 0;
 }
 
@@ -38,7 +38,7 @@
   width: 0;
 }
 
-.chat-column_is-hidden {
+.chat-column-is-hidden {
   display: none;
 }
 

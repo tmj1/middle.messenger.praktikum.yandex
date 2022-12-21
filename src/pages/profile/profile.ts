@@ -97,19 +97,19 @@ export class ProfilePage extends Block {
                 {{{BtnProfile
                   onClick=handleLinkToChangeProfile
                   text="Изменить данные"
-                  classes="btn-profile-link_color_red"
+                  classes="btn-profile-link-color-red"
                   type="link"
                 }}}
                 {{{BtnProfile
                   onClick=handleLinkToChangePassword
                   text="Изменить пароль"
-                  classes="btn-profile-link_color_red"
+                  classes="btn-profile-link-color-red"
                   type="link"
                 }}}
                 {{{BtnProfile
                   onClick=handleSignOut
                   text="Выйти"
-                  classes="btn-profile-link_color_blue"
+                  classes="btn-profile-link-color-blue"
                   type="button"
                 }}}
               </ul>
