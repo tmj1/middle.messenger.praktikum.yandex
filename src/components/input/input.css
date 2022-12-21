@@ -15,6 +15,7 @@
 .input-is-auth {
   margin-bottom: 136px;
 }
+
 @media screen and (max-width: 320px) {
   .input-is-auth {
     margin-bottom: 120px;
@@ -51,6 +52,7 @@
   line-height: 13px;
   transition: 0.3s font-size, top 0.3s;
 }
+
 @media screen and (max-width: 425px) {
   .input-text {
     font-size: 12px;

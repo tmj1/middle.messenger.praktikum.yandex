@@ -46,7 +46,7 @@ export class Menu extends Block {
     // language=hbs
     return `
       {{#if ${this.state.isUser}}}
-        <nav class="menu menu-list-element_user">
+        <nav class="menu menu-list-element-user">
           <ul class="menu-list">
             <li class="menu-item">
               {{{MenuButton
@@ -79,7 +79,7 @@ export class Menu extends Block {
           </ul>
         </nav>
       {{else}}
-        <nav class="menu menu-list-element_file">
+        <nav class="menu menu-list-element-file">
           <ul class="menu-list">
             <li class="menu-item">
               {{{MenuButton
