@@ -1,6 +1,6 @@
 import { store } from 'core';
 import { BASE_URL_WSS, showTooltip, CONNECTION_PROBLEMS } from 'utils';
-import { InitialStateType } from 'types';
+import { InitialStateType, MessageDT } from 'types';
 
 
 class MessagesService {
@@ -88,7 +88,7 @@ class MessagesService {
     }
   }
 
-  public connect(userId: number, chatId: number, token: string) {
+  public connect({ userId, chatId, token }: MessageDT) {
     if (this._chatId !== chatId) {
       this._leave();
       this._userId = userId;
