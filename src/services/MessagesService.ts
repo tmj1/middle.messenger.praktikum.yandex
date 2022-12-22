@@ -88,7 +88,7 @@ class MessagesService {
     }
   }
 
-  public connect({ userId, chatId, token }: any)
+  public connect(userId: number, chatId: number, token: string) {
     if (this._chatId !== chatId) {
       this._leave();
       this._userId = userId;
