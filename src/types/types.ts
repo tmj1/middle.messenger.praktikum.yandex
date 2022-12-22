@@ -123,6 +123,12 @@ interface MessageDTO {
   user_id: number;
 }
 
+interface MessageDT {
+  chat_id: number;
+  user_id: number;
+  token: string;
+}
+
 interface UserType {
   avatar: null | string;
   display_name: string;
@@ -188,6 +194,7 @@ export {
   UserPasswordType,
   STORE_EVENTS,
   MessageDTO,
+  MessageDT,
   RemoveUserFromChat,
   InitialStateType,
   UserType,
