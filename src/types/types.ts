@@ -124,8 +124,8 @@ interface MessageDTO {
 }
 
 interface MessageDT {
-  chat_id: number;
-  user_id: number;
+  chatId: number;
+  userId: number;
   token: string;
 }
 
