@@ -19,6 +19,7 @@ export {
   UserPasswordType,
   STORE_EVENTS,
   MessageDTO,
+  MessageDT,
   RemoveUserFromChat,
   InitialStateType,
   UserType,
