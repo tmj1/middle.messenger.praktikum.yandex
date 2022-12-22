@@ -24,7 +24,7 @@ export class Avatar extends Block {
       <img
         class="avatar"
         src="${
-          srcAvatar !== 'undefined' && srcAvatar !== 'null'
+          !srcAvatar
             ? `${BASE_URL_RESOURCES}${srcAvatar}`
             : defaultIcon
         }"
