@@ -1,8 +1,11 @@
-import Block from 'core/Block';
+import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
-import { FormValidator } from 'utils/classes/FormValidator';
-import { config, AUTH_FORM } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+import { FormValidator } from 'utils/classes';
+import { config, AUTH_FORM, PATHNAMES } from 'utils/constants';
+import { handleSubmitForm, checkOnValueInput } from 'utils';
+import { authService } from 'services';
+import { SigninType } from 'types';
+
 
 const signinFormValidator = new FormValidator(
   config,
@@ -23,24 +26,27 @@ export class SigninPage extends Block {
       },
       handleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: signinFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
           formSelector: AUTH_FORM,
           disableBtn: signinFormValidator.disableBtn,
           addErrors: signinFormValidator.addErrorsForInput,
         });
+
+        dataForm && authService.signin(dataForm as SigninType);
       },
-      //handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
+      handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
+      handleLinkBtn: () => router.go(PATHNAMES['SIGNUP_PATH']),
     };
   }
   render() {
     // language=hbs
     return `
       <div class="page">
-        <main class="page__form">
+        <main class="page-form">
           <form class="auth" name="signin" novalidate>
-            <h1 class="auth__title">Вход</h1>
+            <h1 class="auth-title">Вход</h1>
             {{{InputWrapper
               onInput=handleChangeInput
               onFocus=handleValidateInput
@@ -59,24 +65,22 @@ export class SigninPage extends Block {
               helperText="Пароль"
               minlength="8"
               maxlength="40"
-              classes="input_is-auth"
+              classes="input-is-auth"
               name="password"
             }}}
             {{{Button
               onClick=handleSubmitForm
               textBtn="Авторизоваться"
               type="submit"
-              classes="button_is-auth"
+              classes="button-is-auth"
             }}}
-            <a class="auth__link" href="/signup">Создать профиль</a>
-            <a class="auth__link" href="/chat">Чат</a>
-            <a class="auth__link" href="/profile">Профиль</a>
-            <a class="auth__link" href="/not-found">404</a>
-            <a class="auth__link" href="/server-error">5**</a>
+            {{{AuthLink
+              onClick=handleLinkBtn
+              text="Нет аккаунта?"
+            }}}
           </form>
         </main>
       </div>
     `;
   }
 }
-

@@ -13,9 +13,9 @@
 }
 
 .menu-button:hover {
-    opacity: 0.8;
-  }
+  opacity: 0.8;
+}
 
-.menu-button__icon {
-    margin-right: 15px;
-  }
+.menu-button-icon {
+  margin-right: 15px;
+}

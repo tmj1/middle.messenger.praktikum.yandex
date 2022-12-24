@@ -1,5 +1,6 @@
 import { View } from './View';
 
+
 export class Chat extends View {
   constructor(config: Record<string, string>) {
     super();
@@ -21,6 +22,12 @@ export class Chat extends View {
     );
   }
 
+  private _removeActiveClassName = () => {
+    document
+      .querySelector(`.${this._isActiveChatSelector}`)
+      ?.classList.remove(this._isActiveChatSelector);
+  };
+
   private _hiddenImg = () => {
     if (this._imgFromSearchInputByChats) {
       this._imgFromSearchInputByChats.style.display = 'none';
@@ -32,17 +39,12 @@ export class Chat extends View {
       this._imgFromSearchInputByChats.style.display = 'block';
     }
   };
-  
-  private _removeActiveClassName = () => {
-    document
-        .querySelector(`.${this._isActiveChatSelector}`)
-        ?.classList.remove(this._isActiveChatSelector);
-  };
-  
+
   public addActiveClassName(evt: Event) {
     this._removeActiveClassName();
+
     this._element = evt.currentTarget as Element;
-    this._element.classList.add(this._isActiveChatSelector);
+    this._element?.classList.add(this._isActiveChatSelector);
     if (this._contentDefault && this._contentDialog) {
       this._contentDefault.classList.add(this._hiddenChatSelector);
       this._contentDialog.classList.remove(this._hiddenChatSelector);

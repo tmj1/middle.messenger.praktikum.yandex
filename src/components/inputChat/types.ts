@@ -3,4 +3,3 @@ export interface InputChatProps {
   placeholder?: string;
 }
 
-

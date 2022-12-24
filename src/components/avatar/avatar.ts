@@ -1,6 +1,9 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './avatar.css';
 import { AvatarProps } from './types';
+import defaultIcon from 'img/avatar.svg';
+import { BASE_URL_RESOURCES } from 'utils';
+
 
 export class Avatar extends Block {
   static componentName = 'Avatar';
@@ -15,11 +18,16 @@ export class Avatar extends Block {
   }
   protected render(): string {
     const { userName, srcAvatar } = this.state;
+
     // language=hbs
     return `
       <img
         class="avatar"
-        src="${srcAvatar}"
+        src="${
+          !srcAvatar
+            ? `${BASE_URL_RESOURCES}${srcAvatar}`
+            : defaultIcon
+        }"
         alt="Аватар пользователя ${userName}"
       />
     `;
