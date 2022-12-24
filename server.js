@@ -1,15 +1,17 @@
 const express = require('express');
 const path = require('path');
 
+const PORT = process.env.PORT || 3000;
+const ARTIFACTS_FOLDER = 'dist';
+const INDEX_HTML = 'index.html';
+
 const app = express();
 
-const { PORT = 3000 } = process.env;
-const pathName = path.join(__dirname, '../Sprint 2 git/dist/index.html');
-
-app.use(express.static('./dist'));
-
-app.get('/*', (req, res) => {
-  res.sendFile(pathName);
+app.use(express.static(path.join(__dirname, ARTIFACTS_FOLDER)));
+app.use('*', (_, res) => {
+  res.sendFile(path.join(__dirname, ARTIFACTS_FOLDER, INDEX_HTML));
 });
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+});

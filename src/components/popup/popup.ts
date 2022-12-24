@@ -1,6 +1,7 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './popup.css';
 import { PopupProps } from './types';
+
 
 export class Popup extends Block {
   static componentName = 'Popup';
@@ -8,13 +9,16 @@ export class Popup extends Block {
     classesPopup,
     classesForm,
     name,
+    fieldName,
     title,
     isDefault,
     helperText,
     textBtn,
+    users,
     onInput,
     onFocus,
     onBlur,
+    onSubmit,
     onClick,
   }: PopupProps) {
     super({
@@ -22,71 +26,68 @@ export class Popup extends Block {
       classesForm,
       name,
       title,
+      fieldName,
       isDefault,
       helperText,
       textBtn,
+      users,
       onInput,
       onFocus,
       onBlur,
+      onSubmit,
       onClick,
     });
   }
-
   protected getStateFromProps(props: PopupProps): void {
     this.state = {
       classesPopup: props.classesPopup,
       classesForm: props.classesForm,
       name: props.name,
+      fieldName: props.fieldName,
       title: props.title,
       isDefault: props.isDefault,
       helperText: props.helperText,
       textBtn: props.textBtn,
-      onClick: props.onClick,
+      users: props.users,
+      onSubmit: props.onSubmit,
       onInput: props.onInput,
-      onFocus: onfocus,
-      onBlur: onblur,
+      onFocus: props.onFocus,
+      onBlur: props.onBlur,
+      onClick: props.onClick,
     };
   }
 
   protected render(): string {
-    const { classesPopup, classesForm, name, title, isDefault, helperText, textBtn } =
-      this.state;
+    const {
+      classesPopup,
+      classesForm,
+      name,
+      fieldName,
+      title,
+      isDefault,
+      helperText,
+      textBtn,
+      users,
+    } = this.state;
     // language=hbs
     return `
       <div class="popup ${classesPopup ? classesPopup : ''}">
-        <div class="popup__container">
-          <h2 class="popup__title">${title}</h2>
-          <form class="popup__form ${
-            classesForm ? classesForm : ''
-          }" name="${name}" novalidate>
-            ${
-              isDefault
-                ? `
-                  {{{InputWrapper
-                    onInput=onInput
-                    onFocus=onFocus
-                    onBlur=onBlur
-                    type="text"
-                    helperText="${helperText}"
-                    minlength="5"
-                    maxlength="20"
-                    name="login"
-                  }}}
-                  {{{Button
-                    onClick=onClick
-                    textBtn="${textBtn}"
-                    type="submit"
-                  }}}
-                  `
-                : `
-                  {{{InputFile}}}
-                  {{{Button
-                    textBtn="${textBtn}"
-                    type="submit"
-                  }}}
-                  `
-            }
-          </form>
+        <div class="popup-container">
+          <h2 class="popup-title">${title}</h2>
+          {{{FormPopup
+            onSubmit=onSubmit
+            onInput=onInput
+            onFocus=onFocus
+            onBlur=onBlur
+            onClick=onClick
+            classesForm="${classesForm}"
+            name="${name}"
+            fieldName="${fieldName}"
+            isDefault=${isDefault}
+            helperText="${helperText}"
+            textBtn="${textBtn}"
+            users='${users}'
+          }}}
         </div>
       </div>
     `;

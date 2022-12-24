@@ -1,5 +1,6 @@
 import { View } from './View';
 
+
 export class Popup extends View {
   constructor(
     menuSelector: string,
@@ -13,16 +14,17 @@ export class Popup extends View {
     this._popupAddUserSelector = config.popupAddUserSelector;
     this._popupDeleteUserSelector = config.popupDeleteUserSelector;
     this._popupChangeAvatarSelector = config.popupChangeAvatarSelector;
+    this._popupAddChatSelector = config.popupAddChatSelector;
     this._isActiveChatSelector = config.isActiveChatSelector;
     this._hiddenChatSelector = config.hiddenChatSelector;
     this._isOpenPopupSelector = isOpenPopupSelector;
-    this._isActiveSettingsMenuSelector = config.isActiveSettingsMenuSelector;
+    this._isActiveBurgerMenuSelector = config.isActiveBurgerMenuSelector;
     this._popoverSelector = config.popoverSelector;
     this._btnAttachSelector = config.btnAttachSelector;
     this._isShowPopoverSelector = config.isShowPopoverSelector;
     this._contentDialogSelector = config.contentDialogSelector;
     this._menuItemSelector = config.menuItemSelector;
-    this._popupContainerSelector = config.popupContainerSelector;
+    this._popupСontainerSelector = config.popupСontainerSelector;
     this._editAvatarSelector = config.editAvatarSelector;
     this.editAvatarTextSelector = config.editAvatarTextSelector;
     this._menuListElementUserSelector = config.menuListElementUserSelector;
@@ -30,6 +32,7 @@ export class Popup extends View {
     this._isShowMenuSelector = config.isShowMenuSelector;
     this._menuBtnSelector = config.menuBtnSelector;
     this._editAvatarTextSelector = config.editAvatarTextSelector;
+    this._addChatBtnSelector = config.addChatBtnSelector;
     this._editAvatar = document.querySelector(`.${this._editAvatarSelector}`);
     this._editAvatarText = document.querySelector(`.${this.editAvatarTextSelector}`);
     this._contentDialog = document.querySelector(`.${this._contentDialogSelector}`);
@@ -55,11 +58,11 @@ export class Popup extends View {
   }
 
   private _addClassForUserMenu() {
-    this._btnMenu && this._btnMenu.classList.add(this._isActiveSettingsMenuSelector);
+    this._btnMenu && this._btnMenu.classList.add(this._isActiveBurgerMenuSelector);
   }
 
   private _removeClassForUserMenu() {
-    this._btnMenu && this._btnMenu.classList.remove(this._isActiveSettingsMenuSelector);
+    this._btnMenu && this._btnMenu.classList.remove(this._isActiveBurgerMenuSelector);
   }
 
   private _handleClosePopup() {
@@ -108,15 +111,27 @@ export class Popup extends View {
     const element = evt.target as HTMLElement;
 
     if (this._menu) {
-      const popupContainer = this._menu.querySelector(`.${this._popupContainerSelector}`);
+      const popupContainer = this._menu.querySelector(`.${this._popupСontainerSelector}`);
       const isEditAvatar = Array.from(this._menu.classList).includes(
         this._popupChangeAvatarSelector
+      );
+      const isAddChat = Array.from(this._menu.classList).includes(
+        this._popupAddChatSelector
       );
 
       this._closeMenuIfPopupIsOpen(popupContainer);
 
-      !isEditAvatar &&
+      !isAddChat &&
+        !isEditAvatar &&
         this._closeByOutsideZonePopup(popupContainer, this._menuBtnSelector, evt);
+
+      if (
+        isAddChat &&
+        !Array.from(element.classList).includes(this._addChatBtnSelector) &&
+        popupContainer
+      ) {
+        this._closeByOutsideZonePopup(popupContainer, this._addChatBtnSelector, evt);
+      }
 
       if (
         isEditAvatar &&

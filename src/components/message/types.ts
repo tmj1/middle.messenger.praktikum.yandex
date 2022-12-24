@@ -1,0 +1,4 @@
+interface MessageType {
+  isFirstUniqMessage: boolean;
+}
+

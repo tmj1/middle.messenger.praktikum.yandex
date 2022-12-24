@@ -1,6 +1,7 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './inputProfile.css';
 import { InputProfileProps } from './types';
+
 
 export class InputProfile extends Block {
   static componentName = 'InputProfile';
@@ -23,7 +24,6 @@ export class InputProfile extends Block {
       events: { input: onInput, focus: onFocus, blur: onBlur },
     });
   }
-
   protected getStateFromProps(props: InputProfileProps): void {
     this.state = {
       name: props.name,
@@ -33,7 +33,6 @@ export class InputProfile extends Block {
       value: props.value,
     };
   }
-
   protected render(): string {
     const { name, minlength, maxlength, type, value } = this.state;
     // language=hbs

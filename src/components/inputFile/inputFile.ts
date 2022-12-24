@@ -1,5 +1,6 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './inputFile.css';
+
 
 export class InputFile extends Block {
   static componentName = 'InputFile';
@@ -7,10 +8,9 @@ export class InputFile extends Block {
     // language=hbs
     return `
       <label class="input-file">
-        <input class="input-file__input" type="file" />
-        <span class="input-file__span">Выбрать файл</span>
+        <input class="input-file-input" type="file" name="avatar" accept="image/*" />
+        <span class="input-file-span">Выбрать файл</span>
       </label>
     `;
   }
 }
-
