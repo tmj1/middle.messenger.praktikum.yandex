@@ -1,5 +1,5 @@
 # Study project from [Yandex.Practicum](https://practicum.com/)
-Sprint 3
+Sprint 4
 Simple messenger for exchanging messages using web-sockets.
 [Ссылка на Swagger](https://ya-praktikum.tech/api/v2/swagger/#/)
 [Ссылка на Firma](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1&t=Jl07SkgmFGCOEy18-1)
