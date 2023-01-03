@@ -2,6 +2,7 @@ import { registerComponent, BrowseRouter as router } from 'core';
 import { getScreenComponent } from './utils/screenList';
 import { Screens } from 'types';
 import { components } from 'components';
+import './index.css';
 
 components.forEach((component) => {
   registerComponent(component);

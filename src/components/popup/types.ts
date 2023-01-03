@@ -12,6 +12,6 @@ export interface PopupProps {
   isDefault?: boolean;
   helperText?: Text;
   textBtn?: string;
-  users?: any;
+  users?: string;
 }
 

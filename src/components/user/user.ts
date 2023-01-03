@@ -7,12 +7,14 @@ export class Users extends Block {
     super({ users, events: { click: onClick } });
   }
 
-  protected getStateFromProps(props: any): void {
+  protected getStateFromProps(props: UsersProps): void {
     this.state = {
       users:
-        props?.users?.length ? ... : ...
+        props.users !== 'undefined' && props.users.length > 0
           ? JSON.parse(props.users)
           : [],
+      type: props.type,
+      onClick: props.onClick,
     };
   }
   protected render(): string {

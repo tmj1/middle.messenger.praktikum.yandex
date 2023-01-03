@@ -1,4 +1,5 @@
 import { Block } from 'core';
+import { FormPopupProps } from './types';
 import './formPopup.css';
 
 

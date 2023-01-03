@@ -7,7 +7,7 @@ import { REGEXP_REPLACE_PATHNAME } from 'utils/constants';
 
 export class Route<P = any> {
   private pathname: string;
-  private blockClass: BlockClass<P>;
+  private blockClass: BlockClass<any>;
   private block: Block | null = null;
   private props: props;
   private isPrefixId: boolean | undefined;

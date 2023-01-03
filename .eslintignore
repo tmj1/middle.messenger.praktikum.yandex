@@ -3,4 +3,6 @@
 /dist
 /.github
 /api
+babel.config.js
+webpack.config.js
 

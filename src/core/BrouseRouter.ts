@@ -25,7 +25,8 @@ class BrowseRouter {
 
   start() {
     window.onpopstate = (event) => {
-      this._onRoute(event.currentTarget?.location.pathname);
+      const target = event.currentTarget as Window;
+      this._onRoute(target.location.pathname);
     };
 
     this._onRoute(window.location.pathname);

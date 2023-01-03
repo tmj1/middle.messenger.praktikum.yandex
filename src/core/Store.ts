@@ -1,7 +1,6 @@
 import EventBus from './EventBus';
-import { STORE_EVENTS } from 'types';
+import { STORE_EVENTS } from '../types';
 import { initialState } from '../initialState';
-
 
 class Store<T> extends EventBus {
   state: T | null;
