@@ -35,7 +35,6 @@
   },
   "homepage": "https://github.com/tmj1/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
@@ -49,7 +48,6 @@
     "eslint": "^8.28.0",
     "handlebars": "^4.7.7",
     "mocha": "^10.2.0",
-    "parcel": "^2.8.0",
     "postcss-nested": "^5.0.6",
     "stylelint": "^14.15.0",
     "stylelint-config-standard": "^29.0.0",
