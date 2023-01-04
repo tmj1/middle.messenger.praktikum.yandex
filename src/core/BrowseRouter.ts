@@ -72,6 +72,10 @@ class BrowseRouter {
     }
     return router || this.routers.find((route) => route.match('*'));
   }
+
+  getHistory() {
+    return this.routers;
+  }
 }
 
 export default new BrowseRouter();
