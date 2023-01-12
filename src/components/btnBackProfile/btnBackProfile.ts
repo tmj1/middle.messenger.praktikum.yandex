@@ -1,11 +1,11 @@
 import { Block } from 'core';
 import './btnBackProfile.css';
 import { BtnBackProfileProps } from './types';
-import left_arrow from 'img/left-arrow.svg';
-
+import left_arrow from '../../image/left-arrow.svg';
 
 export class BtnBackProfile extends Block {
   static componentName = 'BtnBackProfile';
+
   constructor({ onClick }: BtnBackProfileProps) {
     super({ events: { click: onClick } });
   }

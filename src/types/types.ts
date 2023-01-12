@@ -1,6 +1,5 @@
 import { Block } from 'core';
 
-
 interface BlockClass<P> extends Function {
   new (props: P): Block<P>;
   componentName?: string;
@@ -123,12 +122,6 @@ interface MessageDTO {
   user_id: number;
 }
 
-interface MessageDT {
-  chatId: number;
-  userId: number;
-  token: string;
-}
-
 interface UserType {
   avatar: null | string;
   display_name: string;
@@ -167,7 +160,7 @@ interface InitialStateType {
 
 type props = Record<string, any>;
 
-enum STORE_EVENTS {
+enum StoreEvents {
   UPDATE = 'update',
   ADD_USERS = 'add-users',
   DELETE_USERS = 'delete-users',
@@ -192,9 +185,8 @@ export {
   UserInfoDTO,
   UserInfoType,
   UserPasswordType,
-  STORE_EVENTS,
+  StoreEvents,
   MessageDTO,
-  MessageDT,
   RemoveUserFromChat,
   InitialStateType,
   UserType,

@@ -6,8 +6,8 @@ enum METHODS {
   DELETE = 'DELETE',
 }
 
-
 type RequestData = Record<string, string | number>;
+
 type Data = Document | XMLHttpRequestBodyInit | null | undefined;
 
 type RequestOptions = {

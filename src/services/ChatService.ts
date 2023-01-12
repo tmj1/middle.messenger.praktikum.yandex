@@ -1,4 +1,4 @@
-import { ChatApi } from 'api';
+import { chatApi } from '../Api';
 import {
   CreateChatType,
   RemoveChatType,
@@ -6,23 +6,16 @@ import {
   GetChatTokenType,
   GetUserForChatType,
   RemoveUserFromChat,
-  STORE_EVENTS,
+  StoreEvents,
   InitialStateType,
   UserType,
 } from 'types';
-import {
-  showTooltip,
-  showError,
-  SUCCESS_CREATE_MESSAGE,
-  SUCCESS_REMOVE_CHAT_MESSAGE,
-  SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
-  SUCCESS_REMOVE_USER_FROM_CHAT,
-} from 'utils';
+import { showTooltip, showError, MESSAGES } from 'utils';
 import { store } from 'core';
 
 class ChatService {
   public createChat({ title }: CreateChatType) {
-    ChatApi
+    chatApi
       .createChat({ title })
       .then(({ response }: any) => {
         const state = store.getState() as InitialStateType;
@@ -40,37 +33,37 @@ class ChatService {
         store.setState({ chats: state.chats });
 
         showTooltip({
-          text: SUCCESS_CREATE_MESSAGE,
+          text: MESSAGES.SUCCESS_CREATE_MESSAGE,
           type: 'success',
         });
       })
       .catch(showError);
   }
   public getChats() {
-    ChatApi
+    chatApi
       .getChats()
       .then(({ response }: any) => store.setState({ chats: JSON.parse(response) }))
       .catch(showError);
   }
-  public removeChatById({ chatId }: RemoveChatType) {
-    ChatApi
-      .removeChatById({ chatId })
+  public removeChatById({ ...rest }: RemoveChatType) {
+    chatApi
+      .removeChatById({ ...rest })
       .then(() => {
         const state = store.getState() as InitialStateType;
 
         showTooltip({
-          text: SUCCESS_REMOVE_CHAT_MESSAGE,
+          text: MESSAGES.SUCCESS_REMOVE_CHAT_MESSAGE,
           type: 'success',
         });
 
         store.setState({
-          chats: state.chats?.filter((chat) => chat.id !== Number(chatId)),
+          chats: state.chats?.filter((chat) => chat.id !== Number(rest.chatId)),
         });
       })
       .catch(showError);
   }
   public addUserToChat({ users, chatId }: AddUserToChatType) {
-    ChatApi
+    chatApi
       .addUserToChat({ users, chatId })
       .then(() => {
         const state = store.getState() as InitialStateType;
@@ -82,7 +75,7 @@ class ChatService {
           usersFromChats.push(userItems.find((user: UserType) => user.id === users[0]));
           store.setState(
             { usersFromChats: JSON.stringify(usersFromChats) },
-            STORE_EVENTS.ADD_USERS
+            StoreEvents.ADD_USERS
           );
 
           const filteredUserItems = userItems.filter(
@@ -90,11 +83,11 @@ class ChatService {
           );
           store.setState(
             { users: JSON.stringify(filteredUserItems) },
-            STORE_EVENTS.ADD_USERS
+            StoreEvents.ADD_USERS
           );
 
           showTooltip({
-            text: SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
+            text: MESSAGES.SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
             type: 'success',
           });
         }
@@ -102,16 +95,16 @@ class ChatService {
       .catch(showError);
   }
 
-  public getChatToken({ chatId }: GetChatTokenType) {
-    return ChatApi
-      .getChatToken({ chatId })
+  public getChatToken({ ...rest }: GetChatTokenType) {
+    return chatApi
+      .getChatToken({ ...rest })
       .then(({ response }: any) => JSON.parse(response))
       .catch(showError);
   }
 
-  public getUserForChat({ chatId }: GetUserForChatType) {
-    ChatApi
-      .getUserForChat({ chatId })
+  public getUserForChat({ ...rest }: GetUserForChatType) {
+    chatApi
+      .getUserForChat({ ...rest })
       .then(({ response }: any) => {
         store.setState({ usersFromChats: response });
       })
@@ -119,7 +112,7 @@ class ChatService {
   }
 
   public removeUserFromChat({ users, chatId }: RemoveUserFromChat) {
-    ChatApi
+    chatApi
       .removeUserFromChat({ users, chatId })
       .then(() => {
         const state = store.getState() as InitialStateType;
@@ -128,7 +121,7 @@ class ChatService {
           const usersFromChats = JSON.parse(state.usersFromChats);
 
           showTooltip({
-            text: SUCCESS_REMOVE_USER_FROM_CHAT,
+            text: MESSAGES.SUCCESS_REMOVE_USER_FROM_CHAT,
             type: 'success',
           });
 
@@ -138,14 +131,14 @@ class ChatService {
                 usersFromChats.filter((user: UserType) => user.id !== users[0])
               ),
             },
-            STORE_EVENTS.DELETE_USERS
+            StoreEvents.DELETE_USERS
           );
 
           usersFromChats.length === 1 &&
-            store.setState(
-              { chats: state.chats?.filter((chat) => chat.id !== chatId) },
-              STORE_EVENTS.DELETE_USERS
-            );
+          store.setState(
+            { chats: state.chats?.filter((chat) => chat.id !== chatId) },
+            StoreEvents.DELETE_USERS
+          );
         }
       })
       .catch(showError);

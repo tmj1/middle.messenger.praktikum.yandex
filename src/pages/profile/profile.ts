@@ -3,9 +3,8 @@ import 'styles/profile.css';
 import { Popup } from 'utils/classes';
 import { config, PATHNAMES } from 'utils/constants';
 import { authService, profileService } from 'services';
-import { STORE_EVENTS } from 'types';
+import { StoreEvents } from 'types';
 import { checkIsLoginIn } from 'utils';
-
 
 export class ProfilePage extends Block {
   constructor(...args: any) {
@@ -13,7 +12,7 @@ export class ProfilePage extends Block {
 
     authService.getInfo();
 
-    store.on(STORE_EVENTS.UPDATE, () => {
+    store.on(StoreEvents.UPDATE, () => {
       this.setProps(store.getState());
     });
   }
@@ -41,8 +40,8 @@ export class ProfilePage extends Block {
         authService.signout();
       },
       handleBackBtn: () => router.back(),
-      handleLinkToChangeProfile: () => router.go(PATHNAMES['EDIT_SETTINGS_PATH']),
-      handleLinkToChangePassword: () => router.go(PATHNAMES['EDIT_PASSWORD_PATH']),
+      handleLinkToChangeProfile: () => router.go(PATHNAMES.EDIT_SETTINGS_PATH),
+      handleLinkToChangePassword: () => router.go(PATHNAMES.EDIT_PASSWORD_PATH),
     };
   }
   render() {

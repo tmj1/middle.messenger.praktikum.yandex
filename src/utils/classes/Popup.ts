@@ -1,6 +1,5 @@
 import { View } from './View';
 
-
 export class Popup extends View {
   constructor(
     menuSelector: string,
@@ -24,7 +23,7 @@ export class Popup extends View {
     this._isShowPopoverSelector = config.isShowPopoverSelector;
     this._contentDialogSelector = config.contentDialogSelector;
     this._menuItemSelector = config.menuItemSelector;
-    this._popupСontainerSelector = config.popupСontainerSelector;
+    this._popupContainerSelector = config.popupContainerSelector;
     this._editAvatarSelector = config.editAvatarSelector;
     this.editAvatarTextSelector = config.editAvatarTextSelector;
     this._menuListElementUserSelector = config.menuListElementUserSelector;
@@ -111,7 +110,7 @@ export class Popup extends View {
     const element = evt.target as HTMLElement;
 
     if (this._menu) {
-      const popupContainer = this._menu.querySelector(`.${this._popupСontainerSelector}`);
+      const popupContainer = this._menu.querySelector(`.${this._popupContainerSelector}`);
       const isEditAvatar = Array.from(this._menu.classList).includes(
         this._popupChangeAvatarSelector
       );

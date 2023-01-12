@@ -1,14 +1,14 @@
 import { Block } from 'core';
 import './userItem.css';
 import { UserItemProps } from './types';
-import { BASE_URL_RESOURCES, DATA_ATTRIBUTE_USER_ID } from 'utils';
+import { URLS, DATA_ATTRIBUTE } from 'utils';
 import defaultIcon from 'img/avatar.svg';
-
 
 export class UserItem extends Block {
   static componentName = 'UserItem';
-  constructor({ id, avatar, login, email, type, role, onClick }: UserItemProps) {
-    super({ id, avatar, login, email, type, role, events: { click: onClick } });
+
+  constructor({ onClick, ...rest }: UserItemProps) {
+    super({ events: { click: onClick }, ...rest });
   }
 
   protected getStateFromProps(props: UserItemProps): void {
@@ -21,15 +21,16 @@ export class UserItem extends Block {
       role: props.role,
     };
   }
+
   protected render(): string {
     const { id, avatar, login, email, type, role } = this.state;
 
     // language=hbs
     return `
-      <li class="user-item" ${DATA_ATTRIBUTE_USER_ID}="${id}">
+      <li class="user-item" ${DATA_ATTRIBUTE.USER_ID}="${id}">
         <img class="user-item-avatar" src="${
-          avatar && avatar !== 'null' ? `${BASE_URL_RESOURCES}${avatar}` : defaultIcon
-        }" alt="Аватар">
+      avatar && avatar !== 'null' ? `${URLS.RESOURCES}${avatar}` : defaultIcon
+    }" alt="Аватар">
         <div class="user-item-wrapper">
           <p class="user-item-text-login">${login}</p>
           <p class="user-item-text-email">${email}</p>

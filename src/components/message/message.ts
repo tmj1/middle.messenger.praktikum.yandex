@@ -4,18 +4,13 @@ import { MessageProps } from 'types';
 import { MessageType } from './types';
 import { getDate, MONTH } from 'utils';
 
-
 export class Message extends Block {
   static componentName = 'Message';
-  constructor({
-    owner,
-    content,
-    time,
-    isRead,
-    isFirstUniqMessage,
-  }: MessageProps & MessageType) {
-    super({ owner, content, time, isRead, isFirstUniqMessage });
+
+  constructor({ ...rest }: MessageProps & MessageType) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: MessageProps & MessageType): void {
     this.state = {
       owner: props.owner,
@@ -25,6 +20,7 @@ export class Message extends Block {
       isFirstUniqMessage: props.isFirstUniqMessage,
     };
   }
+
   protected render(): string {
     const { owner, content, time, srcImg, isRead, isFirstUniqMessage } = this.state;
 
@@ -41,17 +37,17 @@ export class Message extends Block {
     return `
       <li class="message ${classesForTitle}">
         ${
-          isFirstUniqMessage
-            ? `<p class="chat-text-date">${date.day} ${MONTH[date.month]}</p>`
-            : ''
-        }
+      isFirstUniqMessage
+        ? `<p class="chat-text-date">${date.day} ${MONTH[date.month]}</p>`
+        : ''
+    }
         <p class="message-text ${classesForText}">
           ${content}
           ${
-            owner
-              ? `<time class="message-time">${date.hour}:${date.minute}</time>`
-              : `<time class="message-time ${classesForTime}">${date.hour}:${date.minute}</time>`
-          }
+      owner
+        ? `<time class="message-time">${date.hour}:${date.minute}</time>`
+        : `<time class="message-time ${classesForTime}">${date.hour}:${date.minute}</time>`
+    }
         </p>
       </li>
     `;

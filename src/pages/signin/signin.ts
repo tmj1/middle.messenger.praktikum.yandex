@@ -1,15 +1,14 @@
 import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
-import { config, AUTH_FORM, PATHNAMES } from 'utils/constants';
+import { config, FORM_ELEMENTS, PATHNAMES } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SigninType } from 'types';
 
-
 const signinFormValidator = new FormValidator(
   config,
-  AUTH_FORM,
+  FORM_ELEMENTS.AUTH_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
@@ -17,6 +16,12 @@ const signinFormValidator = new FormValidator(
 );
 
 export class SigninPage extends Block {
+  constructor(...args: any) {
+    super(...args);
+
+    authService.redirectUser();
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
@@ -29,7 +34,7 @@ export class SigninPage extends Block {
         const dataForm = handleSubmitForm({
           stateForm: signinFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
-          formSelector: AUTH_FORM,
+          formSelector: FORM_ELEMENTS.AUTH_FORM,
           disableBtn: signinFormValidator.disableBtn,
           addErrors: signinFormValidator.addErrorsForInput,
         });
@@ -37,7 +42,7 @@ export class SigninPage extends Block {
         dataForm && authService.signin(dataForm as SigninType);
       },
       handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
-      handleLinkBtn: () => router.go(PATHNAMES['SIGNUP_PATH']),
+      handleLinkBtn: () => router.go(PATHNAMES.SIGNUP_PATH),
     };
   }
   render() {

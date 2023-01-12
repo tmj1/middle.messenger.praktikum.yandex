@@ -13,4 +13,3 @@ export class ServerErrorPage extends Block {
     `;
   }
 }
-

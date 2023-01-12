@@ -15,7 +15,7 @@ export abstract class View {
   protected _imgFromSearchInputByChats!: Nullable<HTMLElement>;
   // Input
   protected _labelTextSelector!: string;
-  protected _isValuelabelTextSelector!: string;
+  protected _isValueLabelTextSelector!: string;
   protected _inputElement!: EventTarget;
   //Popup
   protected _menuSelector!: string;
@@ -30,12 +30,12 @@ export abstract class View {
   protected _btnAttachSelector!: string;
   protected _isShowPopoverSelector!: string;
   protected _menuItemSelector!: string;
-  protected _popupСontainerSelector!: string;
+  protected _popupContainerSelector!: string;
   protected _editAvatarSelector!: string;
   protected editAvatarTextSelector!: string;
   protected _menuListElementUserSelector!: string;
   protected _menuClassSelector!: string;
-  protected _menuSe_editAvatarSelectorlector!: string;
+  protected _menuSelector_editAvatarSelector!: string;
   protected _isShowMenuSelector!: string;
   protected _menuBtnSelector!: string;
   protected _editAvatar!: Nullable<HTMLElement>;
@@ -62,4 +62,3 @@ export abstract class View {
   protected _errorContainer: Element | null | undefined;
   public _isValidFieldWithCustomRules!: Record<string, boolean> | null;
 }
-

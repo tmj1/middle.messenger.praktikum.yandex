@@ -2,39 +2,16 @@ import { Block } from 'core';
 import { FormPopupProps } from './types';
 import './formPopup.css';
 
-
 export class FormPopup extends Block {
   static componentName = 'FormPopup';
-  constructor({
-    classesForm,
-    name,
-    isDefault,
-    helperText,
-    fieldName,
-    textBtn,
-    users,
-    onSubmit,
-    onInput,
-    onFocus,
-    onBlur,
-    onClick,
-  }: any) {
+
+  constructor({ onSubmit, ...rest }: FormPopupProps) {
     super({
-      classesForm,
-      name,
-      isDefault,
-      helperText,
-      fieldName,
-      textBtn,
-      users,
-      onInput,
-      onFocus,
-      onBlur,
-      onClick,
       events: { submit: onSubmit },
+      ...rest,
     });
   }
-  protected getStateFromProps(props: any): void {
+  protected getStateFromProps(props: FormPopupProps): void {
     this.state = {
       classesForm: props.classesForm,
       name: props.name,
@@ -49,12 +26,13 @@ export class FormPopup extends Block {
       onClick: props.onClick,
     };
   }
+
   protected render(): string {
     const { classesForm, name, isDefault, helperText, fieldName, textBtn, users } =
       this.state;
 
     const renderFormElement = () => {
-      if (classesForm !== 'popup-form_delete-user') {
+      if (classesForm !== 'popup-form-delete-user') {
         return isDefault
           ? `
             {{{InputWrapper
@@ -90,15 +68,15 @@ export class FormPopup extends Block {
           }" name="${name}" novalidate>
             ${renderFormElement()}
             ${
-              users !== 'undefined'
-                ? `
+      users !== 'undefined'
+        ? `
                 {{{Users
                   users='${users}'
                   onClick=onClick
-                  type="${classesForm === 'popup-form_delete-user' ? 'delete' : 'add'}"
+                  type="${classesForm === 'popup-form-delete-user' ? 'delete' : 'add'}"
                 }}}`
-                : ''
-            }
+        : ''
+    }
           </form>
     `;
   }

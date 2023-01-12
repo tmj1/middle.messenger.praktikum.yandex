@@ -1,40 +1,33 @@
-import { authAPI } from 'api';
+import { authAPI } from '../Api';
 import { SignupType, SigninType } from 'types';
 import { BrowseRouter as router, store } from 'core';
-import {
-  showTooltip,
-  showError,
-  SUCCESS_SIGNUP_MESSAGE,
-  SUCCESS_SIGNIN_MESSAGE,
-  PATHNAMES,
-} from 'utils';
-
+import { showTooltip, showError, MESSAGES, PATHNAMES, lOCALSTORAGE } from 'utils';
 
 class AuthService {
-  public signup({ email, login, first_name, second_name, phone, password }: SignupType) {
+  public signup({ ...rest }: SignupType) {
     authAPI
-      .signup({ email, login, first_name, second_name, phone, password })
+      .signup({ ...rest })
       .then(() => {
         showTooltip({
-          text: SUCCESS_SIGNUP_MESSAGE,
+          text: MESSAGES.SUCCESS_SIGNUP_MESSAGE,
           type: 'success',
         });
-        localStorage.setItem('isSignin', 'true');
-        router.go(PATHNAMES['MESSENGER_PATH']);
+        localStorage.setItem(lOCALSTORAGE.IS_SIGNIN, 'true');
+        router.go(PATHNAMES.MESSAGER_PATH);
       })
       .catch(showError);
   }
 
-  public signin({ login, password }: SigninType) {
+  public signin({ ...rest }: SigninType) {
     authAPI
-      .signin({ login, password })
+      .signin({ ...rest })
       .then(() => {
         showTooltip({
-          text: SUCCESS_SIGNIN_MESSAGE,
+          text: MESSAGES.SUCCESS_SIGNIN_MESSAGE,
           type: 'success',
         });
-        localStorage.setItem('isSignin', 'true');
-        router.go(PATHNAMES['MESSENGER_PATH']);
+        localStorage.setItem(lOCALSTORAGE.IS_SIGNIN, 'true');
+        router.go(PATHNAMES.MESSAGER_PATH);
       })
       .catch(showError);
   }
@@ -43,8 +36,8 @@ class AuthService {
     authAPI
       .signout()
       .then(() => {
-        router.go(PATHNAMES['SIGNIN_PATH']);
-        localStorage.removeItem('isSignin');
+        router.go(PATHNAMES.SIGNIN_PATH);
+        localStorage.removeItem(lOCALSTORAGE.IS_SIGNIN);
       })
       .catch(showError);
   }
@@ -56,6 +49,13 @@ class AuthService {
         store.setState({ userInfo: JSON.parse(response) });
       })
       .catch(showError);
+  }
+
+  public redirectUser() {
+    authAPI
+      .getInfo()
+      .then(() => router.go(PATHNAMES.MESSAGER_PATH))
+      .catch((err) => console.log(err.responseText));
   }
 }
 

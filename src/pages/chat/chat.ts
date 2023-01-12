@@ -3,18 +3,12 @@ import 'styles/chat.css';
 import {
   CreateChatType,
   SearchUserByLoginType,
-  STORE_EVENTS,
+  StoreEvents,
   MessageDTO,
   InitialStateType,
 } from 'types';
 import { Chat, Popup, FormValidator } from 'utils/classes';
-import {
-  config,
-  ADD_CHAT_FORM,
-  ADD_USER_FORM,
-  PATHNAMES,
-  DATA_ATTRIBUTE_CHAT_ID,
-} from 'utils/constants';
+import { config, FORM_ELEMENTS, PATHNAMES, DATA_ATTRIBUTE } from 'utils/constants';
 import {
   handleSubmitForm,
   checkOnValueInput,
@@ -25,10 +19,9 @@ import {
 } from 'utils';
 import { chatService, messagesService, profileService, authService } from 'services';
 
-
 const addChatFromValidator = new FormValidator(
   config,
-  ADD_CHAT_FORM,
+  FORM_ELEMENTS.ADD_CHAT_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
@@ -37,7 +30,7 @@ const addChatFromValidator = new FormValidator(
 
 const addUserFormValidator = new FormValidator(
   config,
-  ADD_USER_FORM,
+  FORM_ELEMENTS.ADD_USER_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
@@ -52,15 +45,15 @@ export class ChatPage extends Block {
     authService.getInfo();
     messagesService.getMessages();
 
-    store.on(STORE_EVENTS.UPDATE, () => {
+    store.on(StoreEvents.UPDATE, () => {
       this.setProps(store.getState());
     });
 
-    store.on(STORE_EVENTS.ADD_USERS, () => {
+    store.on(StoreEvents.ADD_USERS, () => {
       this.setProps(store.getState());
     });
 
-    store.on(STORE_EVENTS.DELETE_USERS, () => {
+    store.on(StoreEvents.DELETE_USERS, () => {
       this.setProps(store.getState());
     });
   }
@@ -71,7 +64,7 @@ export class ChatPage extends Block {
 
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
-        const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
+        const chatItemId = element.getAttribute(DATA_ATTRIBUTE.CHAT_ID);
 
         this.setState({ chatItemId });
 
@@ -94,17 +87,17 @@ export class ChatPage extends Block {
           chatService.getUserForChat({ chatId: Number(chatItemId) });
         }
 
-        store.on(STORE_EVENTS.UPDATE, () => {
+        store.on(StoreEvents.UPDATE, () => {
           new Chat(config).addActiveClassName(evt);
           fixedBottomScroll();
         });
 
-        store.on(STORE_EVENTS.ADD_USERS, () => {
+        store.on(StoreEvents.ADD_USERS, () => {
           new Chat(config).addActiveClassName(evt);
           fixedBottomScroll();
         });
 
-        store.on(STORE_EVENTS.DELETE_USERS, () => {
+        store.on(StoreEvents.DELETE_USERS, () => {
           new Chat(config).addActiveClassName(evt);
           fixedBottomScroll();
         });
@@ -133,19 +126,19 @@ export class ChatPage extends Block {
         addChatFromValidator.clearError();
         addChatFromValidator.toggleBtnState();
       },
-      handleSubmitAddChatForm: (evt: Event) => {
+      hendleSubmitAddChatForm: (evt: Event) => {
         evt.preventDefault();
         const dataForm = handleSubmitForm({
           stateForm: addChatFromValidator.checkStateForm(),
           inputSelector: config.inputSelector,
-          formSelector: ADD_CHAT_FORM,
+          formSelector: FORM_ELEMENTS.ADD_CHAT_FORM,
           disableBtn: addChatFromValidator.disableBtn,
           addErrors: addChatFromValidator.addErrorsForInput,
         });
 
         dataForm && chatService.createChat(dataForm as CreateChatType);
 
-        store.on(STORE_EVENTS.UPDATE, () => {
+        store.on(StoreEvents.UPDATE, () => {
           const state = store.getState() as InitialStateType;
           this.setProps({ chats: state.chats });
         });
@@ -158,12 +151,12 @@ export class ChatPage extends Block {
         addUserFormValidator.clearError();
         addUserFormValidator.toggleBtnState();
       },
-      handleFindUserByLogin: (evt: Event) => {
+      hendleFindUserByLogin: (evt: Event) => {
         evt.preventDefault();
         const dataForm = handleSubmitForm({
           stateForm: addUserFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
-          formSelector: ADD_USER_FORM,
+          formSelector: FORM_ELEMENTS.ADD_USER_FORM,
           disableBtn: addUserFormValidator.disableBtn,
           addErrors: addUserFormValidator.addErrorsForInput,
         });
@@ -174,7 +167,7 @@ export class ChatPage extends Block {
           } as SearchUserByLoginType);
         }
 
-        store.on(STORE_EVENTS.ADD_USERS, () => {
+        store.on(StoreEvents.ADD_USERS, () => {
           new Popup(
             config.popupAddUserSelector,
             config.btnSubmitFormSelector,
@@ -198,7 +191,7 @@ export class ChatPage extends Block {
           chatId: Number(this.state.chatItemId),
         });
 
-        store.on(STORE_EVENTS.DELETE_USERS, () => {
+        store.on(StoreEvents.DELETE_USERS, () => {
           const state = store.getState() as InitialStateType;
           if (state.usersFromChats) {
             const usersFromChatsLength = JSON.parse(state.usersFromChats).length;
@@ -216,7 +209,7 @@ export class ChatPage extends Block {
           }
         });
       },
-      handleLinkBtn: () => router.go(PATHNAMES['SETTINGS_PATH']),
+      handleLinkBtn: () => router.go(PATHNAMES.SETTINGS_PATH),
       handleSendMessage: (evt: Event) => {
         evt.preventDefault();
         const target = evt.target as HTMLFormElement;
@@ -227,7 +220,7 @@ export class ChatPage extends Block {
         messagesService.sendMessage(input.value);
         input.value = '';
 
-        store.on(STORE_EVENTS.UPDATE, () => fixedBottomScroll());
+        store.on(StoreEvents.UPDATE, () => fixedBottomScroll());
       },
     };
   }
@@ -249,34 +242,34 @@ export class ChatPage extends Block {
     return `
       <div class="page">
         <ul class="chat">
-          <li class="chat-column chat-column-left">
+          <li class="chat__column chat__column_left">
             {{{ChatLink onClick=handleLinkBtn}}}
             {{{SearchChat onSearchByChats=handleSearchByChats }}}
-            <ul class="chat-list">
+            <ul class="chat__list">
               ${
-                chats &&
-                Object.values(chats)
-                  ?.map(
-                    (chat: any) =>
-                      `{{{ListItem
+      chats &&
+      Object.values(chats)
+        ?.map(
+          (chat: any) =>
+            `{{{ListItem
                         id="${chat.id}"
                         userName="${chat.title}"
                         lastMessage="${
-                          chat.last_message ? chat.last_message.content : null
-                        }"
+              chat.last_message ? chat.last_message.content : null
+            }"
                         time="${chat.last_message ? chat.last_message.time : null}"
                         countNotReadMessage="${chat.unread_count}"
                         srcAvatar="${chat.avatar}"
                         isOwnerLastMessage="${
-                          chat.last_message
-                            ? chat.last_message.user.login === userInfo.login
-                            : null
-                        }"
+              chat.last_message
+                ? chat.last_message.user.login === userInfo.login
+                : null
+            }"
                         onClick=addClassForActiveElement
                       }}}`
-                  )
-                  .join('')
-              }
+        )
+        .join('')
+    }
             </ul>
           </li>
           <li class="chat-column chat-column-default">
@@ -286,36 +279,36 @@ export class ChatPage extends Block {
             <div class="chat-header">
               <div class="chat-inner">
               ${
-                currentChat &&
-                currentChat.map((chat: any) => {
-                  return `
+      currentChat &&
+      currentChat.map((chat: any) => {
+        return `
                     {{{Avatar
                       srcAvatar="${chat.avatar}"
                       userName="${chat.title}"
                     }}}
                     <p class="chat-user-name">${chat.title}</p>
                 `;
-                })
-              }
+      })
+    }
               </div>
               {{{BurgerMenu onClick=handleOpenUserMenu}}}
             </div>
             <ul class="chat-messages">
               ${messages
-                .map((message: MessageDTO) => {
-                  const isUniqCurrentMessage = uniqMessages.find(
-                   (uniqMessage) => uniqMessage?.id === message.id
-                  );
-                  return `
+      .map((message: MessageDTO) => {
+        const isUniqueCurrentMessage = uniqMessages.find(
+          (uniqMessage) => uniqMessage?.id === message.id
+        );
+        return `
                     {{{Message
                       owner=${message.user_id === userInfo.id}
                       content="${message.content}"
                       time="${message.time}"
                       isRead=${message.is_read}
-                      isFirstUniqMessage=${isUniqCurrentMessage ? true : false}
+                      isFirstUniqMessage=${isUniqueCurrentMessage ? true : false}
                     }}}`;
-                })
-                .join('')}
+      })
+      .join('')}
             </ul>
             {{{ChatFooter onSubmit=handleSendMessage onClick=handleOpenFileMenu}}}
           </li>
@@ -323,21 +316,21 @@ export class ChatPage extends Block {
         {{{Menu isUser=true chatItemId="${chatItemId}"}}}
         {{{Menu isUser=false}}}
         {{{Popup
-          onSubmit=handleSubmitAddChatForm
+          onSubmit=hendleSubmitAddChatForm
           onInput=handleChangeAddChatInput
           onFocus=handleValidateAddChatInput
           onBlur=handleValidateAddChatInput
           title="Создать чат"
           helperText="Название"
           textBtn="Создать"
-          classesPopup="popup_add-chat"
-          classesForm="popup-form_add-chat"
+          classesPopup="popup-add-chat"
+          classesForm="popup-form-add-chat"
           isDefault=true
-          name="popup-form_add-chat"
+          name="popup-form-add-chat"
           fieldName="title"
         }}}
         {{{Popup
-          onSubmit=handleFindUserByLogin
+          onSubmit=hendleFindUserByLogin
           onInput=handleChangeAddUserInput
           onFocus=handleValidateAddUserInput
           onBlur=handleValidateAddUserInput
@@ -345,20 +338,20 @@ export class ChatPage extends Block {
           title="Добавить пользователя"
           helperText="Логин"
           textBtn="Найти"
-          classesPopup="popup_add-user"
-          classesForm="popup-form_add-user"
+          classesPopup="popup-add-user"
+          classesForm="popup-form-add-user"
           isDefault=true
-          name="popup-form_add-user"
+          name="popup-form-add-user"
           fieldName="login"
           users='${users}'
         }}}
         {{{Popup
           onClick=handleDeleteUserFromChat
           title="Удалить пользователя"
-          classesPopup="popup_delete-user"
-          classesForm="popup-form_delete-user"
+          classesPopup="popup-delete-user"
+          classesForm="popup-form-delete-user"
           isDefault=true
-          name="popup-form_delete-user"
+          name="popup-form-delete-user"
           fieldName="login"
           users='${usersFromChats}'
         }}}

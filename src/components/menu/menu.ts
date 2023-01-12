@@ -9,12 +9,13 @@ import file from 'img/file.svg';
 import location from 'img/location.svg';
 import { chatService } from 'services';
 
-
 export class Menu extends Block {
   static componentName = 'Menu';
-  constructor({ isUser, chatItemId }: MenuProps) {
-    super({ isUser, chatItemId });
+
+  constructor({ ...rest }: MenuProps) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: MenuProps): void {
     this.state = {
       isUser: props.isUser,
@@ -42,6 +43,7 @@ export class Menu extends Block {
       },
     };
   }
+
   protected render(): string {
     // language=hbs
     return `

@@ -1,15 +1,14 @@
 import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup, FormValidator } from 'utils/classes';
-import { config, EDIT_PROFILE_FORM } from 'utils/constants';
+import { config, FORM_ELEMENTS } from 'utils/constants';
 import { handleSubmitForm, checkIsLoginIn } from 'utils';
 import { authService, profileService } from 'services';
-import { UserInfoDTO, UserInfoType, STORE_EVENTS } from 'types';
-
+import { UserInfoDTO, UserInfoType, StoreEvents } from 'types';
 
 const editProfileformValidator = new FormValidator(
   config,
-  EDIT_PROFILE_FORM,
+  FORM_ELEMENTS.EDIT_PROFILE_FORM,
   config.inputProfileSelector,
   config.btnSubmitFormSelector,
   config.inputProfileHelperTextSelector,
@@ -22,7 +21,7 @@ export class EditProfilePage extends Block {
 
     authService.getInfo();
 
-    store.on(STORE_EVENTS.UPDATE, () => {
+    store.on(StoreEvents.UPDATE, () => {
       this.setProps(store.getState());
     });
   }
@@ -46,7 +45,7 @@ export class EditProfilePage extends Block {
         const dataForm = handleSubmitForm({
           stateForm: editProfileformValidator.checkStateForm(),
           inputSelector: config.inputProfileSelector,
-          formSelector: EDIT_PROFILE_FORM,
+          formSelector: FORM_ELEMENTS.EDIT_PROFILE_FORM,
           disableBtn: editProfileformValidator.disableBtn,
           addErrors: editProfileformValidator.addErrorsForInput,
           isValidField: editProfileformValidator.isValidFieldWithCustomRules(),
@@ -57,14 +56,14 @@ export class EditProfilePage extends Block {
             dataForm as UserInfoType;
 
           dataForm &&
-            profileService.changeUserInfo({
-              first_name: name,
-              second_name: lastName,
-              display_name: chatName,
-              login,
-              email,
-              phone,
-            } as UserInfoDTO);
+          profileService.changeUserInfo({
+            first_name: name,
+            second_name: lastName,
+            display_name: chatName,
+            login,
+            email,
+            phone,
+          } as UserInfoDTO);
         }
       },
       handleValidateInput: (evt: Event) =>
@@ -86,7 +85,7 @@ export class EditProfilePage extends Block {
           {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile-column">
             <form
-              class="profile-form profile-form_el_edit-form"
+              class="profile-form profile-form-el-edit-form"
               novalidate
             >
             {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
@@ -100,7 +99,7 @@ export class EditProfilePage extends Block {
                   helperText="Почта"
                   value="${email ? email : ''}"
                   name="email"
-                  formName="profile-form_el_edit-form"
+                  formName="profile-form-el-edit-form"
                 }}}
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -112,7 +111,7 @@ export class EditProfilePage extends Block {
                   minlength="3"
                   maxlength="20"
                   name="login"
-                  formName="profile-form_el_edit-form"
+                  formName="profile-form-el-edit-form"
                 }}}
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -124,7 +123,7 @@ export class EditProfilePage extends Block {
                   minlength="1"
                   maxlength="50"
                   name="name"
-                  formName="profile-form_el_edit-form"
+                  formName="profile-form-el-edit-form"
                 }}}
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -136,7 +135,7 @@ export class EditProfilePage extends Block {
                   minlength="1"
                   maxlength="50"
                   name="lastName"
-                  formName="profile-form_el_edit-form"
+                  formName="profile-form-el-edit-form"
                 }}}
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -148,7 +147,7 @@ export class EditProfilePage extends Block {
                   minlength="10"
                   maxlength="15"
                   name="phone"
-                  formName="profile-form_el_edit-form"
+                  formName="profile-form-el-edit-form"
                 }}}
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -160,7 +159,7 @@ export class EditProfilePage extends Block {
                   minlength="1"
                   maxlength="50"
                   name="chatName"
-                  formName="profile-form_el_edit-form"
+                  formName="profile-form-el-edit-form"
                 }}}
                 {{{Button
                   onClick=handleSubmitForm
@@ -175,7 +174,7 @@ export class EditProfilePage extends Block {
         {{{Popup
            title="Загрузите файл"
            textBtn="Поменять"
-           classesPopup="popup_change-avatar"
+           classesPopup="popup-change-avatar"
            isDefault=false
           }}}
       </div>

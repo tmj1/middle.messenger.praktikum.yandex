@@ -1,7 +1,6 @@
 import { BaseAPI } from './BaseAPI';
 import { UserInfoDTO, UserPasswordType, SearchUserByLoginType } from 'types';
 
-
 class ProfileApi extends BaseAPI {
   constructor() {
     super({ path: '/user' });

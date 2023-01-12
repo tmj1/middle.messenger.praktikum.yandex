@@ -1,28 +1,17 @@
 import { BaseAPI } from './BaseAPI';
 import { SignupType, SigninType } from 'types';
 
-
 class AuthAPI extends BaseAPI {
   constructor() {
     super({ path: '/auth' });
   }
 
-  public signup({ email, login, first_name, second_name, phone, password }: SignupType) {
-    return this.post('signup', {
-      email,
-      login,
-      first_name,
-      second_name,
-      phone,
-      password,
-    });
+  public signup({ ...rest }: SignupType) {
+    return this.post('signup', { ...rest });
   }
 
-  public signin({ login, password }: SigninType) {
-    return this.post('signin', {
-      login,
-      password,
-    });
+  public signin({ ...rest }: SigninType) {
+    return this.post('signin', { ...rest });
   }
   public signout() {
     return this.post('logout', {});
