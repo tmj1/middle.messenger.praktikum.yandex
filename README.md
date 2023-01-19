@@ -3,39 +3,39 @@ Sprint 4
 Simple messenger for exchanging messages using web-sockets.
 [Ссылка на Swagger](https://ya-praktikum.tech/api/v2/swagger/#/)
 [Ссылка на Firma](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1&t=Jl07SkgmFGCOEy18-1)
-[Ссылка на Netlify](https://63a0784889c20f0a30a4cdf9--rad-pastelito-ee8625.netlify.app)
+[Ссылка на Heroku](https://ancient-eyrie-67515.herokuapp.com)
 
 
 # Project with imitation own framework based on proxy-objects.
 The main goal is to understand the bases of working react without its usage.
 
-* Client router implementation (`core/Route.ts`, `core/BrowseRouter.ts`)
-* Added `api` layer
-* Added `services` layer
-* Central storage implementation (`Store.ts`)
-* Used `WebSocket` for chat messages
-* Implemented virtual list for chat messages
-* The following features are implemented in the application:
-   * Registration
-   * Login
-   * Exit
-   * Server error
-   * Not found
-   * Update profile data
-   * Change avatar
-   * Create and delete chat
-   * Search, add and delete users in chat
-   * Sending and receiving text messages
+* Written unit tests for the main modules (Jest)
+* Migration from Parcel to Webpack
+* Setting up a Dockerfile image
+* Deploy container to Heroku
+* Configured pre commit (Husky)
+* Added DDoS protection
 
 # Using technologies
 
+- HTML
+- CSS (PostCSS)
+- TypeScript
 - Parcel
-- Express
-- Postcss-nested
+- Webpack
 - Handlebars
-- Typescript
+- Jest
+- Express
+- Netlify
+- Heroku
+- Docker
 
 # Using commands
 
-- `npm run build` — create build,
-- `npm run start` — create build and start express-server,
+- Building a project in Webpack -- npm run build
+- Starting a static server on Express -- npm run start
+- Run project in dev mode -- npm run dev
+- Check for style and type errors -- npm run lint:ts
+- Static analysis of css and postcss files -- npm run lint:style
+- Run docker image -- npm run docker
+- Run tests -- npm run test
