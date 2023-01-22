@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve",
-    "start": "node ./api/server.js",
+    "start": "npm run build && node server.js",
     "lint:ts": "npx eslint .",
     "lint:style": "npx stylelint \"**/*.css\" --fix",
     "docker": "docker build -t messanger .",
