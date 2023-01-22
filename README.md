@@ -3,7 +3,7 @@ Sprint 4
 Simple messenger for exchanging messages using web-sockets.
 [Ссылка на Swagger](https://ya-praktikum.tech/api/v2/swagger/#/)
 [Ссылка на Firma](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1&t=Jl07SkgmFGCOEy18-1)
-[Ссылка на Heroku](https://ancient-eyrie-67515.herokuapp.com)
+[Ссылка на Heroku](https://hidden-escarpment-42141.herokuapp.com/)
 
 
 # Project with imitation own framework based on proxy-objects.

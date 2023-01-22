@@ -36,6 +36,8 @@ module.exports = {
       styles: path.resolve(__dirname, 'src/styles'),
       api: path.resolve(__dirname, 'src/Api'),
       services: path.resolve(__dirname, 'src/services'),
+      'express-handlebars': 'handlebars/dist/handlebars.js',
+      handlebars: 'handlebars/dist/handlebars.min.js',
     },
   },
   module: {
@@ -51,6 +53,10 @@ module.exports = {
           },
         ],
         exclude: /(node_modules)/,
+      },
+      {
+        test: /\.hbs/,
+        loader: 'handlebars-loader',
       },
       {
         test: /\.js$/,

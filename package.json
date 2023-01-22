@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve",
-    "start": "npm run build && node api/server.js",
+    "start": "node ./api/server.js",
     "lint:ts": "npx eslint .",
     "lint:style": "npx stylelint \"**/*.css\" --fix",
     "docker": "docker build -t messanger .",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tmj1/Sprint-3"
+    "url": "git+https://github.com/tmj1/Sprint-4"
   },
   "author": "Tatiana Miteva <tmj1@gmail.ru>",
   "license": "ISC",
@@ -62,7 +62,9 @@
     "express": "4.18.1",
     "express-rate-limit": "6.5.1",
     "handlebars-loader": "1.7.3",
-    "nanoid": "4.0.0"
+    "handlebars-webpack-plugin": "2.2.1",
+    "nanoid": "4.0.0",
+    "webpack-node-externals": "3.0.0"
   },
   "jest": {
     "testEnvironment": "jsdom",
