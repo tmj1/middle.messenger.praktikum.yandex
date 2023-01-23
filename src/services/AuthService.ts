@@ -51,12 +51,12 @@ class AuthService {
       .catch(showError);
   }
 
-  public redirectUser() {
-    authAPI
-      .getInfo()
-      .then(() => router.go(PATHNAMES.MESSAGER_PATH))
-      .catch((err) => console.log(err.responseText));
-  }
+  //public redirectUser() {
+   // authAPI
+    //  .getInfo()
+     // .then(() => router.go(PATHNAMES.MESSAGER_PATH))
+      //.catch((err) => console.log(err.responseText));
+  //}
 }
 
 export default new AuthService();
