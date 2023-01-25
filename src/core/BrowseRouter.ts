@@ -1,7 +1,6 @@
 import { BlockClass, props } from 'types';
 import { Route } from './Route';
-import { PATHNAMES } from 'utils';
-
+import { checkOnCorrectUrl } from 'utils';
 
 class BrowseRouter {
   static __instance: BrowseRouter;
@@ -27,18 +26,17 @@ class BrowseRouter {
 
   start() {
     window.onpopstate = (event) => {
-      this._onRoute(event.currentTarget?.location.pathname);
+      const target = event.currentTarget as Window;
+      this._onRoute(target.location.pathname);
     };
 
     this._onRoute(window.location.pathname);
   }
 
   _onRoute(pathname: string) {
-    if (!Object.values(PATHNAMES).find((path) => pathname === path)) {
-      this.go('/path-not-found');
-    }
+    checkOnCorrectUrl(pathname);
 
-    let route = this.getRoute(pathname);
+    const route = this.getRoute(pathname);
 
     if (!route) {
       return;
@@ -71,6 +69,10 @@ class BrowseRouter {
       router['block'] = null;
     }
     return router || this.routers.find((route) => route.match('*'));
+  }
+
+  getRouters() {
+    return this.routers;
   }
 }
 

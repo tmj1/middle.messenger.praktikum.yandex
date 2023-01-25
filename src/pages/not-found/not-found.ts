@@ -1,13 +1,17 @@
 import { Block, BrowseRouter as router } from 'core';
-import { PATHNAMES } from 'utils';
-
+import { PATHNAMES, lOCALSTORAGE } from 'utils';
 
 export class NotFoundPage extends Block {
   protected getStateFromProps() {
     this.state = {
-      handleClickByLink: () => router.go(PATHNAMES['MESSENGER_PATH']),
+      handleClickByLink: () => {
+        localStorage.getItem(lOCALSTORAGE.IS_SIGNIN)
+          ? router.go(PATHNAMES.MESSAGER_PATH)
+          : router.go(PATHNAMES.SIGNIN_PATH);
+      },
     };
   }
+
   render() {
     // language=hbs
     return `
@@ -15,7 +19,7 @@ export class NotFoundPage extends Block {
         {{{Error
           onClick=handleClickByLink
           title="404"
-          subtitle="Этой станицы не существует"
+          subtitle="Не туда попали"
         }}}
       </div>
     `;

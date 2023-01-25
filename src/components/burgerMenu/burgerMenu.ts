@@ -2,18 +2,19 @@ import { Block } from 'core';
 import './burgerMenu.css';
 import { BurgerMenuProps } from './types';
 
-
 export class BurgerMenu extends Block {
   static componentName = 'BurgerMenu';
+
   constructor({ onClick }: BurgerMenuProps) {
     super({ events: { click: onClick } });
   }
+
   protected render(): string {
     // language=hbs
     return `
       <button class="burger-menu" aria-label="Кнопка меню">
         <svg
-          class="burger-menu-btn-icon"
+          class="burger-menu__btn-icon"
           width="3"
           height="16"
           viewBox="0 0 3 16"

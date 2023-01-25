@@ -4,23 +4,23 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 45px;
-}
 
-.input-file:hover {
-  opacity: 0.8;
-}
+  &:hover {
+    opacity: 0.8;
+  }
 
-.input-file-input {
-  display: none;
-}
+  &__input {
+    display: none;
+  }
 
-.input-file-span {
-  cursor: pointer;
-  max-width: 122px;
-  display: inline-block;
-  font-size: 12px;
-  color: var(--secondary-color);
-  font-weight: 500;
-  line-height: 16px;
-  text-align: center;
+  &__span {
+    cursor: pointer;
+    max-width: 122px;
+    display: inline-block;
+    font-size: 12px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+  }
 }

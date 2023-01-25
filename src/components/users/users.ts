@@ -3,14 +3,14 @@ import './users.css';
 import { UsersProps } from './types';
 import { UserType } from 'types';
 
-
 export class Users extends Block {
   static componentName = 'Users';
-  constructor({ users, type, onClick }: UsersProps) {
-    super({ users, type, onClick });
+
+  constructor({ ...rest }: UsersProps) {
+    super({ ...rest });
   }
 
-  protected getStateFromProps(props: any): void {
+  protected getStateFromProps(props: UsersProps): void {
     this.state = {
       users:
         props.users !== 'undefined' && props.users.length > 0
@@ -20,12 +20,13 @@ export class Users extends Block {
       onClick: props.onClick,
     };
   }
+
   protected render(): string {
     const { users, type } = this.state;
 
     // language=hbs
     return `
-      <ul class="users ${users?.length !== 0 ? 'users-is-margin' : ''}">
+      <ul class="users ${users?.length !== 0 ? 'users_is-margin' : ''}">
         ${
           users &&
           users

@@ -1,3 +1,4 @@
+module.exports = require('handlebars/dist/cjs/handlebars');
 declare global {
   export type Nullable<T> = T | null;
 
@@ -11,4 +12,5 @@ declare global {
 
   export module '*.json';
 }
+
 export {};

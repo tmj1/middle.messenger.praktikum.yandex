@@ -4,93 +4,93 @@
   margin-bottom: 10px;
   overflow: hidden;
   width: 100%;
-}
 
-.message:last-of-type {
-  margin-bottom: 30px;
-}
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
 
-.message-is-not-owner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
+  &_is-not-owner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 
-.message-is-img {
-  padding: 11px;
-  border-radius: 12px;
-  border: 1px solid var(--line-color);
-}
+  &_is-img {
+    padding: 11px;
+    border-radius: 12px;
+    border: 1px solid var(--line-color);
+  }
 
-.message-text {
-  margin: 0;
-  display: inline-block;
-  padding: 11px;
-  border-radius: 12px;
-  font-size: 12px;
-  color: var(--primary-color);
-  font-weight: 500;
-  line-height: 15px;
-  max-width: 402px;
-  overflow: hidden;
-}
+  &__text {
+    margin: 0;
+    display: inline-block;
+    padding: 11px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--primary-color);
+    font-weight: 500;
+    line-height: 15px;
+    max-width: 402px;
+    overflow: hidden;
+  }
 
-.message-text-is-me {
-  background-color: var(--bg-message-my-color);
-}
+  &__text_is-me {
+    background-color: var(--bg-message-my-color);
+  }
 
-.message-text-is-friend {
-  background-color: var(--bg-message-friend-color);
-}
+  &__text_is-friend {
+    background-color: var(--bg-message-friend-color);
+  }
 
-.message-img {
-  max-width: 402px;
-  width: 100%;
-  object-fit: contain;
-}
+  &__img {
+    max-width: 402px;
+    width: 100%;
+    object-fit: contain;
+  }
 
-.message-time {
-  position: relative;
-  color: var(--gray-color);
-  font-size: 9px;
-  font-weight: 500;
-  line-height: 9px;
-  text-align: right;
-  margin: 6px 0 0 28px;
-  float: right;
-}
+  &__time {
+    position: relative;
+    color: var(--gray-color);
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 9px;
+    text-align: right;
+    margin: 6px 0 0 28px;
+    float: right;
+  }
 
-.message-time-is-read::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 4px;
-  background-image: url("../../image/isRead.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  position: absolute;
-  bottom: 2px;
-  left: -10px;
-}
+  &__time_is-read::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 4px;
+    background-image: url("../../image/isRead.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    bottom: 2px;
+    left: -10px;
+  }
 
-.message-time-is-not-read::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 4px;
-  background-image: url("../../image/isNotRead.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  position: absolute;
-  bottom: 2px;
-  left: -10px;
-}
+  &__time_is-not-read::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 4px;
+    background-image: url("../../image/isNotRead.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    bottom: 2px;
+    left: -10px;
+  }
 
-.message-time-is-img {
-  color: var(--third-color);
-  padding: 2px 7px;
-  border-radius: 30px;
-  background-color: var(--bg-time-color);
+  &__time_is-img {
+    color: var(--third-color);
+    padding: 2px 7px;
+    border-radius: 30px;
+    background-color: var(--bg-time-color);
+  }
 }

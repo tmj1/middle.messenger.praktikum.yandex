@@ -2,20 +2,22 @@ import { Block } from 'core';
 import './avatar.css';
 import { AvatarProps } from './types';
 import defaultIcon from 'img/avatar.svg';
-import { BASE_URL_RESOURCES } from 'utils';
-
+import { URLS } from 'utils';
 
 export class Avatar extends Block {
   static componentName = 'Avatar';
-  constructor({ srcAvatar, userName }: AvatarProps) {
-    super({ srcAvatar, userName });
+
+  constructor({ ...rest }: AvatarProps) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: AvatarProps): void {
     this.state = {
       userName: props.userName,
       srcAvatar: props.srcAvatar,
     };
   }
+
   protected render(): string {
     const { userName, srcAvatar } = this.state;
 
@@ -24,8 +26,8 @@ export class Avatar extends Block {
       <img
         class="avatar"
         src="${
-          !srcAvatar
-            ? `${BASE_URL_RESOURCES}${srcAvatar}`
+          srcAvatar !== 'undefined' && srcAvatar !== 'null'
+            ? `${URLS.RESOURCES}${srcAvatar}`
             : defaultIcon
         }"
         alt="Аватар пользователя ${userName}"

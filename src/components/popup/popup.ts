@@ -2,42 +2,13 @@ import { Block } from 'core';
 import './popup.css';
 import { PopupProps } from './types';
 
-
 export class Popup extends Block {
   static componentName = 'Popup';
-  constructor({
-    classesPopup,
-    classesForm,
-    name,
-    fieldName,
-    title,
-    isDefault,
-    helperText,
-    textBtn,
-    users,
-    onInput,
-    onFocus,
-    onBlur,
-    onSubmit,
-    onClick,
-  }: PopupProps) {
-    super({
-      classesPopup,
-      classesForm,
-      name,
-      title,
-      fieldName,
-      isDefault,
-      helperText,
-      textBtn,
-      users,
-      onInput,
-      onFocus,
-      onBlur,
-      onSubmit,
-      onClick,
-    });
+
+  constructor({ ...rest }: PopupProps) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: PopupProps): void {
     this.state = {
       classesPopup: props.classesPopup,
@@ -69,11 +40,12 @@ export class Popup extends Block {
       textBtn,
       users,
     } = this.state;
+
     // language=hbs
     return `
       <div class="popup ${classesPopup ? classesPopup : ''}">
-        <div class="popup-container">
-          <h2 class="popup-title">${title}</h2>
+        <div class="popup__container">
+          <h2 class="popup__title">${title}</h2>
           {{{FormPopup
             onSubmit=onSubmit
             onInput=onInput

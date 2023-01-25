@@ -1,6 +1,5 @@
 export interface UsersProps {
   onClick: () => void;
-  users: any;
+  users: string;
   type: 'delete' | 'add';
 }
-

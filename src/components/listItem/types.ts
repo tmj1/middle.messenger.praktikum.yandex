@@ -3,4 +3,3 @@ export interface ListItemProps {
   id: number;
   isOwnerLastMessage: string;
 }
-

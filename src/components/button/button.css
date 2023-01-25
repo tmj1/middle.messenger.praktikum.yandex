@@ -11,39 +11,37 @@
   line-height: 13px;
   text-align: center;
   transition: 0.3s opacity;
-}
 
-@media screen and (max-width: 425px) {
-  .button {
+  @media screen and (max-width: 425px) {
     font-size: 12px;
     padding: 11px 0;
   }
-}
 
-.button:hover {
-  opacity: 0.8;
-}
+  &:hover {
+    opacity: 0.8;
+  }
 
-.button-is-auth {
-  margin-bottom: 14px;
-}
+  &_is-auth {
+    margin-bottom: 14px;
+  }
 
-.button-page-edit-profile {
-  max-width: 280px;
-  margin: 60px auto 0;
-}
+  &_page_edit-profile {
+    max-width: 280px;
+    margin: 60px auto 0;
+  }
 
-.button-page-edit-password {
-  max-width: 280px;
-  margin: 162px auto 0;
-}
+  &_page_edit-password {
+    max-width: 280px;
+    margin: 162px auto 0;
+  }
 
-.button-disable {
-  opacity: 0.8;
-  cursor: default;
-}
+  &_disable {
+    opacity: 0.8;
+    cursor: default;
+  }
 
-.button-el-remove-item {
-  padding: 8px 0;
-  margin-top: 10px;
+  &_el_remove-item {
+    padding: 8px 0;
+    margin-top: 10px;
+  }
 }

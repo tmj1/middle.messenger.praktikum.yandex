@@ -2,34 +2,13 @@ import { Block } from 'core';
 import './inputProfileWrapper.css';
 import { InputProfileWrapperProps } from './types';
 
-
 export class InputProfileWrapper extends Block {
   static componentName = 'InputProfileWrapper';
-  constructor({
-    formName,
-    name,
-    minlength,
-    maxlength,
-    type,
-    value,
-    helperText,
-    onInput,
-    onFocus,
-    onBlur,
-  }: InputProfileWrapperProps) {
-    super({
-      formName,
-      name,
-      minlength,
-      maxlength,
-      type,
-      value,
-      helperText,
-      onInput,
-      onFocus,
-      onBlur,
-    });
+
+  constructor({ ...rest }: InputProfileWrapperProps) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: InputProfileWrapperProps): void {
     this.state = {
       formName: props.formName,
@@ -44,12 +23,13 @@ export class InputProfileWrapper extends Block {
       onBlur: props.onBlur,
     };
   }
+
   protected render(): string {
     const { name, minlength, maxlength, type, value, helperText } = this.state;
     // language=hbs
     return `
       <li class="input-profile-wrapper">
-        <label class="input-profile-wrapper-label">
+        <label class="input-profile-wrapper__label">
           {{{InputProfile
             onInput=onInput
             onFocus=onFocus
@@ -60,8 +40,8 @@ export class InputProfileWrapper extends Block {
             minlength="${minlength}"
             maxlength="${maxlength}"
           }}}
-          <span class="input-profile-wrapper-span">${helperText}</span>
-          <span class="input-profile-wrapper-error"></span>
+          <span class="input-profile-wrapper__span">${helperText}</span>
+          <span class="input-profile-wrapper__error"></span>
         </label>
       </li>
     `;

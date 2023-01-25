@@ -2,32 +2,16 @@ import { Block } from 'core';
 import './inputWrapper.css';
 import { InputWrapperProps } from './types';
 
-
 export class InputWrapper extends Block {
   static componentName = 'InputWrapper';
-  constructor({
-    name,
-    type,
-    helperText,
-    minlength,
-    maxlength,
-    classes,
-    onInput,
-    onFocus,
-    onBlur,
-  }: InputWrapperProps) {
+
+  constructor({ onInput, ...rest }: InputWrapperProps) {
     super({
-      name,
-      type,
-      helperText,
-      minlength,
-      maxlength,
-      classes,
-      onFocus,
-      onBlur,
       events: { input: onInput },
+      ...rest,
     });
   }
+
   protected getStateFromProps(props: InputWrapperProps): void {
     this.state = {
       name: props.name,
@@ -40,12 +24,13 @@ export class InputWrapper extends Block {
       onBlur: props.onBlur,
     };
   }
+
   protected render(): string {
     const { name, classes, type, minlength, maxlength, helperText } = this.state;
     // language=hbs
     return `
       <fieldset class="input ${classes ? classes : ''}">
-        <label class="input-label">
+        <label class="input__label">
           {{{Input
             onInput=handleClearError
             onFocus=onFocus
@@ -55,9 +40,9 @@ export class InputWrapper extends Block {
             maxlength="${maxlength}"
             name="${name}"
           }}}
-          <span class="input-text">${helperText}</span>
+          <span class="input__text">${helperText}</span>
         </label>
-        <p class="input-helper-text"></p>
+        <p class="input__helper-text"></p>
       </fieldset>
     `;
   }

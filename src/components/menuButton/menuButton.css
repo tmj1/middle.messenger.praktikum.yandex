@@ -10,12 +10,12 @@
   font-weight: 500;
   line-height: 14px;
   transition: 0.3s opacity;
-}
 
-.menu-button:hover {
-  opacity: 0.8;
-}
+  &:hover {
+    opacity: 0.8;
+  }
 
-.menu-button-icon {
-  margin-right: 15px;
+  &__icon {
+    margin-right: 15px;
+  }
 }

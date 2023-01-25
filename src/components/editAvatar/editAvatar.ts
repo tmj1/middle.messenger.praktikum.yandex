@@ -2,30 +2,32 @@ import { Block } from 'core';
 import './editAvatar.css';
 import { EditAvatarProps } from './types';
 import defaultIcon from 'img/avatar.svg';
-import { BASE_URL_RESOURCES } from 'utils';
-
+import { URLS } from 'utils';
 
 export class EditAvatar extends Block {
   static componentName = 'EditAvatar';
-  constructor({ avatar, onClick }: EditAvatarProps) {
-    super({ avatar, events: { click: onClick } });
+
+  constructor({ onClick, ...rest }: EditAvatarProps) {
+    super({ events: { click: onClick }, ...rest });
   }
-  protected getStateFromProps(props: any): void {
+
+  protected getStateFromProps(props: EditAvatarProps): void {
     this.state = {
       avatar: props.avatar,
     };
   }
+
   protected render(): string {
     const { avatar } = this.state;
     // language=hbs
     return `
       <div class="edit-avatar">
-        <img class="edit-avatar-img" src="${
+        <img class="edit-avatar__img" src="${
           avatar !== 'undefined' && avatar !== 'null'
-            ? `${BASE_URL_RESOURCES}${avatar}`
+            ? `${URLS.RESOURCES}${avatar}`
             : defaultIcon
         }" alt="Аватар по умолчанию" />
-        <span class="edit-avatar-span">Поменять аватар</span>
+        <span class="edit-avatar__span">Поменять аватар</span>
       </div>
     `;
   }

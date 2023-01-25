@@ -4,49 +4,49 @@
   border-bottom: 1px solid var(--line-color);
   padding-bottom: 10px;
   margin-bottom: 10px;
-}
 
-.btn-profile:last-of-type {
-  border-bottom: none;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
+  &:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
 
-.btn-profile-link {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 13px;
-  transition: 0.3s opacity;
-}
+  &__link {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    transition: 0.3s opacity;
+  }
 
-.btn-profile-link:hover {
-  opacity: 0.7;
-}
+  &__link:hover {
+    opacity: 0.7;
+  }
 
-.btn-profile-link-color-red {
-  color: var(--link-red-color);
-}
+  &__link_color_red {
+    color: var(--link-red-color);
+  }
 
-.btn-profile-link-color-blue {
-  color: var(--secondary-color);
-}
+  &__link_color_blue {
+    color: var(--secondary-color);
+  }
 
-.btn-profile-btn {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 13px;
-  transition: 0.3s opacity;
-}
+  &__btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    transition: 0.3s opacity;
+  }
 
-.btn-profile-btn:hover {
-  opacity: 0.7;
+  &__btn:hover {
+    opacity: 0.7;
+  }
 }

@@ -2,18 +2,19 @@ import { Block } from 'core';
 import './authLink.css';
 import { AuthLinkProps } from './types';
 
-
 export class AuthLink extends Block {
   static componentName = 'AuthLink';
-  constructor({ text, onClick }: AuthLinkProps) {
-    super({ text, events: { click: onClick } });
+
+  constructor({ onClick, ...rest }: AuthLinkProps) {
+    super({ events: { click: onClick }, ...rest });
   }
 
-  protected getStateFromProps(props: any): void {
+  protected getStateFromProps(props: AuthLinkProps): void {
     this.state = {
       text: props.text,
     };
   }
+
   protected render(): string {
     const { text } = this.state;
     // language=hbs
