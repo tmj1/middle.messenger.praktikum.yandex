@@ -26,7 +26,7 @@ export class Input extends Block {
     // language=hbs
     return `
       <input
-        class="input-text-field"
+        class="input__text-field"
         type=${type}
         minlength=${minlength}
         maxlength=${maxlength}

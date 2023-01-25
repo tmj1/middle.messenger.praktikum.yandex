@@ -19,7 +19,7 @@ export class NotFoundPage extends Block {
         {{{Error
           onClick=handleClickByLink
           title="404"
-          subtitle="Этой станицы не существует"
+          subtitle="Не туда попали"
         }}}
       </div>
     `;

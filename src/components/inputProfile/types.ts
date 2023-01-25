@@ -1,6 +1,5 @@
 import { InputEnum } from 'types';
 
-
 export interface InputProfileProps {
   onInput?: () => void;
   onFocus?: () => void;

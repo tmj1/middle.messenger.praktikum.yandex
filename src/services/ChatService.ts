@@ -1,4 +1,4 @@
-import { chatApi } from '../api';
+import { chatApi } from '../Api';
 import {
   CreateChatType,
   RemoveChatType,
@@ -135,10 +135,10 @@ class ChatService {
           );
 
           usersFromChats.length === 1 &&
-          store.setState(
-            { chats: state.chats?.filter((chat) => chat.id !== chatId) },
-            StoreEvents.DELETE_USERS
-          );
+            store.setState(
+              { chats: state.chats?.filter((chat) => chat.id !== chatId) },
+              StoreEvents.DELETE_USERS
+            );
         }
       })
       .catch(showError);

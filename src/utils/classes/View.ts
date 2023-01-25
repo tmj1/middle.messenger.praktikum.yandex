@@ -1,8 +1,8 @@
 export abstract class View {
   protected _isActiveChatSelector!: string;
-  protected _hiddenChatSelector!: string;
-  protected _contentDialogSelector!: string;
-  protected _contentDialog!: Nullable<HTMLElement>;
+  protected _hiddenChatSelecor!: string;
+  protected _contentDialodSelector!: string;
+  protected _contentDialod!: Nullable<HTMLElement>;
   // Chat
   protected _element!: Element;
   protected _messagesSelector!: string;
@@ -15,7 +15,7 @@ export abstract class View {
   protected _imgFromSearchInputByChats!: Nullable<HTMLElement>;
   // Input
   protected _labelTextSelector!: string;
-  protected _isValueLabelTextSelector!: string;
+  protected _isValuelabelTextSelector!: string;
   protected _inputElement!: EventTarget;
   //Popup
   protected _menuSelector!: string;
@@ -30,13 +30,13 @@ export abstract class View {
   protected _btnAttachSelector!: string;
   protected _isShowPopoverSelector!: string;
   protected _menuItemSelector!: string;
-  protected _popupContainerSelector!: string;
+  protected _popupСontainerSelector!: string;
   protected _editAvatarSelector!: string;
   protected editAvatarTextSelector!: string;
   protected _menuListElementUserSelector!: string;
   protected _menuClassSelector!: string;
-  protected _menuSelector_editAvatarSelector!: string;
-  protected _isShowMenuSelector!: string;
+  protected _menuSe_editAvatarSelectorlector!: string;
+  protected _isShowMenuSelecor!: string;
   protected _menuBtnSelector!: string;
   protected _editAvatar!: Nullable<HTMLElement>;
   protected _editAvatarText!: Nullable<HTMLElement>;

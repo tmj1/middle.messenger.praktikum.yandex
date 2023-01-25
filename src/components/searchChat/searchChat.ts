@@ -13,7 +13,7 @@ export class SearchChat extends Block {
 
   protected getStateFromProps() {
     this.state = {
-      handleSubmitForm: (evt: Event) => {
+      hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
         new Popup(
           config.popupAddChatSelector,
@@ -28,15 +28,15 @@ export class SearchChat extends Block {
   protected render(): string {
     // language=hbs
     return `
-      <form class="search-chat page-search-chat">
-        <label class="search-chat-label">
+      <form class="search-chat page__search-chat">
+        <label class="search-chat__label">
           {{{InputChat onInput=onSearchByChats}}}
-          <img class="search-chat-img" src="${search}" alt="Поиск по чату" />
+          <img class="search-chat__img" src="${search}" alt="Поиск по чату" />
         </label>
         {{{Button
-          onClick=handleSubmitForm
+          onClick=hendleSubmitForm
           type="button"
-          classes="search-chat-btn"
+          classes="search-chat__btn"
         }}}
       </form>
     `;

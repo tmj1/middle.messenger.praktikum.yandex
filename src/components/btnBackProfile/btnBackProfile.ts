@@ -1,7 +1,7 @@
 import { Block } from 'core';
 import './btnBackProfile.css';
 import { BtnBackProfileProps } from './types';
-import left_arrow from '../../image/left-arrow.svg';
+import left_arrow from 'img/left-arrow.svg';
 
 export class BtnBackProfile extends Block {
   static componentName = 'BtnBackProfile';
@@ -14,10 +14,10 @@ export class BtnBackProfile extends Block {
     // language=hbs
     return `
       <li class="profile-btn">
-        <Button class="profile-btn-link" aria-label="Вернуться назад">
-          <div class="profile-btn-wrap">
+        <Button class="profile-btn__link" aria-label="Вернуться назад">
+          <div class="profile-btn__wrap">
             <img
-              class="profile-icon"
+              class="profile__icon"
               src="${left_arrow}"
               alt="Иконка вернуться назад"
             />

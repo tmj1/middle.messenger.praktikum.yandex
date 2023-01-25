@@ -13,9 +13,9 @@ export class ChatLink extends Block {
   protected render(): string {
     // language=hbs
     return `
-      <Button class="link-profile page-link-profile">
-        <span class="link-profile-text">Профиль</span>
-        <img class="link-profile-img" src="${rightArrow}" alt="Перейти к профилю пользователя">
+      <Button class="link-profile page__link-profile">
+        <span class="link-profile__text">Профиль</span>
+        <img class="link-profile__img" src="${rightArrow}" alt="Перейти к профилю пользователя">
       </Button>
     `;
   }

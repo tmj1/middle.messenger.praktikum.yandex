@@ -24,7 +24,7 @@ export class MenuButton extends Block {
     // language=hbs
     return `
       <button class="menu-button ${classes}" type="${type}">
-        <img class="menu-button-icon" src="${icon}" alt="${alt}" />
+        <img class="menu-button__icon" src="${icon}" alt="${alt}" />
         ${text}
       </button>
     `;

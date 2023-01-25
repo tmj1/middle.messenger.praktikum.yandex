@@ -5,15 +5,15 @@ export class Input extends View {
     super();
     this._inputElement = element;
     this._labelTextSelector = config.labelTextSelector;
-    this._isValueLabelTextSelector = config.isValueLabelTextSelector;
+    this._isValuelabelTextSelector = config.isValuelabelTextSelector;
   }
 
   private _addClassNameToHelperText(helperText: Element | null | undefined) {
-    helperText && helperText.classList.add(this._isValueLabelTextSelector);
+    helperText && helperText.classList.add(this._isValuelabelTextSelector);
   }
 
   private _removeClassNameToHelperText(helperText: Element | null | undefined) {
-    helperText && helperText.classList.remove(this._isValueLabelTextSelector);
+    helperText && helperText.classList.remove(this._isValuelabelTextSelector);
   }
 
   public checkOnValueInput() {

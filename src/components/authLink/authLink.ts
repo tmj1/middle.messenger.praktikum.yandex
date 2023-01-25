@@ -19,7 +19,7 @@ export class AuthLink extends Block {
     const { text } = this.state;
     // language=hbs
     return `
-        <Button class="auth-link" type="button">${text}</Button>
+      <Button class="auth-link" type="button">${text}</Button>
     `;
   }
 }

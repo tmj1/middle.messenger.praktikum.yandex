@@ -7,4 +7,3 @@ export interface UserItemProps {
   type: 'delete' | 'add';
   role: 'regular' | 'admin';
 }
-

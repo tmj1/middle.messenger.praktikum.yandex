@@ -109,7 +109,7 @@ export class ChatPage extends Block {
         new Popup(
           config.menuListElementUserSelector,
           config.burgerMenuSelector,
-          config.isShowMenuSelector,
+          config.isShowMenuSelecor,
           config
         ).handleOpenPopup();
       },
@@ -117,7 +117,7 @@ export class ChatPage extends Block {
         new Popup(
           config.menuListElementFileSelector,
           config.btnAttachSelector,
-          config.isShowMenuSelector,
+          config.isShowMenuSelecor,
           config
         ).handleOpenPopup();
       },
@@ -133,7 +133,7 @@ export class ChatPage extends Block {
           inputSelector: config.inputSelector,
           formSelector: FORM_ELEMENTS.ADD_CHAT_FORM,
           disableBtn: addChatFromValidator.disableBtn,
-          addErrors: addChatFromValidator.addErrorsForInput,
+          addErors: addChatFromValidator.addErrorsForInput,
         });
 
         dataForm && chatService.createChat(dataForm as CreateChatType);
@@ -158,7 +158,7 @@ export class ChatPage extends Block {
           inputSelector: config.inputSelector,
           formSelector: FORM_ELEMENTS.ADD_USER_FORM,
           disableBtn: addUserFormValidator.disableBtn,
-          addErrors: addUserFormValidator.addErrorsForInput,
+          addErors: addUserFormValidator.addErrorsForInput,
         });
 
         if (dataForm) {
@@ -247,68 +247,68 @@ export class ChatPage extends Block {
             {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
               ${
-      chats &&
-      Object.values(chats)
-        ?.map(
-          (chat: any) =>
-            `{{{ListItem
+                chats &&
+                Object.values(chats)
+                  ?.map(
+                    (chat: any) =>
+                      `{{{ListItem
                         id="${chat.id}"
                         userName="${chat.title}"
                         lastMessage="${
-              chat.last_message ? chat.last_message.content : null
-            }"
+                          chat.last_message ? chat.last_message.content : null
+                        }"
                         time="${chat.last_message ? chat.last_message.time : null}"
                         countNotReadMessage="${chat.unread_count}"
                         srcAvatar="${chat.avatar}"
                         isOwnerLastMessage="${
-              chat.last_message
-                ? chat.last_message.user.login === userInfo.login
-                : null
-            }"
+                          chat.last_message
+                            ? chat.last_message.user.login === userInfo.login
+                            : null
+                        }"
                         onClick=addClassForActiveElement
                       }}}`
-        )
-        .join('')
-    }
+                  )
+                  .join('')
+              }
             </ul>
           </li>
-          <li class="chat-column chat-column-default">
-            <h2 class="chat-title">Выберите чат чтобы отправить сообщение</h2>
+          <li class="chat__column chat__column-default">
+            <h2 class="chat__title">Выберите чат чтобы отправить сообщение</h2>
           </li>
-          <li class="chat-column chat-column-dialog chat-column-is-hidden">
-            <div class="chat-header">
-              <div class="chat-inner">
+          <li class="chat__column chat__column-dialog chat__column_is-hidden">
+            <div class="chat__header">
+              <div class="chat__inner">
               ${
-      currentChat &&
-      currentChat.map((chat: any) => {
-        return `
+                currentChat &&
+                currentChat.map((chat: any) => {
+                  return `
                     {{{Avatar
                       srcAvatar="${chat.avatar}"
                       userName="${chat.title}"
                     }}}
-                    <p class="chat-user-name">${chat.title}</p>
+                    <p class="chat__user-name">${chat.title}</p>
                 `;
-      })
-    }
+                })
+              }
               </div>
               {{{BurgerMenu onClick=handleOpenUserMenu}}}
             </div>
-            <ul class="chat-messages">
+            <ul class="chat__messages">
               ${messages
-      .map((message: MessageDTO) => {
-        const isUniqueCurrentMessage = uniqMessages.find(
-          (uniqMessage) => uniqMessage?.id === message.id
-        );
-        return `
+                .map((message: MessageDTO) => {
+                  const isUniqCurrentMessage = uniqMessages.find(
+                    (uniqMessage) => uniqMessage?.id === message.id
+                  );
+                  return `
                     {{{Message
                       owner=${message.user_id === userInfo.id}
                       content="${message.content}"
                       time="${message.time}"
                       isRead=${message.is_read}
-                      isFirstUniqMessage=${isUniqueCurrentMessage ? true : false}
+                      isFirstUniqMessage=${isUniqCurrentMessage ? true : false}
                     }}}`;
-      })
-      .join('')}
+                })
+                .join('')}
             </ul>
             {{{ChatFooter onSubmit=handleSendMessage onClick=handleOpenFileMenu}}}
           </li>
@@ -323,10 +323,10 @@ export class ChatPage extends Block {
           title="Создать чат"
           helperText="Название"
           textBtn="Создать"
-          classesPopup="popup-add-chat"
-          classesForm="popup-form-add-chat"
+          classesPopup="popup_add-chat"
+          classesForm="popup__form_add-chat"
           isDefault=true
-          name="popup-form-add-chat"
+          name="popup__form_add-chat"
           fieldName="title"
         }}}
         {{{Popup
@@ -338,20 +338,20 @@ export class ChatPage extends Block {
           title="Добавить пользователя"
           helperText="Логин"
           textBtn="Найти"
-          classesPopup="popup-add-user"
-          classesForm="popup-form-add-user"
+          classesPopup="popup_add-user"
+          classesForm="popup__form_add-user"
           isDefault=true
-          name="popup-form-add-user"
+          name="popup__form_add-user"
           fieldName="login"
           users='${users}'
         }}}
         {{{Popup
           onClick=handleDeleteUserFromChat
           title="Удалить пользователя"
-          classesPopup="popup-delete-user"
-          classesForm="popup-form-delete-user"
+          classesPopup="popup_delete-user"
+          classesForm="popup__form_delete-user"
           isDefault=true
-          name="popup-form-delete-user"
+          name="popup__form_delete-user"
           fieldName="login"
           users='${usersFromChats}'
         }}}

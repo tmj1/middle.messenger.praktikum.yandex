@@ -21,8 +21,8 @@ export class BtnProfile extends Block {
     const { text, classes, type } = this.state;
     const button =
       type === 'link'
-        ? `<button class="btn-profile-link ${classes ? classes : ''}">${text}</button>`
-        : `<button class="btn-profile-btn ${classes ? classes : ''}">${text}</button>`;
+        ? `<button class="btn-profile__link ${classes ? classes : ''}">${text}</button>`
+        : `<button class="btn-profile__btn ${classes ? classes : ''}">${text}</button>`;
     // language=hbs
     return `
       <li class="btn-profile">${button}</li>

@@ -32,7 +32,7 @@ export class FormPopup extends Block {
       this.state;
 
     const renderFormElement = () => {
-      if (classesForm !== 'popup-form-delete-user') {
+      if (classesForm !== 'popup__form_delete-user') {
         return isDefault
           ? `
             {{{InputWrapper
@@ -63,20 +63,20 @@ export class FormPopup extends Block {
 
     // language=hbs
     return `
-          <form class="form-popup ${
+          <form class="formPopup ${
             classesForm !== 'undefined' ? classesForm : ''
           }" name="${name}" novalidate>
             ${renderFormElement()}
             ${
-      users !== 'undefined'
-        ? `
+              users !== 'undefined'
+                ? `
                 {{{Users
                   users='${users}'
                   onClick=onClick
-                  type="${classesForm === 'popup-form-delete-user' ? 'delete' : 'add'}"
+                  type="${classesForm === 'popup__form_delete-user' ? 'delete' : 'add'}"
                 }}}`
-        : ''
-    }
+                : ''
+            }
           </form>
     `;
   }

@@ -16,11 +16,11 @@ const signinFormValidator = new FormValidator(
 );
 
 export class SigninPage extends Block {
- // constructor(...args: any) {
-  //  super(...args);
+  constructor(...args: any) {
+    super(...args);
 
- //   authService.redirectUser();
-  //}
+    authService.redirectUser();
+  }
 
   protected getStateFromProps() {
     this.state = {
@@ -29,14 +29,14 @@ export class SigninPage extends Block {
         signinFormValidator.clearError();
         signinFormValidator.toggleBtnState();
       },
-      handleSubmitForm: (evt: Event) => {
+      hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
         const dataForm = handleSubmitForm({
           stateForm: signinFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
           formSelector: FORM_ELEMENTS.AUTH_FORM,
           disableBtn: signinFormValidator.disableBtn,
-          addErrors: signinFormValidator.addErrorsForInput,
+          addErors: signinFormValidator.addErrorsForInput,
         });
 
         dataForm && authService.signin(dataForm as SigninType);
@@ -49,9 +49,9 @@ export class SigninPage extends Block {
     // language=hbs
     return `
       <div class="page">
-        <main class="page-form">
+        <main class="page__form">
           <form class="auth" name="signin" novalidate>
-            <h1 class="auth-title">Вход</h1>
+            <h1 class="auth__title">Вход</h1>
             {{{InputWrapper
               onInput=handleChangeInput
               onFocus=handleValidateInput
@@ -70,14 +70,14 @@ export class SigninPage extends Block {
               helperText="Пароль"
               minlength="8"
               maxlength="40"
-              classes="input-is-auth"
+              classes="input_is-auth"
               name="password"
             }}}
             {{{Button
-              onClick=handleSubmitForm
+              onClick=hendleSubmitForm
               textBtn="Авторизоваться"
               type="submit"
-              classes="button-is-auth"
+              classes="button_is-auth"
             }}}
             {{{AuthLink
               onClick=handleLinkBtn

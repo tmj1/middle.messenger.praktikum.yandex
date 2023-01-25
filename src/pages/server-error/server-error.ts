@@ -7,7 +7,7 @@ export class ServerErrorPage extends Block {
       <div class="page">
         {{{Error
           title="500"
-          subtitle="Ошибка сервера"
+          subtitle="Произошла какая-то проблема..."
         }}}
       </div>
     `;

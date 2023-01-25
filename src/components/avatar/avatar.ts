@@ -1,7 +1,7 @@
 import { Block } from 'core';
 import './avatar.css';
 import { AvatarProps } from './types';
-import defaultIcon from '../../image/avatar.svg';
+import defaultIcon from 'img/avatar.svg';
 import { URLS } from 'utils';
 
 export class Avatar extends Block {
@@ -26,10 +26,10 @@ export class Avatar extends Block {
       <img
         class="avatar"
         src="${
-      srcAvatar !== 'undefined' && srcAvatar !== 'null'
-        ? `${URLS.RESOURCES}${srcAvatar}`
-        : defaultIcon
-    }"
+          srcAvatar !== 'undefined' && srcAvatar !== 'null'
+            ? `${URLS.RESOURCES}${srcAvatar}`
+            : defaultIcon
+        }"
         alt="Аватар пользователя ${userName}"
       />
     `;

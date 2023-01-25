@@ -2,7 +2,7 @@ import { config, FORM_ELEMENTS, Popup } from 'utils';
 
 interface SubmitFormProps {
   disableBtn: () => void;
-  addErrors: () => void;
+  addErors: () => void;
   stateForm: boolean;
   inputSelector: string;
   formSelector: string;
@@ -15,7 +15,7 @@ export const handleSubmitForm = ({
   inputSelector,
   formSelector,
   disableBtn,
-  addErrors,
+  addErors,
   isValidField = undefined,
 }: SubmitFormProps) => {
   if (stateForm && isValidField === undefined) {
@@ -41,6 +41,6 @@ export const handleSubmitForm = ({
     }
   } else {
     disableBtn();
-    addErrors();
+    addErors();
   }
 };

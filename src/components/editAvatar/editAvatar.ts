@@ -22,12 +22,12 @@ export class EditAvatar extends Block {
     // language=hbs
     return `
       <div class="edit-avatar">
-        <img class="edit-avatar-img" src="${
-      avatar !== 'undefined' && avatar !== 'null'
-        ? `${URLS.RESOURCES}${avatar}`
-        : defaultIcon
-    }" alt="Аватар по умолчанию" />
-        <span class="edit-avatar-span">Поменять аватар</span>
+        <img class="edit-avatar__img" src="${
+          avatar !== 'undefined' && avatar !== 'null'
+            ? `${URLS.RESOURCES}${avatar}`
+            : defaultIcon
+        }" alt="Аватар по умолчанию" />
+        <span class="edit-avatar__span">Поменять аватар</span>
       </div>
     `;
   }

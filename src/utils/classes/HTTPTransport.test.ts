@@ -16,7 +16,7 @@ describe('utils/HTTPTransport', () => {
       await http
         .post(`${URLS.BASE}/auth/signin`, {
           headers: HEADERS.CT_APPLICATION_JSON,
-          data: { login: 'tmj2', password: 'password' },
+          data: { login: 'tmj9', password: 'mobifon123' },
         })
         .then((data: any) => expect(data.responseText).toEqual('OK'));
     });
@@ -25,7 +25,7 @@ describe('utils/HTTPTransport', () => {
       await http
         .post(`${URLS.BASE}/auth/signin`, {
           headers: HEADERS.CT_APPLICATION_JSON,
-          data: { login: 'tmj5', password: 'parola77' },
+          data: { login: 'tmj9', password: 'mobifon123' },
         })
         .catch((err) => {
           const textError = JSON.parse(err.responseText).reason;
@@ -36,14 +36,13 @@ describe('utils/HTTPTransport', () => {
     it('should return user info', async () => {
       await http.get(`${URLS.BASE}/auth/user`, {}).then((userInfo: any) => {
         const user = {
-          id: 70384,
+          id: 165108,
           first_name: 'Tatiana',
           second_name: 'Miteva',
           display_name: null,
-          login: 'tmj2',
-          avatar:
-            null,
-          email: 'tmj2@mail.ru',
+          login: 'tmj9',
+          avatar: null,
+          email: 'tmj9@mail.ru',
           phone: '81234567890',
         };
 

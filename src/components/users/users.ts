@@ -26,13 +26,13 @@ export class Users extends Block {
 
     // language=hbs
     return `
-      <ul class="users ${users?.length !== 0 ? 'users-is-margin' : ''}">
+      <ul class="users ${users?.length !== 0 ? 'users_is-margin' : ''}">
         ${
-      users &&
-      users
-        .map(
-          (user: UserType) =>
-            `{{{UserItem
+          users &&
+          users
+            .map(
+              (user: UserType) =>
+                `{{{UserItem
                   onClick=onClick
                   id=${user.id}
                   avatar="${user.avatar}"
@@ -41,9 +41,9 @@ export class Users extends Block {
                   type="${type}"
                   role="${user.role}"
                 }}}`
-        )
-        .join('')
-    }
+            )
+            .join('')
+        }
       </ul>
     `;
   }

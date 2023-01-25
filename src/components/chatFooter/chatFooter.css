@@ -1,77 +1,77 @@
 .chat-footer {
   padding-top: 11px;
   border-top: 1px solid var(--line-color);
-}
 
-.chat-footer-form {
-  font-family: inherit;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  &__form {
+    font-family: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.chat-footer-input {
-  box-sizing: border-box;
-  border-color: transparent;
-  outline: none;
-  border-width: 1px;
-  font-size: 12px;
-  width: 100%;
-  color: var(--primary-color);
-  font-weight: 500;
-  line-height: 12px;
-  padding: 10px 20px;
-  background-color: var(--light-gray-color);
-  border-radius: 30px;
-  margin: 0 10px;
-  transition: 0.3s border-color;
-}
+  &__input {
+    box-sizing: border-box;
+    border-color: transparent;
+    outline: none;
+    border-width: 1px;
+    font-size: 12px;
+    width: 100%;
+    color: var(--primary-color);
+    font-weight: 500;
+    line-height: 12px;
+    padding: 10px 20px;
+    background-color: var(--light-gray-color);
+    border-radius: 30px;
+    margin: 0 10px;
+    transition: 0.3s border-color;
+  }
 
-.chat-footer-input:hover {
-  border-color: var(--gray-color);
-}
+  &__input:hover {
+    border-color: var(--gray-color);
+  }
 
-.chat-footer-input:focus {
-  border-color: var(--gray-color);
-}
+  &__input:focus {
+    border-color: var(--gray-color);
+  }
 
-.chat-footer-input::placeholder {
-  font-size: 12px;
-  color: var(--gray-color);
-  font-weight: 500;
-  line-height: 12px;
-}
+  &__input::placeholder {
+    font-size: 12px;
+    color: var(--gray-color);
+    font-weight: 500;
+    line-height: 12px;
+  }
 
-.chat-footer-btn-attach {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  width: 32px;
-  height: 32px;
-  transition: 0.3s opacity;
-}
+  &__btn-attach {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    transition: 0.3s opacity;
+  }
 
-.chat-footer-btn-attach:hover {
-  opacity: 0.8;
-}
+  &__btn-attach:hover {
+    opacity: 0.8;
+  }
 
-.chat-footer-btn-send {
-  box-sizing: border-box;
-  cursor: pointer;
-  background-color: var(--secondary-color);
-  border: none;
-  padding: 0;
-  border-radius: 50%;
-  min-width: 28px;
-  height: 28px;
-  transition: 0.3s opacity;
-}
+  &__btn-send {
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    border: none;
+    padding: 0;
+    border-radius: 50%;
+    min-width: 28px;
+    height: 28px;
+    transition: 0.3s opacity;
+  }
 
-.chat-footer-btn-send:hover {
-  opacity: 0.8;
-}
+  &__btn-send:hover {
+    opacity: 0.8;
+  }
 
-.chat-footer-icon-attach {
-  width: 32px;
+  &__icon-attach {
+    width: 32px;
+  }
 }

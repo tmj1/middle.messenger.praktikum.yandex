@@ -7,80 +7,74 @@
   flex-direction: column;
   box-shadow: 0 0 6px 0 var(--shadow);
   border-radius: 12px;
-}
 
-@media screen and (max-width: 425px) {
-  .auth {
+  @media screen and (max-width: 425px) {
     max-width: none;
     margin: 0 16px;
   }
-}
 
-@media screen and (max-width: 320px) {
-  .auth {
+  @media screen and (max-width: 320px) {
     margin: 0 10px;
   }
-}
 
-.auth-title {
-  margin: 0;
-  font-size: 20px;
-  color: var(--primary-color);
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: 0;
-  text-align: center;
-  margin-bottom: 50px;
-}
+  &__title {
+    margin: 0;
+    font-size: 20px;
+    color: var(--primary-color);
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: center;
+    margin-bottom: 50px;
 
-@media screen and (max-width: 425px) {
-  .auth-title {
-    font-size: 18px;
-    margin-bottom: 40px;
+    @media screen and (max-width: 425px) {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
   }
-}
 
-.auth-group {
-  margin: 0;
-  padding: 0;
-  border: none;
-  position: relative;
-  margin-bottom: 26px;
-}
+  &__group {
+    margin: 0;
+    padding: 0;
+    border: none;
+    position: relative;
+    margin-bottom: 26px;
+  }
 
-.auth-group:last-of-type {
-  margin-bottom: 169px;
-}
+  &__group:last-of-type {
+    margin-bottom: 169px;
+  }
 
-.auth-input {
-  outline: none;
-  border: none;
-  width: 100%;
-  border-bottom: 1px solid var(--secondary-color);
-  padding-bottom: 7px;
-  font-size: 13px;
-  color: var(--primary-color);
-  font-weight: 500;
-  line-height: 13px;
-}
+  &__input {
+    outline: none;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 7px;
+    font-size: 13px;
+    color: var(--primary-color);
+    font-weight: 500;
+    line-height: 13px;
+  }
 
-.auth-label {
-  position: absolute;
-  top: 6px;
-  left: 0;
-  font-size: 13px;
-  color: var(--gray-color);
-  font-weight: 500;
-  line-height: 13px;
-  transition: 0.3s font-size, top 0.3s;
-}
+  &__label {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    font-size: 13px;
+    color: var(--gray-color);
+    font-weight: 500;
+    line-height: 13px;
+    transition: 0.3s font-size, top 0.3s;
+  }
 
-.auth-input:valid + .auth-label {
-  top: -8px;
-}
+  &__input:valid + &__label {
+    top: -8px;
+  }
 
-.auth-input:focus + .auth-label {
-  top: -12px;
-  font-size: 9px;
-  line-height: 9px;
+  &__input:focus + &__label {
+    top: -12px;
+    font-size: 9px;
+    line-height: 9px;
+  }
 }

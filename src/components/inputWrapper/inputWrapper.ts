@@ -30,7 +30,7 @@ export class InputWrapper extends Block {
     // language=hbs
     return `
       <fieldset class="input ${classes ? classes : ''}">
-        <label class="input-label">
+        <label class="input__label">
           {{{Input
             onInput=handleClearError
             onFocus=onFocus
@@ -40,9 +40,9 @@ export class InputWrapper extends Block {
             maxlength="${maxlength}"
             name="${name}"
           }}}
-          <span class="input-text">${helperText}</span>
+          <span class="input__text">${helperText}</span>
         </label>
-        <p class="input-helper-text"></p>
+        <p class="input__helper-text"></p>
       </fieldset>
     `;
   }

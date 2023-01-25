@@ -28,15 +28,15 @@ export class UserItem extends Block {
     // language=hbs
     return `
       <li class="user-item" ${DATA_ATTRIBUTE.USER_ID}="${id}">
-        <img class="user-item-avatar" src="${
-      avatar && avatar !== 'null' ? `${URLS.RESOURCES}${avatar}` : defaultIcon
-    }" alt="Аватар">
-        <div class="user-item-wrapper">
-          <p class="user-item-text-login">${login}</p>
-          <p class="user-item-text-email">${email}</p>
-          ${role === 'admin' ? '<p class="user-item-role">Админ</p>' : ''}
+        <img class="user-item__avatar" src="${
+          avatar && avatar !== 'null' ? `${URLS.RESOURCES}${avatar}` : defaultIcon
+        }" alt="Аватар">
+        <div class="user-item__wrapper">
+          <p class="user-item__text-login">${login}</p>
+          <p class="user-item__text-email">${email}</p>
+          ${role === 'admin' ? '<p class="user-item__role">Админ</p>' : ''}
         </div>
-        <button class="user-item-btn" type="button">
+        <button class="user-item__btn" type="button">
           ${type === 'add' ? '+' : '-'}
         </button>
       </li>

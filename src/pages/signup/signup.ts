@@ -16,11 +16,11 @@ const signupFormValidator = new FormValidator(
 );
 
 export class SignupPage extends Block {
- // constructor(...args: any) {
-  //  super(...args);
+  constructor(...args: any) {
+    super(...args);
 
-  //  authService.redirectUser();
-  //}
+    authService.redirectUser();
+  }
 
   protected getStateFromProps() {
     this.state = {
@@ -29,14 +29,14 @@ export class SignupPage extends Block {
         signupFormValidator.clearError();
         signupFormValidator.toggleBtnState();
       },
-      handleSubmitForm: (evt: Event) => {
+      hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
         const dataForm = handleSubmitForm({
           stateForm: signupFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
           formSelector: FORM_ELEMENTS.AUTH_FORM,
           disableBtn: signupFormValidator.disableBtn,
-          addErrors: signupFormValidator.addErrorsForInput,
+          addErors: signupFormValidator.addErrorsForInput,
           isValidField: signupFormValidator.isValidFieldWithCustomRules(),
         });
 
@@ -127,7 +127,7 @@ export class SignupPage extends Block {
               name="repeatPassword"
             }}}
             {{{Button
-              onClick=handleSubmitForm
+              onClick=hendleSubmitForm
               textBtn="Зарегистрироваться"
               type="submit"
               classes="button_is-auth"

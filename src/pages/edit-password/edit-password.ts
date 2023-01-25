@@ -6,7 +6,7 @@ import { handleSubmitForm, showTooltip, checkIsLoginIn } from 'utils';
 import { authService, profileService } from 'services';
 import { UserPasswordType, StoreEvents } from 'types';
 
-const editPassowordFormValidator = new FormValidator(
+const editPassowrdformValidator = new FormValidator(
   config,
   FORM_ELEMENTS.EDIT_PASSWORD_FORM,
   config.inputProfileSelector,
@@ -37,17 +37,17 @@ export class EditPasswordPage extends Block {
         ).handleOpenPopup();
       },
       handleChangeInput: () => {
-        editPassowordFormValidator.clearError();
-        editPassowordFormValidator.toggleBtnState();
+        editPassowrdformValidator.clearError();
+        editPassowrdformValidator.toggleBtnState();
       },
-      handleSubmitForm: (evt: Event) => {
+      hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
         const dataForm = handleSubmitForm({
-          stateForm: editPassowordFormValidator.checkStateForm(),
+          stateForm: editPassowrdformValidator.checkStateForm(),
           inputSelector: config.inputProfileSelector,
           formSelector: FORM_ELEMENTS.EDIT_PASSWORD_FORM,
-          disableBtn: editPassowordFormValidator.disableBtn,
-          addErrors: editPassowordFormValidator.addErrorsForInput,
+          disableBtn: editPassowrdformValidator.disableBtn,
+          addErors: editPassowrdformValidator.addErrorsForInput,
         });
 
         if (dataForm) {
@@ -56,17 +56,17 @@ export class EditPasswordPage extends Block {
 
           newPassword !== repeatPassword
             ? showTooltip({
-              text: MESSAGES.IS_NOT_MATCHED_PASSWORD_MESSAGE,
-              type: 'error',
-            })
+                text: MESSAGES.IS_NOT_MATCHED_PASSWORD_MESSAGE,
+                type: 'error',
+              })
             : profileService.changeUserPassword({
-              newPassword,
-              oldPassword,
-            } as UserPasswordType);
+                newPassword,
+                oldPassword,
+              } as UserPasswordType);
         }
       },
       handleValidateInput: (evt: Event) => {
-        editPassowordFormValidator.handleFieldValidation(evt);
+        editPassowrdformValidator.handleFieldValidation(evt);
       },
       handleBackBtn: () => router.back(),
     };
@@ -80,16 +80,16 @@ export class EditPasswordPage extends Block {
     // language=hbs
     return `
       <div class="profile">
-        <ul class="profile-wrapper">
+        <ul class="profile__wrapper">
         {{{BtnBackProfile onClick=handleBackBtn}}}
-          <li class="profile-column">
+          <li class="profile__column">
             <form
-              class="profile-form profile-form-el-edit-password-form"
+              class="profile__form profile__form_el_edit-password-form"
               novalidate
             >
               {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
-              <p class="profile-user-name">${display_name ? display_name : ''}</p>
-              <ul class="profile-list">
+              <p class="profile__user-name">${display_name ? display_name : ''}</p>
+              <ul class="profile__list">
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
                   onFocus=handleValidateInput
@@ -100,7 +100,7 @@ export class EditPasswordPage extends Block {
                   minlength="8"
                   maxlength="40"
                   name="oldPassword"
-                  formName="profile-form-el-edit-password-form"
+                  formName="profile__form_el_edit-password-form"
                 }}}
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -112,7 +112,7 @@ export class EditPasswordPage extends Block {
                   minlength="8"
                   maxlength="40"
                   name="newPassword"
-                  formName="profile-form-el-edit-password-form"
+                  formName="profile__form_el_edit-password-form"
                 }}}
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -123,12 +123,12 @@ export class EditPasswordPage extends Block {
                   value="" minlength="8"
                   maxlength="40"
                   name="repeatPassword"
-                  formName="profile-form_el-edit-password-form"
+                  formName="profile__form_el_edit-password-form"
                 }}}
                 {{{Button
-                  onClick=handleSubmitForm
+                  onClick=hendleSubmitForm
                   textBtn="Сохранить"
-                  classes="button-page-edit-password"
+                  classes="button_page_edit-password"
                   type="submit"
                 }}}
               </ul>
@@ -138,7 +138,7 @@ export class EditPasswordPage extends Block {
         {{{Popup
           title="Загрузите файл"
           textBtn="Поменять"
-          classesPopup="popup-change-avatar"
+          classesPopup="popup_change-avatar"
           isDefault=false
         }}}
       </div>

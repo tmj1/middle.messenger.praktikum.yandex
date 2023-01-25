@@ -26,14 +26,14 @@ export class InputProfile extends Block {
     const { name, minlength, maxlength, type, value } = this.state;
     // language=hbs
     return `
-        <input class="input-profile"
-               type="${type}"
-               value="${value}"
-               name="${name}"
-               minlength="${minlength}"
-               maxlength="${maxlength}"
-               required
-        />
+      <input class="input-profile"
+        type="${type}"
+        value="${value}"
+        name="${name}"
+        minlength="${minlength}"
+        maxlength="${maxlength}"
+        required
+      />
     `;
   }
 }

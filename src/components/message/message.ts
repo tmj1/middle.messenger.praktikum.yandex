@@ -27,27 +27,27 @@ export class Message extends Block {
     const date = getDate(time);
 
     const classesForTitle = `${
-      !owner ? 'message-is-not-owner' : srcImg ? 'message-is-img' : ''
+      !owner ? 'message_is-not-owner' : srcImg ? 'message_is-img' : ''
     }`;
-    const classesForText = `${owner ? 'message-text-is-me' : 'message-text-is-friend'}`;
+    const classesForText = `${owner ? 'message__text_is-me' : 'message__text_is-friend'}`;
     const classesForTime = `${
-      isRead ? 'message-time-is-read' : 'message-time-is-not-read'
+      isRead ? 'message__time_is-read' : 'message__time_is-not-read'
     }`;
     // language=hbs
     return `
       <li class="message ${classesForTitle}">
         ${
-      isFirstUniqMessage
-        ? `<p class="chat-text-date">${date.day} ${MONTH[date.month]}</p>`
-        : ''
-    }
-        <p class="message-text ${classesForText}">
+          isFirstUniqMessage
+            ? `<p class="chat__text-date">${date.day} ${MONTH[date.month]}</p>`
+            : ''
+        }
+        <p class="message__text ${classesForText}">
           ${content}
           ${
-      owner
-        ? `<time class="message-time">${date.hour}:${date.minute}</time>`
-        : `<time class="message-time ${classesForTime}">${date.hour}:${date.minute}</time>`
-    }
+            owner
+              ? `<time class="message__time">${date.hour}:${date.minute}</time>`
+              : `<time class="message__time ${classesForTime}">${date.hour}:${date.minute}</time>`
+          }
         </p>
       </li>
     `;

@@ -54,13 +54,13 @@ export class ProfilePage extends Block {
     // language=hbs
     return `
       <div class="profile">
-        <ul class="profile-wrapper">
+        <ul class="profile__wrapper">
           {{{BtnBackProfile onClick=handleBackBtn}}}
-          <li class="profile-column">
-            <form class="profile-form" novalidate>
+          <li class="profile__column">
+            <form class="profile__form" novalidate>
               {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
-              <p class="profile-user-name">${display_name ? display_name : ''}</p>
-              <ul class="profile-list">
+              <p class="profile__user-name">${display_name ? display_name : ''}</p>
+              <ul class="profile__list">
                 {{{InputProfileWrapper
                   type="email"
                   helperText="Почта"
@@ -92,23 +92,23 @@ export class ProfilePage extends Block {
                   value="${phone ? phone : ''}"
                 }}}
               </ul>
-              <ul class="profile-list">
+              <ul class="profile__list">
                 {{{BtnProfile
                   onClick=handleLinkToChangeProfile
                   text="Изменить данные"
-                  classes="btn-profile-link-color-red"
+                  classes="btn-profile__link_color_red"
                   type="link"
                 }}}
                 {{{BtnProfile
                   onClick=handleLinkToChangePassword
                   text="Изменить пароль"
-                  classes="btn-profile-link-color-red"
+                  classes="btn-profile__link_color_red"
                   type="link"
                 }}}
                 {{{BtnProfile
                   onClick=handleSignOut
                   text="Выйти"
-                  classes="btn-profile-link-color-blue"
+                  classes="btn-profile__link_color_blue"
                   type="button"
                 }}}
               </ul>

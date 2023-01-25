@@ -1,4 +1,4 @@
-import { authAPI } from '../api';
+import { authAPI } from '../Api';
 import { SignupType, SigninType } from 'types';
 import { BrowseRouter as router, store } from 'core';
 import { showTooltip, showError, MESSAGES, PATHNAMES, lOCALSTORAGE } from 'utils';
@@ -51,12 +51,12 @@ class AuthService {
       .catch(showError);
   }
 
-  //public redirectUser() {
-   // authAPI
-    //  .getInfo()
-     // .then(() => router.go(PATHNAMES.MESSAGER_PATH))
-      //.catch((err) => console.log(err.responseText));
-  //}
+  public redirectUser() {
+    authAPI
+      .getInfo()
+      .then(() => router.go(PATHNAMES.MESSAGER_PATH))
+      .catch((err) => console.log(err.responseText));
+  }
 }
 
 export default new AuthService();
