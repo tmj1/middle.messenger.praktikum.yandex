@@ -34,7 +34,7 @@ module.exports = {
       variables: path.resolve(__dirname, 'src/variables'),
       utils: path.resolve(__dirname, 'src/utils'),
       styles: path.resolve(__dirname, 'src/styles'),
-      api: path.resolve(__dirname, 'src/Api'),
+      api: path.resolve(__dirname, 'src/api'),
       services: path.resolve(__dirname, 'src/services'),
       'express-handlebars': 'handlebars/dist/handlebars.js',
       handlebars: 'handlebars/dist/handlebars.min.js',
